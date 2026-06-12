@@ -4,6 +4,8 @@ Use this reference for Coupang Partners TOP 5 posts.
 
 ## Product Selection
 
+Read `affiliate-scoring.md` first and score both the product category and each product candidate.
+
 Choose products by combining:
 
 - Seasonal demand.
@@ -15,6 +17,8 @@ Choose products by combining:
 - Review quality and return-risk signals when available.
 
 Do not claim exact sales volume, ranking, or profitability unless verified from a reliable current source.
+
+Reject a product if the use case is unclear, the claim depends on unverifiable ranking language, or the post cannot explain who should skip it.
 
 ## Post Structure
 
@@ -41,3 +45,5 @@ Include a clear Korean disclosure such as:
 - Do not invent hands-on experience.
 - Use "추천 대상", "확인할 점", "비교 포인트" instead of absolute claims.
 - Keep the tone practical and buyer-friendly.
+- Include one watch-out for every recommendation.
+- Include at least one budget-based or reader-type-based final pick.
