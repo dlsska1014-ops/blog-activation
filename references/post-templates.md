@@ -71,6 +71,8 @@ Structure:
 
 Use for the daily affiliate post.
 
+Before writing, score the product category and candidates with `affiliate-scoring.md`.
+
 Structure:
 
 1. Required affiliate disclosure near the top.
