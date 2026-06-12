@@ -21,6 +21,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
    - Use `references/research-sources.md` to decide where to check current sources.
+   - Use `references/content-calendar.md` for seasonal planning and `references/keyword-clusters.md` to assign each topic a cluster role.
+   - Use `references/duplicate-intent-check.md` to reject posts that overlap recent reader intent.
    - Find current Korean search/trend/news topics relevant to consumer decisions, seasonal needs, public benefits, electronics, household goods, finance-lite explainers, local events, and practical how-to information.
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
@@ -37,7 +39,9 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Draft 3: Coupang Partners TOP 5 post, selected for seasonal demand, buyer intent, likely order value, and practical usefulness.
    - Use the closest structure from `references/post-templates.md`.
    - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
+   - Use `references/writing-patterns-ko.md` for natural Korean first-screen, paragraph rhythm, title, and closing patterns.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
+   - Use `references/affiliate-link-density.md` to keep affiliate link count and weekly ratio trust-first.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
 
 5. Prepare draft-save output:
@@ -53,6 +57,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/daily-ops.md` as the runbook for daily execution.
    - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
    - Use `references/performance-input.md` when the user provides post results, search inflow, clicks, comments, or conversion data.
+   - Use `references/search-exposure-check.md` after publication when the user asks to inspect indexing, search inflow, or weak exposure.
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
 
@@ -61,11 +66,16 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/blog-profile.md` to keep the blog's niche, audience, and editorial stance consistent.
 - Read `references/voice-guide.md` before writing or revising Korean blog copy.
 - Read `references/research-sources.md` before topic research.
+- Read `references/official-source-notes.md` when summarizing Naver exposure or affiliate disclosure principles.
 - Read `references/secret-handling.md` whenever credentials, cookies, affiliate account data, or private account information may appear.
 - Read `references/editorial-playbook.md` before drafting posts.
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
+- Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
+- Read `references/keyword-clusters.md` to build pillar/support/affiliate topic clusters without duplication.
+- Read `references/duplicate-intent-check.md` before drafting posts that resemble recent topics.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
+- Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.
 - Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/post-templates.md` to select the correct article structure.
@@ -73,13 +83,16 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/publish-risk-checklist.md` before publishing, draft-save, or final delivery of sensitive/time-sensitive posts.
 - Read `references/low-quality-prevention.md` before creating multiple daily posts, affiliate-heavy posts, or posts that target similar keywords.
 - Read `references/sample-bank.md` to vary titles, openings, closings, and layout patterns without copying other creators.
+- Read `references/writing-patterns-ko.md` when improving Korean tone, opening, title, paragraph rhythm, and closing.
 - Read `references/daily-ops.md` for a complete daily operating runbook.
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
 - Read `references/performance-input.md` when converting real performance data into next actions.
+- Read `references/search-exposure-check.md` when reviewing published post exposure, search inflow, or indexing concerns.
 - Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
 - Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
+- Use `scripts/score_topic_candidates.py` when the user provides a CSV of topic candidates and scores.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 
 ## Editorial Rules
