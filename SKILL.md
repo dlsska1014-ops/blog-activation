@@ -36,6 +36,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Draft 2: seasonal or search-demand post matched to the blog theme.
    - Draft 3: Coupang Partners TOP 5 post, selected for seasonal demand, buyer intent, likely order value, and practical usefulness.
    - Use the closest structure from `references/post-templates.md`.
+   - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
+   - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
 
 5. Prepare draft-save output:
@@ -43,10 +45,13 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Tistory: adapt into a slightly more structured article with headings, tables, source notes, and SEO-friendly title/description.
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
+   - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
+   - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
 
 6. Improve the system:
    - Use `references/daily-ops.md` as the runbook for daily execution.
    - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
+   - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
 
 ## Resources
@@ -57,12 +62,18 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/editorial-playbook.md` before drafting posts.
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
+- Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
+- Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
+- Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/post-templates.md` to select the correct article structure.
 - Read `references/quality-rubric.md` before final delivery.
+- Read `references/sample-bank.md` to vary titles, openings, closings, and layout patterns without copying other creators.
 - Read `references/daily-ops.md` for a complete daily operating runbook.
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
+- Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
+- Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
 
 ## Editorial Rules
 
