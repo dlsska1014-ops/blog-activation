@@ -72,6 +72,7 @@ Structure:
 Use for the daily affiliate post.
 
 Before writing, score the product category and candidates with `affiliate-scoring.md`.
+Check `affiliate-link-density.md` so the post remains trust-first.
 
 Structure:
 
