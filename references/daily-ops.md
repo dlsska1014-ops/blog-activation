@@ -16,12 +16,14 @@ Use this runbook for daily blog operation.
 ## Drafting
 
 1. Choose the closest template from `post-templates.md`.
-2. Draft for Naver Blog first.
-3. Add source notes and checked dates.
-4. Add image placement notes.
-5. Score with `quality-rubric.md`.
-6. Revise anything under 22/30.
-7. Prepare optional Tistory adaptation.
+2. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
+3. For Coupang Partners posts, score candidates with `affiliate-scoring.md`.
+4. Draft for Naver Blog first.
+5. Add source notes and checked dates.
+6. Add image and thumbnail notes from `image-thumbnail-guide.md`.
+7. Score with `quality-rubric.md`.
+8. Revise anything under 22/30.
+9. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -29,11 +31,12 @@ Default to draft-only.
 
 When browser automation is used:
 
-1. Open the target platform.
-2. Create a new post.
-3. Insert title, body, tags, and image placeholders.
-4. Save as draft.
-5. Stop before publishing.
+1. Follow `naver-draft-runbook.md`.
+2. Open the target platform.
+3. Create a new post.
+4. Insert title, body, tags, and image placeholders.
+5. Save as draft.
+6. Stop before publishing.
 
 Ask for confirmation before any public publish action.
 
@@ -52,4 +55,5 @@ Once per week:
 2. Identify winning title patterns.
 3. Identify weak openings.
 4. Update `style-memory.md`.
-5. Update templates only if a pattern repeats across multiple posts.
+5. Fill `weekly-report-template.md`.
+6. Update templates only if a pattern repeats across multiple posts.
