@@ -108,6 +108,10 @@ def main() -> None:
 
 -
 
+| Candidate | Timeliness | Reader pain | Search demand | Monetization fit | Trust fit | Total |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
+
 ## High-Performing Blog Pattern Notes
 
 -
@@ -130,6 +134,13 @@ def main() -> None:
 - Clicks:
 - Affiliate result:
 - Lesson:
+
+## Visual Plan
+
+- Thumbnail text:
+- First image:
+- Summary card:
+- Comparison/checklist image:
 """,
         encoding="utf-8",
     )
