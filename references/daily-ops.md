@@ -22,15 +22,19 @@ Use this runbook for daily blog operation.
 1. Choose the closest template from `post-templates.md`.
 2. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
 3. Use `writing-patterns-ko.md` for natural Korean title, first screen, and paragraph rhythm.
-4. For Coupang Partners posts, score candidates with `affiliate-scoring.md` and check `affiliate-link-density.md`.
-5. Draft for Naver Blog first.
-6. Add source notes and checked dates.
-7. Add image and thumbnail notes from `image-thumbnail-guide.md`.
-8. Score with `quality-rubric.md`.
-9. Check low-quality risk with `low-quality-prevention.md`.
-10. Check publishing risk with `publish-risk-checklist.md`.
-11. Revise anything under 22/30 or with elevated low-quality risk.
-12. Prepare optional Tistory adaptation.
+4. Generate and score titles with `title-ab-testing.md`.
+5. For Coupang Partners posts, score candidates with `affiliate-scoring.md`, check `affiliate-link-density.md`, and use `product-category-playbooks.md`.
+6. Draft for Naver Blog first.
+7. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
+8. Apply `emoji-emoticon-guide.md` only where tone fits.
+9. Add source notes and checked dates.
+10. Add image and thumbnail notes from `image-thumbnail-guide.md` and `visual-prompt-library.md`.
+11. Run `naturalness-editor.md` as the final rewrite pass.
+12. Score with `quality-rubric.md`.
+13. Check low-quality risk with `low-quality-prevention.md`.
+14. Check publishing risk with `publish-risk-checklist.md`.
+15. Revise anything under 22/30 or with elevated low-quality risk.
+16. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -70,3 +74,7 @@ Once per week:
 When the user provides metrics, use `performance-input.md` before updating `performance-log.md`.
 
 When the user asks why exposure is weak, use `search-exposure-check.md` and avoid assuming a single cause.
+
+When rewriting published posts, use `rewrite-rules.md`.
+
+When the user provides CSV performance data, use `operations-data-schema.md` and `analyze_performance_csv.py`.
