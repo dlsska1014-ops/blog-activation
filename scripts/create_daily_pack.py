@@ -22,6 +22,9 @@ POST_TEMPLATE = """# {label}
 - Keyword cluster:
 - Cluster role:
 - Duplicate intent risk:
+- Title A/B score:
+- Layout pattern:
+- Emoji/emoticon plan:
 
 ## Research Notes
 
@@ -37,6 +40,12 @@ POST_TEMPLATE = """# {label}
 1.
 2.
 3.
+
+### Title A/B Score
+
+| Title | Type | Accuracy | Search fit | Click clarity | Trust | Distinction | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |
 
 ### Opening
 
@@ -55,6 +64,19 @@ POST_TEMPLATE = """# {label}
 - Image 1:
 - Image 2:
 - Image 3:
+
+### Visual Prompt Notes
+
+- Thumbnail prompt:
+- Summary card prompt:
+- Checklist/comparison prompt:
+
+### Layout And Tone Check
+
+- First-screen pattern:
+- Blank line rhythm:
+- Emoji/emoticon count:
+- Naturalness edits:
 
 ### Affiliate Link Plan
 
@@ -157,6 +179,14 @@ def main() -> None:
 - First image:
 - Summary card:
 - Comparison/checklist image:
+
+## Layout And Style Plan
+
+- Influencer patterns observed:
+- Reusable style lesson:
+- Spacing rhythm:
+- Emoji/emoticon rule:
+- Naturalness edit:
 
 ## Search Exposure Follow-Up
 
