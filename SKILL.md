@@ -21,6 +21,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
    - Use `references/research-sources.md` to decide where to check current sources.
+   - Use `references/daily-topic-gate.md` to reject weak topics before drafting.
+   - Use `references/reader-intent-map.md` to match each topic to the correct structure.
    - Use `references/content-calendar.md` for seasonal planning and `references/keyword-clusters.md` to assign each topic a cluster role.
    - Use `references/duplicate-intent-check.md` to reject posts that overlap recent reader intent.
    - Find current Korean search/trend/news topics relevant to consumer decisions, seasonal needs, public benefits, electronics, household goods, finance-lite explainers, local events, and practical how-to information.
@@ -42,6 +44,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
    - Use `references/writing-patterns-ko.md` for natural Korean first-screen, paragraph rhythm, title, and closing patterns.
    - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
+   - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
+   - Use `references/fact-freshness-policy.md` when the post depends on current facts.
    - Use `references/title-ab-testing.md` to score title candidates before draft-save.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
    - Use `references/affiliate-link-density.md` to keep affiliate link count and weekly ratio trust-first.
@@ -64,6 +68,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/performance-input.md` when the user provides post results, search inflow, clicks, comments, or conversion data.
    - Use `references/search-exposure-check.md` after publication when the user asks to inspect indexing, search inflow, or weak exposure.
    - Use `references/rewrite-rules.md` when improving old posts or reacting to weak exposure/click/conversion signals.
+   - Use `references/experiment-log.md` to define controlled writing, layout, title, image, and affiliate experiments.
+   - Use `references/post-mortem-review.md` when a post performs unusually well or poorly.
    - Use `references/operations-data-schema.md` and `scripts/analyze_performance_csv.py` when the user provides CSV performance data.
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
@@ -73,6 +79,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/blog-profile.md` to keep the blog's niche, audience, and editorial stance consistent.
 - Read `references/voice-guide.md` before writing or revising Korean blog copy.
 - Read `references/research-sources.md` before topic research.
+- Read `references/daily-topic-gate.md` before selecting daily topics.
+- Read `references/reader-intent-map.md` before outlining each post.
 - Read `references/official-source-notes.md` when summarizing Naver exposure or affiliate disclosure principles.
 - Read `references/secret-handling.md` whenever credentials, cookies, affiliate account data, or private account information may appear.
 - Read `references/editorial-playbook.md` before drafting posts.
@@ -81,6 +89,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/emoji-emoticon-guide.md` before using emoji, emoticons, or visual markers.
 - Read `references/influencer-style-learning.md` when learning from high-performing blog posts.
 - Read `references/naturalness-editor.md` for the final natural Korean rewrite pass.
+- Read `references/trust-language-filter.md` before finalizing recommendations, affiliate sections, and benefit claims.
+- Read `references/fact-freshness-policy.md` before drafting time-sensitive or source-dependent posts.
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
 - Read `references/keyword-clusters.md` to build pillar/support/affiliate topic clusters without duplication.
 - Read `references/duplicate-intent-check.md` before drafting posts that resemble recent topics.
@@ -103,6 +113,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/performance-input.md` when converting real performance data into next actions.
 - Read `references/search-exposure-check.md` when reviewing published post exposure, search inflow, or indexing concerns.
 - Read `references/rewrite-rules.md` before rewriting existing posts.
+- Read `references/experiment-log.md` when planning or evaluating blog optimization tests.
+- Read `references/post-mortem-review.md` when reviewing unusually strong or weak posts.
 - Read `references/operations-data-schema.md` when storing or analyzing performance CSV data.
 - Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
