@@ -17,12 +17,15 @@ POST_TEMPLATE = """# {label}
 - Search intent:
 - Target reader:
 - Checked date:
+- Template type:
+- Topic score:
 
 ## Research Notes
 
 - Source 1:
 - Source 2:
 - Source 3:
+- Uncertainties:
 
 ## Draft Package
 
@@ -41,6 +44,9 @@ POST_TEMPLATE = """# {label}
 ### Main Body
 
 
+### Table Or Checklist
+
+
 ### Image Placement Notes
 
 - Image 1:
@@ -55,6 +61,16 @@ POST_TEMPLATE = """# {label}
 
 ### Tags
 
+
+### Quality Rubric
+
+- Timeliness:
+- Reader usefulness:
+- Fact reliability:
+- Originality:
+- Readability/layout:
+- Monetization fit:
+- Total:
 
 ### Draft-Save Checklist
 
@@ -105,6 +121,15 @@ def main() -> None:
 ## Style Memory Updates To Consider
 
 -
+
+## Performance Notes To Fill Later
+
+- Published/draft date:
+- Views:
+- Search inflow keywords:
+- Clicks:
+- Affiliate result:
+- Lesson:
 """,
         encoding="utf-8",
     )
