@@ -2,6 +2,8 @@
 
 Use this scoring model before drafting a Coupang Partners TOP 5 post. The goal is to choose products that match reader intent and preserve trust, not to chase unsupported claims.
 
+Read `monetization-strategy.md` first when selecting between multiple revenue topics. Use this file after a revenue topic has already passed the broader revenue and low-quality gates.
+
 ## Product Category Score
 
 Score each candidate category from 1 to 5.
@@ -55,6 +57,7 @@ Use these as recurring research prompts, not fixed recommendations:
 - Name watch-outs for every item.
 - Avoid medical, financial, or safety claims unless verified and written carefully.
 - Keep affiliate disclosure near the top.
+- Keep one non-affiliate buying checklist or comparison table in the post so the content has standalone value.
 
 ## Output Table
 
