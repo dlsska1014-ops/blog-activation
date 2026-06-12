@@ -30,6 +30,8 @@ Use sparingly:
 
 ## Emoticons And Emoji
 
+Use `emoji-emoticon-guide.md` for detailed rules.
+
 - Use only when the post mood allows it.
 - Prefer 0 to 3 per post by default.
 - Do not place emoji in every heading.
@@ -61,3 +63,5 @@ Before finalizing a draft:
 3. Add one caution or exception.
 4. Vary paragraph length.
 5. Make the first 5 lines answer why the post matters today.
+
+Then apply `layout-spacing-guide.md` and `naturalness-editor.md`.
