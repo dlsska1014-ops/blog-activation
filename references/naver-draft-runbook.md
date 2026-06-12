@@ -44,6 +44,8 @@ Use this order:
 - No fake personal experience.
 - No unsupported ranking or sales claim.
 - Dates and conditions include checked date.
+- Low-quality risk score is acceptable according to `low-quality-prevention.md`.
+- Publish risk checklist has no stop conditions.
 
 ## Automation Notes
 
