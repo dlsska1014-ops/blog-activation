@@ -19,6 +19,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - If login, browser automation, affiliate links, or live posting are involved, confirm the target account and action before modifying live content.
 
 2. Build the daily topic board:
+   - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
+   - Use `references/research-sources.md` to decide where to check current sources.
    - Find current Korean search/trend/news topics relevant to consumer decisions, seasonal needs, public benefits, electronics, household goods, finance-lite explainers, local events, and practical how-to information.
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
@@ -33,18 +35,32 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Draft 1: information/news explainer based on current issue or event.
    - Draft 2: seasonal or search-demand post matched to the blog theme.
    - Draft 3: Coupang Partners TOP 5 post, selected for seasonal demand, buyer intent, likely order value, and practical usefulness.
+   - Use the closest structure from `references/post-templates.md`.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
 
 5. Prepare draft-save output:
    - Naver Blog: write with short paragraphs, generous spacing, scannable headings, image insertion notes, and natural Korean phrasing.
    - Tistory: adapt into a slightly more structured article with headings, tables, source notes, and SEO-friendly title/description.
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
+   - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
+
+6. Improve the system:
+   - Use `references/daily-ops.md` as the runbook for daily execution.
+   - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
+   - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
 
 ## Resources
 
+- Read `references/blog-profile.md` to keep the blog's niche, audience, and editorial stance consistent.
+- Read `references/voice-guide.md` before writing or revising Korean blog copy.
+- Read `references/research-sources.md` before topic research.
 - Read `references/editorial-playbook.md` before drafting posts.
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
+- Read `references/post-templates.md` to select the correct article structure.
+- Read `references/quality-rubric.md` before final delivery.
+- Read `references/daily-ops.md` for a complete daily operating runbook.
+- Read `references/performance-log.md` when reviewing published results or improving future topic selection.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
 
