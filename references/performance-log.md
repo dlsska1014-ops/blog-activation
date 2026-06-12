@@ -19,6 +19,9 @@ Use this file to learn from actual blog performance. Add entries after posts are
 - Comments or reader questions:
 - Search exposure or indexing issue if observed:
 - Low-quality risk notes:
+- Cluster:
+- Duplicate intent risk:
+- Affiliate link count:
 - What worked:
 - What did not work:
 - Next experiment:
