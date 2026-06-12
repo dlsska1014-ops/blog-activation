@@ -31,6 +31,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Review recent Naver Blog first, then Tistory examples for similar topics.
    - Extract reusable patterns only: title hooks, opening rhythm, spacing, section order, image placement ideas, table use, comparison blocks, conclusion style, and comment-inducing questions.
    - Do not imitate a specific creator's unique voice, personal claims, photos, or proprietary structure.
+   - Use `references/influencer-style-learning.md` to convert observations into abstract, reusable style lessons.
    - Update `references/style-memory.md` only with durable patterns that can be reused across posts.
 
 4. Create three daily drafts:
@@ -40,8 +41,11 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use the closest structure from `references/post-templates.md`.
    - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
    - Use `references/writing-patterns-ko.md` for natural Korean first-screen, paragraph rhythm, title, and closing patterns.
+   - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
+   - Use `references/title-ab-testing.md` to score title candidates before draft-save.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
    - Use `references/affiliate-link-density.md` to keep affiliate link count and weekly ratio trust-first.
+   - Use `references/product-category-playbooks.md` for recurring product categories.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
 
 5. Prepare draft-save output:
@@ -50,6 +54,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
+   - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
 
@@ -58,6 +63,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
    - Use `references/performance-input.md` when the user provides post results, search inflow, clicks, comments, or conversion data.
    - Use `references/search-exposure-check.md` after publication when the user asks to inspect indexing, search inflow, or weak exposure.
+   - Use `references/rewrite-rules.md` when improving old posts or reacting to weak exposure/click/conversion signals.
+   - Use `references/operations-data-schema.md` and `scripts/analyze_performance_csv.py` when the user provides CSV performance data.
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
 
@@ -70,15 +77,22 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/secret-handling.md` whenever credentials, cookies, affiliate account data, or private account information may appear.
 - Read `references/editorial-playbook.md` before drafting posts.
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
+- Read `references/layout-spacing-guide.md` when preparing Naver Blog body spacing, section rhythm, and mobile readability.
+- Read `references/emoji-emoticon-guide.md` before using emoji, emoticons, or visual markers.
+- Read `references/influencer-style-learning.md` when learning from high-performing blog posts.
+- Read `references/naturalness-editor.md` for the final natural Korean rewrite pass.
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
 - Read `references/keyword-clusters.md` to build pillar/support/affiliate topic clusters without duplication.
 - Read `references/duplicate-intent-check.md` before drafting posts that resemble recent topics.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
 - Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.
+- Read `references/product-category-playbooks.md` before drafting recurring product category posts.
 - Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
+- Read `references/visual-prompt-library.md` when generating or planning thumbnail, summary card, checklist, FAQ, or comparison visuals.
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/post-templates.md` to select the correct article structure.
+- Read `references/title-ab-testing.md` before selecting final post titles.
 - Read `references/quality-rubric.md` before final delivery.
 - Read `references/publish-risk-checklist.md` before publishing, draft-save, or final delivery of sensitive/time-sensitive posts.
 - Read `references/low-quality-prevention.md` before creating multiple daily posts, affiliate-heavy posts, or posts that target similar keywords.
@@ -88,11 +102,14 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
 - Read `references/performance-input.md` when converting real performance data into next actions.
 - Read `references/search-exposure-check.md` when reviewing published post exposure, search inflow, or indexing concerns.
+- Read `references/rewrite-rules.md` before rewriting existing posts.
+- Read `references/operations-data-schema.md` when storing or analyzing performance CSV data.
 - Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
 - Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
 - Use `scripts/score_topic_candidates.py` when the user provides a CSV of topic candidates and scores.
+- Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 
 ## Editorial Rules
@@ -100,6 +117,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Write original, helpful content. Do not scrape, reproduce, or spin other creators' posts.
 - Avoid fake personal experience. If experience is not provided by the user, use neutral wording such as "구매 전 확인할 점" instead of pretending to have used a product.
 - Make writing feel natural by varying sentence length, adding concrete reader questions, using everyday Korean, and placing light emoticons only where they fit the blog's tone.
+- Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
