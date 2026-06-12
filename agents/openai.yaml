@@ -1,4 +1,4 @@
 interface:
   display_name: "블로그 활성화"
-  short_description: "네이버블로그와 티스토리용 트렌드 기반 글을 기획, 작성, 임시저장하는 운영 스킬"
+  short_description: "네이버블로그와 티스토리용 한국어 글 기획, 작성, 수익화 점검, 임시저장을 돕는 스킬"
   default_prompt: "Use $blog-activation to research today's Korean blog trends and draft three natural, reader-focused posts for my blog."
