@@ -17,6 +17,8 @@ Use this file to learn from actual blog performance. Add entries after posts are
 - Affiliate clicks:
 - Affiliate conversion or revenue if available:
 - Comments or reader questions:
+- Search exposure or indexing issue if observed:
+- Low-quality risk notes:
 - What worked:
 - What did not work:
 - Next experiment:
@@ -31,6 +33,8 @@ Use this file to learn from actual blog performance. Add entries after posts are
 - Views:
 - Search inflow:
 - Affiliate clicks/result:
+- Search exposure:
+- Low-quality risk notes:
 - Strong section:
 - Weak section:
 - Lesson:
