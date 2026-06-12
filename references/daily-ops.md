@@ -12,6 +12,7 @@ Use this runbook for daily blog operation.
    - One information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
+6. Check `low-quality-prevention.md` before committing to three daily posts.
 
 ## Drafting
 
@@ -22,8 +23,10 @@ Use this runbook for daily blog operation.
 5. Add source notes and checked dates.
 6. Add image and thumbnail notes from `image-thumbnail-guide.md`.
 7. Score with `quality-rubric.md`.
-8. Revise anything under 22/30.
-9. Prepare optional Tistory adaptation.
+8. Check low-quality risk with `low-quality-prevention.md`.
+9. Check publishing risk with `publish-risk-checklist.md`.
+10. Revise anything under 22/30 or with elevated low-quality risk.
+11. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -39,6 +42,8 @@ When browser automation is used:
 6. Stop before publishing.
 
 Ask for confirmation before any public publish action.
+
+Before any GitHub upload or saved automation artifact, follow `secret-handling.md`.
 
 ## End-Of-Run
 
@@ -57,3 +62,5 @@ Once per week:
 4. Update `style-memory.md`.
 5. Fill `weekly-report-template.md`.
 6. Update templates only if a pattern repeats across multiple posts.
+
+When the user provides metrics, use `performance-input.md` before updating `performance-log.md`.
