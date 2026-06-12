@@ -78,3 +78,7 @@ When the user asks why exposure is weak, use `search-exposure-check.md` and avoi
 When rewriting published posts, use `rewrite-rules.md`.
 
 When the user provides CSV performance data, use `operations-data-schema.md` and `analyze_performance_csv.py`.
+
+When testing a new title, layout, thumbnail, or affiliate approach, record it in `experiment-log.md`.
+
+When a post performs unusually well or poorly, review it with `post-mortem-review.md`.
