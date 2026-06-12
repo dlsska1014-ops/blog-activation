@@ -47,8 +47,10 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
    - Use `references/title-ab-testing.md` to score title candidates before draft-save.
+   - Use `references/monetization-strategy.md` to separate traffic, trust, and conversion goals before choosing revenue topics.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
    - Use `references/affiliate-link-density.md` to keep affiliate link count and weekly ratio trust-first.
+   - Use `scripts/score_revenue_topics.py` when the user provides a CSV of revenue topic candidates.
    - Use `references/product-category-playbooks.md` for recurring product categories.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
 
@@ -94,6 +96,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
 - Read `references/keyword-clusters.md` to build pillar/support/affiliate topic clusters without duplication.
 - Read `references/duplicate-intent-check.md` before drafting posts that resemble recent topics.
+- Read `references/monetization-strategy.md` before planning AdPost, AdFit, AdSense, Coupang Partners, sponsored, or product-comparison revenue work.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
 - Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.
@@ -121,6 +124,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
 - Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
 - Use `scripts/score_topic_candidates.py` when the user provides a CSV of topic candidates and scores.
+- Use `scripts/score_revenue_topics.py` when the user provides a CSV of monetization candidates and wants revenue-priority scoring.
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 
