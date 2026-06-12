@@ -28,6 +28,8 @@ Avoid:
 ## Naver-Friendly Quality Habits
 
 - Keep a consistent topic identity.
+- Use `keyword-clusters.md` so related posts have distinct roles.
+- Use `duplicate-intent-check.md` before publishing similar topics.
 - Build topic clusters naturally, not duplicate posts.
 - Use one primary keyword and related phrases naturally.
 - Make the opening answer why the post matters now.
@@ -59,6 +61,7 @@ Score from 0 to 2 for each risk:
 - Topic does not fit the blog identity.
 - No source dates for time-sensitive claims.
 - Multiple posts overlap the same intent.
+- Affiliate link density is too high for the post type.
 
 Risk level:
 
