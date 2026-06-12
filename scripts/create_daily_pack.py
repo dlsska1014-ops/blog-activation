@@ -19,6 +19,9 @@ POST_TEMPLATE = """# {label}
 - Checked date:
 - Template type:
 - Topic score:
+- Keyword cluster:
+- Cluster role:
+- Duplicate intent risk:
 
 ## Research Notes
 
@@ -52,6 +55,13 @@ POST_TEMPLATE = """# {label}
 - Image 1:
 - Image 2:
 - Image 3:
+
+### Affiliate Link Plan
+
+- Disclosure location:
+- Affiliate link count:
+- Non-affiliate value sections:
+- Trust risk:
 
 ### FAQ
 
@@ -122,6 +132,12 @@ def main() -> None:
 2.
 3.
 
+## Keyword Clusters
+
+| Topic | Cluster | Role | Duplicate risk | Decision |
+| --- | --- | --- | --- | --- |
+|  |  |  |  |  |
+
 ## Style Memory Updates To Consider
 
 -
@@ -141,6 +157,13 @@ def main() -> None:
 - First image:
 - Summary card:
 - Comparison/checklist image:
+
+## Search Exposure Follow-Up
+
+- Exact title check date:
+- Main keyword check date:
+- Search inflow keywords:
+- Action:
 """,
         encoding="utf-8",
     )
