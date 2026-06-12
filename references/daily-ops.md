@@ -5,28 +5,32 @@ Use this runbook for daily blog operation.
 ## Morning Or Start-Of-Run
 
 1. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
-2. Browse current sources from `research-sources.md`.
-3. Build 6 to 10 topic candidates.
-4. Score candidates using the trend scoring method.
-5. Select:
+2. Review `content-calendar.md` for seasonal timing.
+3. Browse current sources from `research-sources.md`.
+4. Build 6 to 10 topic candidates.
+5. Score candidates using the trend scoring method.
+6. Assign each topic to a role from `keyword-clusters.md`.
+7. Run `duplicate-intent-check.md`.
+8. Select:
    - One information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-6. Check `low-quality-prevention.md` before committing to three daily posts.
+9. Check `low-quality-prevention.md` before committing to three daily posts.
 
 ## Drafting
 
 1. Choose the closest template from `post-templates.md`.
 2. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
-3. For Coupang Partners posts, score candidates with `affiliate-scoring.md`.
-4. Draft for Naver Blog first.
-5. Add source notes and checked dates.
-6. Add image and thumbnail notes from `image-thumbnail-guide.md`.
-7. Score with `quality-rubric.md`.
-8. Check low-quality risk with `low-quality-prevention.md`.
-9. Check publishing risk with `publish-risk-checklist.md`.
-10. Revise anything under 22/30 or with elevated low-quality risk.
-11. Prepare optional Tistory adaptation.
+3. Use `writing-patterns-ko.md` for natural Korean title, first screen, and paragraph rhythm.
+4. For Coupang Partners posts, score candidates with `affiliate-scoring.md` and check `affiliate-link-density.md`.
+5. Draft for Naver Blog first.
+6. Add source notes and checked dates.
+7. Add image and thumbnail notes from `image-thumbnail-guide.md`.
+8. Score with `quality-rubric.md`.
+9. Check low-quality risk with `low-quality-prevention.md`.
+10. Check publishing risk with `publish-risk-checklist.md`.
+11. Revise anything under 22/30 or with elevated low-quality risk.
+12. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -64,3 +68,5 @@ Once per week:
 6. Update templates only if a pattern repeats across multiple posts.
 
 When the user provides metrics, use `performance-input.md` before updating `performance-log.md`.
+
+When the user asks why exposure is weak, use `search-exposure-check.md` and avoid assuming a single cause.
