@@ -47,10 +47,12 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
+   - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
 
 6. Improve the system:
    - Use `references/daily-ops.md` as the runbook for daily execution.
    - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
+   - Use `references/performance-input.md` when the user provides post results, search inflow, clicks, comments, or conversion data.
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
 
@@ -59,6 +61,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/blog-profile.md` to keep the blog's niche, audience, and editorial stance consistent.
 - Read `references/voice-guide.md` before writing or revising Korean blog copy.
 - Read `references/research-sources.md` before topic research.
+- Read `references/secret-handling.md` whenever credentials, cookies, affiliate account data, or private account information may appear.
 - Read `references/editorial-playbook.md` before drafting posts.
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
@@ -67,13 +70,17 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/post-templates.md` to select the correct article structure.
 - Read `references/quality-rubric.md` before final delivery.
+- Read `references/publish-risk-checklist.md` before publishing, draft-save, or final delivery of sensitive/time-sensitive posts.
+- Read `references/low-quality-prevention.md` before creating multiple daily posts, affiliate-heavy posts, or posts that target similar keywords.
 - Read `references/sample-bank.md` to vary titles, openings, closings, and layout patterns without copying other creators.
 - Read `references/daily-ops.md` for a complete daily operating runbook.
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
+- Read `references/performance-input.md` when converting real performance data into next actions.
 - Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
 - Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
+- Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 
 ## Editorial Rules
 
@@ -83,6 +90,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
+- Do not store credentials, cookies, tokens, private affiliate dashboard data, or account-specific secrets in GitHub or skill files.
+- Avoid thin, duplicate, keyword-stuffed, or affiliate-heavy posts that do not add original reader value.
 - Keep publication mode as draft-only unless the user explicitly instructs otherwise.
 
 ## Output Format
