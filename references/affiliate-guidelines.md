@@ -5,6 +5,7 @@ Use this reference for Coupang Partners TOP 5 posts.
 ## Product Selection
 
 Read `affiliate-scoring.md` first and score both the product category and each product candidate.
+Read `affiliate-link-density.md` before adding links.
 
 Choose products by combining:
 
@@ -47,3 +48,4 @@ Include a clear Korean disclosure such as:
 - Keep the tone practical and buyer-friendly.
 - Include one watch-out for every recommendation.
 - Include at least one budget-based or reader-type-based final pick.
+- Keep link count appropriate to the post type and preserve non-affiliate value.
