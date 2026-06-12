@@ -173,6 +173,13 @@ def main() -> None:
 - Affiliate result:
 - Lesson:
 
+## Experiment
+
+- Hypothesis:
+- Variable changed:
+- Metric to watch:
+- Review date:
+
 ## Visual Plan
 
 - Thumbnail text:
