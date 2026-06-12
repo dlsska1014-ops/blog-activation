@@ -29,6 +29,11 @@ Score each draft from 1 to 5 in each category before delivery. Revise any post s
    - Is the disclosure included?
    - Does the post protect trust instead of pushing too hard?
 
+7. Low-Quality Risk
+   - Is the post distinct from recent posts?
+   - Does it avoid keyword stuffing, copied structure, thin summaries, and excessive affiliate emphasis?
+   - Does it add original comparison, checklist, FAQ, or decision support?
+
 ## Red Flags
 
 Revise immediately if the draft:
@@ -40,6 +45,9 @@ Revise immediately if the draft:
 - Has no checked date for time-sensitive facts.
 - Has affiliate links or recommendations without disclosure.
 - Repeats another creator's structure too closely.
+- Repeats the same reader intent as a recent post without adding new value.
+- Uses many similar keywords unnaturally.
+- Exists mainly to place affiliate links.
 
 ## Final Polish Pass
 
@@ -50,4 +58,6 @@ Before handing over:
 3. Add one useful table or checklist if the article involves comparison.
 4. Add image placement notes.
 5. Add tags.
-6. Confirm draft-only mode.
+6. Run `publish-risk-checklist.md`.
+7. Run `low-quality-prevention.md`.
+8. Confirm draft-only mode.
