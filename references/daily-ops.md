@@ -6,16 +6,20 @@ Use this runbook for daily blog operation.
 
 1. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
 2. Review `content-calendar.md` for seasonal timing.
-3. Browse current sources from `research-sources.md`.
-4. Build 6 to 10 topic candidates.
-5. Score candidates using the trend scoring method.
-6. Assign each topic to a role from `keyword-clusters.md`.
-7. Run `duplicate-intent-check.md`.
-8. Select:
+3. Read `daily-influencer-scan.md`.
+4. Visit current Naver Blog examples for the day's target topic families.
+5. Visit current Tistory examples for the day's target topic families.
+6. Record abstract observations in `influencer-scan-log.md`.
+7. Browse current factual sources from `research-sources.md`.
+8. Build 6 to 10 topic candidates.
+9. Score candidates using the trend scoring method.
+10. Assign each topic to a role from `keyword-clusters.md`.
+11. Run `duplicate-intent-check.md`.
+12. Select:
    - One information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-9. Check `low-quality-prevention.md` before committing to three daily posts.
+13. Check `low-quality-prevention.md` before committing to three daily posts.
 
 ## Drafting
 
@@ -59,6 +63,7 @@ Before any GitHub upload or saved automation artifact, follow `secret-handling.m
 2. List source checks and uncertainties.
 3. Suggest style-memory updates.
 4. Record expected experiment in `performance-log.md` if the post is published later.
+5. Keep any style-memory update separate from raw scan notes; update only durable patterns.
 
 ## Weekly Improvement
 
