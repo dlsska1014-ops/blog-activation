@@ -1,6 +1,6 @@
 ---
 name: blog-activation
-description: Plan, research, draft, and prepare daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 recommendation posts. Use when the user asks to operate or grow a Korean blog, analyze high-performing Naver/Tistory influencer posts, create reader-focused drafts, prepare posts as drafts rather than publishing, or update blog writing/style memory from recent Korean blog trends.
+description: Plan, research, draft, and prepare daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 recommendation posts. Use when the user asks to operate or grow a Korean blog, visit and learn from recent high-performing Naver Blog and Tistory posts, create reader-focused drafts, prepare posts as drafts rather than publishing, or update blog writing/style memory from recent Korean blog trends.
 ---
 
 # Blog Activation
@@ -30,11 +30,14 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
 
 3. Learn from high-performing blog examples:
-   - Review recent Naver Blog first, then Tistory examples for similar topics.
+   - Read `references/daily-influencer-scan.md` before observing current examples.
+   - Visit recent high-performing Naver Blog posts first through Naver Blog, Naver blog search, and Naver search result blog/popular-content blocks.
+   - Visit recent high-performing Tistory posts through Tistory site pages, Tistory search/category paths when available, and search results scoped to `site:tistory.com`.
    - Extract reusable patterns only: title hooks, opening rhythm, spacing, section order, image placement ideas, table use, comparison blocks, conclusion style, and comment-inducing questions.
    - Do not imitate a specific creator's unique voice, personal claims, photos, or proprietary structure.
    - Use `references/influencer-style-learning.md` to convert observations into abstract, reusable style lessons.
-   - Update `references/style-memory.md` only with durable patterns that can be reused across posts.
+   - Record observations in `references/influencer-scan-log.md` as abstract pattern notes, not copied text.
+   - Update `references/style-memory.md` only with durable patterns that appear repeatedly or are supported by real performance.
 
 4. Create three daily drafts:
    - Draft 1: information/news explainer based on current issue or event.
@@ -89,7 +92,9 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/platform-guidelines.md` when preparing Naver or Tistory draft-save formatting.
 - Read `references/layout-spacing-guide.md` when preparing Naver Blog body spacing, section rhythm, and mobile readability.
 - Read `references/emoji-emoticon-guide.md` before using emoji, emoticons, or visual markers.
+- Read `references/daily-influencer-scan.md` before visiting current Naver Blog or Tistory examples for style learning.
 - Read `references/influencer-style-learning.md` when learning from high-performing blog posts.
+- Read and update `references/influencer-scan-log.md` after each daily observation pass.
 - Read `references/naturalness-editor.md` for the final natural Korean rewrite pass.
 - Read `references/trust-language-filter.md` before finalizing recommendations, affiliate sections, and benefit claims.
 - Read `references/fact-freshness-policy.md` before drafting time-sensitive or source-dependent posts.
@@ -149,4 +154,4 @@ For each daily run, return:
 2. Source/research notes with dates checked.
 3. Three complete draft packages.
 4. Draft-save checklist for Naver Blog and optional Tistory adaptation.
-5. Suggested updates for `style-memory.md` if new durable patterns were found.
+5. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
