@@ -44,6 +44,8 @@ Example:
 
 ## Daily Learning Rule
 
+Before observing current examples, read `daily-influencer-scan.md`. After observing examples, write abstract notes to `influencer-scan-log.md`.
+
 After observing posts, update `style-memory.md` only if:
 
 - The pattern appears across multiple posts or matches real performance.
