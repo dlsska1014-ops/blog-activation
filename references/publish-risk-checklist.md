@@ -14,6 +14,7 @@ Use this before public publishing and before final draft-save for sensitive post
 - Images are original, user-provided, licensed, generated, or properly sourced.
 - Planned images are visibly present in the editor and their count matches the package manifest.
 - The editor body contains no Markdown syntax, image placeholders, prompt notes, or internal source notes.
+- Every text-bearing image was opened at original resolution and contains readable Korean with no replacement glyphs.
 - Tags are present and do not include irrelevant keyword stuffing.
 - Product claims are practical and not exaggerated.
 
@@ -45,4 +46,5 @@ Do not publish or draft-save until fixed if:
 - The post contains credentials, cookies, or private account data.
 - The editor image count is lower than planned or any upload is still processing.
 - The final title, body, tags, or public/draft state cannot be verified.
+- The public page has not been visually checked after upload or contains corrupted image text.
 
