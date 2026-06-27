@@ -32,6 +32,9 @@ Review:
 - Are facts current and sourced?
 - Is there enough original comparison or decision support?
 - Is the post overly affiliate-heavy?
+- Does the topic fit a cluster that has produced search inflow on this blog?
+- Is the keyword broad when a more specific place, model, facility, failure, or use-case query is available?
+- Is a public formatting, duplication, or image defect reducing reader trust?
 
 ## Actions
 
@@ -40,3 +43,5 @@ Review:
 - Update facts and checked dates.
 - Merge or internally reference related cluster posts.
 - Avoid repeated small edits without a clear reason.
+- Enter `traffic-recovery-mode.md` when the comparable 7-day decline reaches its trigger or public defects remain unresolved.
+
