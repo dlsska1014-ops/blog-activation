@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.2 seconds
-Output:
 ---
 name: blog-activation
 description: Plan, research, draft, and prepare daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 recommendation posts. Use when the user asks to operate or grow a Korean blog, visit and learn from recent high-performing Naver Blog and Tistory posts, create reader-focused drafts, prepare posts as drafts rather than publishing, or update blog writing/style memory from recent Korean blog trends.
