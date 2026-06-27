@@ -1,14 +1,14 @@
 # Image And Thumbnail Guide
 
-Use this guide to plan blog visuals. It does not require generating images every time; it gives placement, text, and prompt ideas.
+Use this guide to plan blog visuals after reading `visual-asset-policy.md`. Thumbnails and body images have different rules: thumbnails should usually be custom AI-made for the article, while body images must be copyright-safe, sourced, official, user-provided, or self-created.
 
 ## Naver Blog Visual Rhythm
 
 For most posts:
 
-1. Thumbnail or first image after the opening.
+1. AI-made thumbnail or first image after the opening.
 2. Summary image or table after the quick answer.
-3. Checklist, comparison, or step image in the middle.
+3. Copyright-safe body image, checklist, comparison, or step image in the middle.
 4. Optional closing image only if it adds value.
 
 Avoid placing too many similar images in a row.
@@ -30,16 +30,22 @@ Examples:
 
 Keep thumbnail text to 8 to 16 Korean characters when possible.
 
+If exact Korean text must appear in the thumbnail, prefer generating a text-free AI background and adding Korean text with a deterministic card/text overlay workflow. Do not deliver AI-rendered Korean text until it has been visually checked.
+
+Never pass Korean card text inline through PowerShell or another shell command. Save the copy in a UTF-8 JSON specification, render with `create_visual_cards.py`, validate its sidecar, and then inspect the image pixels at original resolution.
+
 ## Visual Types
 
 Use:
 
+- AI-created topic thumbnails.
 - Event summary cards.
 - Benefit calculation cards.
 - TOP 5 comparison tables.
 - Buyer checklist images.
 - Step-by-step process images.
-- Product category collages when product images are allowed and sourced appropriately.
+- Copyright-safe body images from official, licensed, user-provided, or self-created sources.
+- Product category collages only when product images are allowed and sourced appropriately.
 
 Avoid:
 
@@ -47,6 +53,7 @@ Avoid:
 - Fake official-looking badges.
 - Crowded text-heavy thumbnails.
 - Images copied from other bloggers.
+- Unsourced product/news images.
 
 ## Image Prompt Pattern
 
@@ -74,3 +81,4 @@ Brand safety: no fake official seal, no misleading discount claim
 - Do not put critical conditions only inside an image.
 - Repeat important dates and conditions in text.
 - If using product screenshots, cite checked date in the draft notes.
+
