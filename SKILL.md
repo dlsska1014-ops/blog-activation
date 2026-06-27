@@ -67,10 +67,12 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
+   - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
    - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
    - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
+   - Record results with `scripts/record_publication_receipt.py` and refuse an accidental second verified action for the same platform and content fingerprint.
 
 6. Improve the system:
    - Use `references/daily-ops.md` as the runbook for daily execution.
@@ -83,6 +85,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/operations-data-schema.md` and `scripts/analyze_performance_csv.py` when the user provides CSV performance data.
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
+   - When metrics are available, compare performance at consistent 24-hour, 72-hour, and 7-day windows before changing strategy.
 
 ## Resources
 
@@ -116,6 +119,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/visual-prompt-library.md` when generating or planning thumbnail, summary card, checklist, FAQ, or comparison visuals.
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/live-publish-runbook.md` for browser transfer, image verification, publishing, receipts, duplicate prevention, and recovery.
+- Read `references/tistory-publish-runbook.md` for Tistory adaptation, metadata, editor checks, and result verification.
+- Read `references/publication-ledger.md` before retrying timed-out saves or publications.
 - Read `references/post-templates.md` to select the correct article structure.
 - Read `references/title-ab-testing.md` before selecting final post titles.
 - Read `references/quality-rubric.md` before final delivery.
@@ -140,6 +145,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 - Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
+- Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
 
 ## Editorial Rules
 
