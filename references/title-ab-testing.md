@@ -22,6 +22,8 @@ Score from 1 to 5:
 - Click clarity: Does the reader know why to click?
 - Trust: Does it avoid exaggeration?
 - Distinction: Is it different from recent titles?
+- Query specificity: Does it name the place, model, facility, failure condition, audience, or use case readers actually search?
+- Evidence fit: Is the title connected to a proven inflow keyword or cluster on this blog?
 
 Use the title with the best total score, not the loudest title.
 
@@ -31,9 +33,11 @@ Use the title with the best total score, not the loudest title.
 - Repeated title formulas.
 - Too many punctuation marks.
 - Unsupported words such as "최저가", "역대급", "1위", "완벽".
+- Broad titles such as generic seasonal advice when a concrete reader situation can be named.
 
 ## Output Format
 
 | Title | Type | Accuracy | Search fit | Click clarity | Trust | Distinction | Total |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |  |
+
