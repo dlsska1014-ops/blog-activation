@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
 ---
 name: blog-activation
 description: Plan, research, draft, and prepare daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 recommendation posts. Use when the user asks to operate or grow a Korean blog, visit and learn from recent high-performing Naver Blog and Tistory posts, create reader-focused drafts, prepare posts as drafts rather than publishing, or update blog writing/style memory from recent Korean blog trends.
@@ -14,9 +17,9 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 ## Workflow
 
 1. Confirm the run mode:
-   - Default to `draft-only`: prepare posts for blog draft-save, not public publishing.
-   - Treat `auto-publish` as disabled unless the user explicitly enables it after stabilization.
-   - If login, browser automation, affiliate links, or live posting are involved, confirm the target account and action before modifying live content.
+   - Default to `draft-only` when no publication instruction exists.
+   - Honor the latest explicit `draft-only` or `auto-publish` instruction for the current batch; do not repeatedly reconfirm every post in an already approved batch.
+   - For browser transfer, record the target account, platform, post count, image count, affiliate status, and mode without storing login/session data.
 
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
@@ -62,10 +65,15 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Tistory: adapt into a slightly more structured article with headings, tables, source notes, and SEO-friendly title/description.
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
+   - Use `references/visual-asset-policy.md` before preparing images. Generate AI thumbnails that match the article's topic and reader emotion, and use copyright-safe sourced, official, user-provided, or self-created visuals inside the body.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
+   - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
+   - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
+   - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
+   - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
 
 6. Improve the system:
    - Use `references/daily-ops.md` as the runbook for daily execution.
@@ -106,9 +114,11 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
 - Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.
 - Read `references/product-category-playbooks.md` before drafting recurring product category posts.
+- Read `references/visual-asset-policy.md` before generating thumbnails, collecting body images, using official screenshots, or inserting product/event visuals.
 - Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
 - Read `references/visual-prompt-library.md` when generating or planning thumbnail, summary card, checklist, FAQ, or comparison visuals.
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
+- Read `references/live-publish-runbook.md` for browser transfer, image verification, publishing, receipts, duplicate prevention, and recovery.
 - Read `references/post-templates.md` to select the correct article structure.
 - Read `references/title-ab-testing.md` before selecting final post titles.
 - Read `references/quality-rubric.md` before final delivery.
@@ -132,6 +142,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/score_revenue_topics.py` when the user provides a CSV of monetization candidates and wants revenue-priority scoring.
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
+- Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
 
 ## Editorial Rules
 
@@ -144,7 +155,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
 - Do not store credentials, cookies, tokens, private affiliate dashboard data, or account-specific secrets in GitHub or skill files.
 - Avoid thin, duplicate, keyword-stuffed, or affiliate-heavy posts that do not add original reader value.
-- Keep publication mode as draft-only unless the user explicitly instructs otherwise.
+- Keep publication mode as draft-only unless the user explicitly instructs otherwise; then follow that instruction for the approved batch and verify every final result.
 
 ## Output Format
 
@@ -153,5 +164,7 @@ For each daily run, return:
 1. Daily topic board with selected three posts.
 2. Source/research notes with dates checked.
 3. Three complete draft packages.
-4. Draft-save checklist for Naver Blog and optional Tistory adaptation.
-5. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
+4. Visual asset plan with thumbnail prompt, body image sources, copyright-safety notes, and placement.
+5. Draft-save checklist for Naver Blog and optional Tistory adaptation.
+6. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
+
