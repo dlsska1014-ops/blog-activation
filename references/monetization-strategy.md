@@ -15,7 +15,7 @@ Use four lanes with different roles.
 
 ## Daily Mix
 
-For a three-post day, prefer:
+For a three-draft day outside recovery mode, prefer:
 
 - 1 current information/news/benefit post.
 - 1 seasonal search-demand post.
@@ -29,6 +29,8 @@ Weekly mix target:
 - Sponsored or explicit promotional posts: 0% until the blog has stable trust and search inflow.
 
 If the blog shows weak exposure, reduce affiliate posts first and publish stronger information posts for one week.
+
+In traffic recovery mode, publish no more than two affiliate-first posts per week. Tie them to proven family-outing, camping, seasonal-life, or model-specific inflow rather than unrelated high-value categories.
 
 ## Revenue Topic Score
 
@@ -100,3 +102,4 @@ After publication, classify each post:
 - Clicks + no conversion: improve price bands, reader-type picks, and watch-outs.
 - Conversions + low risk: repeat the category with a different reader intent.
 - Weak exposure after affiliate-heavy week: pause revenue posts and publish trust-building information posts.
+
