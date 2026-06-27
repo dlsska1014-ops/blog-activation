@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.2 seconds
-Output:
 # Publish Risk Checklist
 
 Use this before public publishing and before final draft-save for sensitive posts.
