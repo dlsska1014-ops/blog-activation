@@ -109,6 +109,8 @@ POST_TEMPLATE = """# {label}
 - [ ] Facts checked
 - [ ] Source/date notes included
 - [ ] Three images prepared and visually checked
+- [ ] Korean card text verified at original resolution; no question marks, boxes, or clipping
+- [ ] Expected visual text recorded in publish manifest
 - [ ] Editor image count matches the plan
 - [ ] Plain-text body has no Markdown or image placeholders
 - [ ] Tags prepared
@@ -116,6 +118,7 @@ POST_TEMPLATE = """# {label}
 - [ ] Tistory adaptation prepared if needed
 - [ ] Run mode recorded: draft-only or auto-publish
 - [ ] Final state and URL/draft receipt verified
+- [ ] Public first/middle/last images and recent-list duplication checked
 """
 
 
