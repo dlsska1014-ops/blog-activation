@@ -25,6 +25,12 @@ POST_TEMPLATE = """# {label}
 - Keyword cluster:
 - Cluster role:
 - Duplicate intent risk:
+- Content action: new_post / update_existing
+- Canonical URL when updating:
+- Concrete reader question:
+- Difference from the closest existing post:
+- Internal links (0-3):
+- Reason when no internal link is suitable:
 - Title A/B score:
 - Layout pattern:
 - Emoji/emoticon plan:
@@ -121,11 +127,18 @@ POST_TEMPLATE = """# {label}
 - [ ] Original photos have an ownership basis; AI scenes are not presented as real evidence
 - [ ] Sponsorship disclosure is visible when a product was provided
 - [ ] Source/date notes included
+- [ ] New-post versus update-existing decision is recorded
+- [ ] Reader question differs from the other two daily posts
+- [ ] Related existing posts are linked, or the no-link reason is recorded
+- [ ] Naturalness QA found no repeated paragraph, repeated ending pattern, or internal work note
 - [ ] Long post has at least four visuals and three distinct roles
 - [ ] First image is a scene-first thumbnail or photo, not a text card
 - [ ] No more than two text cards; no consecutive text cards
 - [ ] Every body visual has a useful caption and required source/reuse notes
 - [ ] All images prepared and visually checked
+- [ ] Original photos have no visible face, plate, address, receipt, or screen privacy leak
+- [ ] Original-photo GPS metadata is removed and recorded in the manifest
+- [ ] Near-duplicate or burst-series photos are removed
 - [ ] Korean card text verified at original resolution; no question marks, boxes, or clipping
 - [ ] Expected visual text recorded in publish manifest
 - [ ] Editor image count matches the plan
@@ -192,6 +205,12 @@ def main() -> None:
 | --- | --- | --- | --- | --- |
 |  |  |  |  |  |
 
+## Content Portfolio Decision
+
+| Topic | Reader question | Closest existing post | Action | Canonical URL | Internal links |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
+
 ## Style Memory Updates To Consider
 
 -
@@ -251,7 +270,8 @@ def main() -> None:
         '  "expected_post_count": 3,\n'
         '  "experience_basis_required": true,\n'
         '  "expected_image_count_per_long_post": 4,\n'
-        '  "required_distinct_visual_roles": 3\n'
+        '  "required_distinct_visual_roles": 3,\n'
+        '  "advanced_quality_gates_required": true\n'
         '}\n',
         encoding="utf-8",
     )

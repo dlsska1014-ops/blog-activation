@@ -62,6 +62,9 @@ For each body section, choose the safest useful visual type:
    - use when the user confirms they own or can use it.
    - record `ownership_basis` and the observation date when the image supports a current condition,
    - keep the image tied to the supplied note rather than inventing a new story.
+   - inspect faces, children, plates, addresses, receipts, screens, QR codes, identifying signs, and reflections at full resolution,
+   - strip GPS metadata before editor transfer,
+   - record `privacy_qa_confirmed`, `privacy_note`, and `location_metadata_removed`.
 4. Licensed/free stock image:
    - use only from sources with clear reuse terms,
    - record the source URL and license note.
@@ -127,6 +130,7 @@ Record every visual as an object with:
 - `visual_qa_confirmed`
 - `source_url`, `checked_date`, and `reuse_basis` when the visual is sourced, official, licensed, or a product image
 - `ownership_basis` when the role is `original_photo`
+- `privacy_qa_confirmed`, `privacy_note`, and `location_metadata_removed` when the role is `original_photo`
 
 Use the same order as the editor. The first manifest visual must be the first image in the article.
 
@@ -155,6 +159,9 @@ Reject an image if:
 - It is an AI scene presented as if it were a real visit or product test.
 - Any Korean is replaced by question marks, boxes, missing glyphs, or mojibake.
 - It was not opened at original resolution and visually checked.
+- It exposes a face, child, plate, address, receipt, screen, QR code, identifying sign, or reflection without a clear safe-use decision.
+- It still contains GPS metadata.
+- It is perceptually near-duplicate to another selected image.
 
 ## Delivery Requirement
 

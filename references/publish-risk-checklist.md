@@ -14,6 +14,8 @@ Use this before public publishing and before final draft-save for sensitive post
 - No private login/account information appears in the post or notes.
 - Images are original, user-provided, licensed, generated, or properly sourced.
 - Original photos have an ownership basis; AI scenes are labeled as context and are not used as real-world proof.
+- Original photos have no exposed face, child, plate, address, receipt, screen, QR code, identifier, or risky reflection; GPS metadata is removed.
+- The selected image set contains no burst-series or perceptually near-duplicate frames.
 - Planned images are visibly present in the editor and their count matches the package manifest.
 - The first visual is scene-first and the editor order matches the manifest roles.
 - Long posts use at least four visuals, three distinct roles, and no more than two text cards.
@@ -22,6 +24,8 @@ Use this before public publishing and before final draft-save for sensitive post
 - Every text-bearing image was opened at original resolution and contains readable Korean with no replacement glyphs.
 - Tags are present and do not include irrelevant keyword stuffing.
 - Product claims are practical and not exaggerated.
+- The concrete reader question, content action, cluster role, canonical decision, and internal-link plan are recorded.
+- The final Korean body contains no repeated long paragraph, dominant repetitive ending, visible generation label, TODO, or internal work note.
 
 ## Sensitive Topic Checks
 
@@ -55,5 +59,7 @@ Do not publish or draft-save until fixed if:
 - The editor image count is lower than planned or any upload is still processing.
 - The visual package is card-only, has consecutive text cards, or lacks a scene-first thumbnail.
 - A sourced visual lacks a caption or reuse record.
+- A high-risk duplicate is being published as a new post instead of updating or consolidating the canonical post.
+- Original-photo privacy, location metadata, or near-duplicate checks are incomplete.
 - The final title, body, tags, or public/draft state cannot be verified.
 - The public page has not been visually checked after upload or contains corrupted image text.

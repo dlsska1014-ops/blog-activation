@@ -1,4 +1,4 @@
 interface:
   display_name: "블로그 활성화"
-  short_description: "네이버·티스토리 글의 기획, 자연스러운 문체, 장면형 이미지, 발행 검증을 돕는 스킬"
-  default_prompt: "Use $blog-activation to research current Korean blog patterns and create three original, natural posts with scene-first thumbnails, useful body visuals, and verified publishing steps."
+  short_description: "글 기획부터 사진 안전, 중복 방지, 내부 연결, 발행 검증까지 고도화한 블로그 운영 스킬"
+  default_prompt: "Use $blog-activation to research current Korean blog patterns, choose new-versus-update actions, create three original posts with privacy-safe visuals and natural Korean, connect useful existing posts, and verify every publishing gate."

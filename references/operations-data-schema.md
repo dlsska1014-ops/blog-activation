@@ -15,6 +15,10 @@ Required:
 - keyword_cluster
 - cluster_role
 - duplicate_intent_risk
+- content_action
+- reader_question
+- canonical_url
+- internal_link_count
 - affiliate_link_count
 - views
 - search_inflow_keywords
@@ -39,6 +43,11 @@ Optional:
 - checked_at_24h
 - checked_at_72h
 - checked_at_7d
+- experiment_variable
+- experiment_baseline
+- experiment_result
+- naturalness_gate
+- photo_privacy_gate
 
 ## Usage
 
@@ -53,4 +62,5 @@ Optional:
 - Separate search demand from purchase intent.
 - Track affiliate ratio so the blog does not become product-only.
 - Compare posts at similar ages; do not compare a 24-hour post directly with a 30-day post without labeling the window.
-
+- Change one major variable at a time unless repairing a public defect.
+- Update durable style memory only after a pattern repeats across at least three comparable posts.

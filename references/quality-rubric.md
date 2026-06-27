@@ -19,6 +19,7 @@ Score each draft from 1 to 5 in each category before delivery. Revise any post s
    - Is the writing original rather than a close rewrite of another post?
    - Does it add comparison, interpretation, or practical framing?
    - Is the experience basis declared and consistent with the language?
+   - Does the post answer a distinct reader question or deliberately update the canonical URL?
 
 5. Human Editorial Presence
    - Does the first screen name a real reader situation and give an editorial priority?
@@ -34,6 +35,7 @@ Score each draft from 1 to 5 in each category before delivery. Revise any post s
    - Are paragraphs short enough for Naver Blog?
    - Are tables and image notes placed where they help?
    - Is the first screen compelling?
+   - Are repeated paragraphs, dominant sentence endings, and internal work notes absent?
 
 8. Monetization And Low-Quality Safety
    - For affiliate posts, is the product selection tied to real reader intent?
@@ -76,6 +78,8 @@ Block delivery or publication when:
 - The editorial-presence check scores below 5 out of 6.
 - `experience_basis` is missing or contradicts firsthand language.
 - Original photos lack an ownership basis, or sponsored content lacks disclosure.
+- A high-risk duplicate is set to `new_post`, or the canonical/internal-link decision is missing.
+- Korean editorial QA, original-photo privacy QA, GPS removal, or near-duplicate-image checks are incomplete.
 
 ## Final Polish Pass
 
@@ -89,3 +93,4 @@ Before handing over:
 6. Run `publish-risk-checklist.md`.
 7. Run `low-quality-prevention.md`.
 8. Confirm the approved draft-only or auto-publish mode.
+9. Run `validate_publish_package.py` and stop on any advanced quality-gate failure.

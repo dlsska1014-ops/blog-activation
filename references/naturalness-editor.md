@@ -14,6 +14,9 @@ Use this as the final rewrite pass for Korean blog drafts. The goal is natural, 
 8. Add one truthful editorial action when research was actually performed.
 9. Replace repeated instruction endings with varied judgment, explanation, and next-action sentences.
 10. Check that the opening and first visual describe the same reader situation.
+11. Remove repeated long paragraphs and repeated generic phrases.
+12. Check whether one formal ending dominates most sentences; revise the paragraph function, not only the suffix.
+13. Remove prompts, TODOs, internal notes, and visible tool-generation disclosures.
 
 ## Common Generic Phrases To Replace
 
@@ -58,3 +61,7 @@ Ask:
 - Is the first-person wording limited to work actually performed?
 - Could any paragraph be moved to an unrelated article without changing it? If so, make it more specific.
 - Do visual captions explain why each image matters?
+- Does each paragraph perform a different job: scene, fact, interpretation, caution, comparison, or next action?
+- Could any internal work note or generated-text marker appear in the public editor?
+
+Set `naturalness_qa_confirmed: true` only after this pass and the automated package check both succeed.

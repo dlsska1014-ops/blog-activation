@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 from pathlib import Path
+from urllib.parse import urlparse
 
 from PIL import Image
 
@@ -21,6 +22,23 @@ RAW_MARKERS = {
     "internal image note": re.compile(r"(?:이미지\s*메모|visual\s*prompt|thumbnail\s*prompt)\s*:", re.I),
 }
 VISUAL_CORRUPTION = re.compile(r"\?{2,}|\ufffd")
+INTERNAL_BODY_MARKERS = {
+    "AI or model disclosure": re.compile(r"(?:AI|인공지능|ChatGPT|챗GPT)\s*(?:가|로|를)?\s*(?:작성|생성|활용)", re.I),
+    "internal drafting note": re.compile(r"(?:초안\s*메모|작업\s*메모|내부\s*메모|TODO|FIXME|프롬프트\s*:)", re.I),
+}
+GENERIC_PHRASES = (
+    "오늘은 ",
+    "모든 것을 정리",
+    "많은 분들이 궁금",
+    "꼭 필요한 필수템",
+    "한눈에 알아보",
+)
+ENDING_PATTERNS = {
+    "입니다": re.compile(r"입니다[.!?]?$"),
+    "합니다": re.compile(r"합니다[.!?]?$"),
+    "됩니다": re.compile(r"됩니다[.!?]?$"),
+    "있습니다": re.compile(r"있습니다[.!?]?$"),
+}
 ALLOWED_VISUAL_ROLES = {
     "ai_scene_thumbnail",
     "original_photo",
@@ -46,11 +64,70 @@ EXPERIENCE_BASES = {
     "user_owned_photo_report",
     "sponsored_product_review",
 }
+CONTENT_ACTIONS = {"new_post", "update_existing"}
+DUPLICATE_RISKS = {"low", "medium", "high"}
+CLUSTER_ROLES = {
+    "pillar",
+    "event_update",
+    "buying_guide",
+    "mistake_faq",
+    "affiliate",
+    "experience_report",
+}
 FIRSTHAND_CLAIM = re.compile(
     r"(?:직접\s*(?:다녀(?:왔|와)|방문(?:했|해)|써\s*봤|사용(?:했|해\s*봤)|구매(?:했|해)|먹어\s*봤|체험(?:했|해))"
     r"|(?:제가|저는|저도|저\s*역시|저희\s*아이|우리\s*아이).{0,40}(?:다녀왔|다니|즐기|써봤|사용해봤|구매했|먹어봤|체험했|좋아했|챙기는\s*편)"
     r"|작년에.{0,40}(?:샀|구매|다녀|사용))"
 )
+
+
+def valid_http_url(raw: str) -> bool:
+    parsed = urlparse(raw)
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def normalized_text(raw: str) -> str:
+    return re.sub(r"[^0-9a-z가-힣]+", "", raw.casefold())
+
+
+def validate_editorial_text(body: str, name: str) -> list[str]:
+    errors: list[str] = []
+    for label, pattern in INTERNAL_BODY_MARKERS.items():
+        if pattern.search(body):
+            errors.append(f"{name}: contains {label}")
+
+    paragraphs = [line.strip() for line in body.splitlines() if len(line.strip()) >= 60]
+    seen: set[str] = set()
+    for paragraph in paragraphs:
+        key = normalized_text(paragraph)
+        if key in seen:
+            errors.append(f"{name}: contains a repeated paragraph")
+            break
+        seen.add(key)
+
+    sentences = [item.strip() for item in re.split(r"(?<=[.!?])\s+|\n+", body) if len(item.strip()) >= 12]
+    if len(sentences) >= 8:
+        for ending, pattern in ENDING_PATTERNS.items():
+            count = sum(bool(pattern.search(sentence)) for sentence in sentences)
+            if count >= 6 and count / len(sentences) >= 0.65:
+                errors.append(f"{name}: sentence ending '{ending}' is over-repeated ({count}/{len(sentences)})")
+    for phrase in GENERIC_PHRASES:
+        if body.count(phrase) >= 2:
+            errors.append(f"{name}: generic phrase is repeated: {phrase.strip()}")
+    return errors
+
+
+def difference_hash(path: Path) -> int:
+    with Image.open(path) as image:
+        gray = image.convert("L").resize((9, 8))
+        pixels = list(gray.get_flattened_data())
+    bits = 0
+    for row in range(8):
+        for column in range(8):
+            left = pixels[row * 9 + column]
+            right = pixels[row * 9 + column + 1]
+            bits = (bits << 1) | int(left > right)
+    return bits
 
 
 def validate_post(post: dict, base: Path) -> list[str]:
@@ -70,6 +147,56 @@ def validate_post(post: dict, base: Path) -> list[str]:
     for label, pattern in RAW_MARKERS.items():
         if pattern.search(body):
             errors.append(f"{name}: contains {label}")
+    errors.extend(validate_editorial_text(body, name))
+    if post.get("naturalness_qa_confirmed") is not True:
+        errors.append(f"{name}: naturalness_qa_confirmed must be true after the final Korean editorial pass")
+
+    intent = post.get("intent_decision")
+    if not isinstance(intent, dict):
+        errors.append(f"{name}: intent_decision object is required")
+        intent = {}
+    action = str(intent.get("action", "")).strip()
+    duplicate_risk = str(intent.get("duplicate_risk", "")).strip()
+    reader_question = str(intent.get("reader_question", "")).strip()
+    if action not in CONTENT_ACTIONS:
+        errors.append(f"{name}: intent_decision.action must be new_post or update_existing")
+    if duplicate_risk not in DUPLICATE_RISKS:
+        errors.append(f"{name}: intent_decision.duplicate_risk must be low, medium, or high")
+    if len(reader_question) < 10:
+        errors.append(f"{name}: intent_decision.reader_question must state the concrete reader question")
+    if not str(intent.get("difference_note", "")).strip():
+        errors.append(f"{name}: intent_decision.difference_note is required")
+    cluster_key = str(intent.get("cluster_key", "")).strip()
+    cluster_role = str(intent.get("cluster_role", "")).strip()
+    if not cluster_key:
+        errors.append(f"{name}: intent_decision.cluster_key is required")
+    if cluster_role not in CLUSTER_ROLES:
+        errors.append(f"{name}: unsupported intent_decision.cluster_role: {cluster_role or 'missing'}")
+    canonical_url = str(intent.get("canonical_url", "")).strip()
+    if action == "update_existing" and not valid_http_url(canonical_url):
+        errors.append(f"{name}: update_existing requires a valid canonical_url")
+    if action == "new_post" and duplicate_risk == "high":
+        errors.append(f"{name}: high duplicate risk must update or merge an existing post")
+
+    internal_links = post.get("internal_links", [])
+    if not isinstance(internal_links, list):
+        errors.append(f"{name}: internal_links must be a list")
+        internal_links = []
+    if len(internal_links) > 3:
+        errors.append(f"{name}: use no more than 3 internal links")
+    for index, link in enumerate(internal_links):
+        if not isinstance(link, dict):
+            errors.append(f"{name}: internal link #{index + 1} must be an object")
+            continue
+        if not valid_http_url(str(link.get("url", "")).strip()):
+            errors.append(f"{name}: internal link #{index + 1} needs a valid URL")
+        for field in ("anchor", "relevance"):
+            if not str(link.get(field, "")).strip():
+                errors.append(f"{name}: internal link #{index + 1} needs {field}")
+    if not internal_links and not str(post.get("internal_link_note", "")).strip():
+        errors.append(f"{name}: provide internal links or explain why none are suitable")
+    if post.get("internal_link_qa_confirmed") is not True:
+        errors.append(f"{name}: internal_link_qa_confirmed must be true")
 
     experience_basis = str(post.get("experience_basis", "")).strip()
     if experience_basis not in EXPERIENCE_BASES:
@@ -128,6 +255,13 @@ def validate_post(post: dict, base: Path) -> list[str]:
                     errors.append(f"{name}: visual #{index + 1} ({role}) needs {field}")
         if role == "original_photo" and not str(visual.get("ownership_basis", "")).strip():
             errors.append(f"{name}: visual #{index + 1} original_photo needs ownership_basis")
+        if role == "original_photo":
+            if visual.get("privacy_qa_confirmed") is not True:
+                errors.append(f"{name}: visual #{index + 1} original_photo needs privacy_qa_confirmed")
+            if visual.get("location_metadata_removed") is not True:
+                errors.append(f"{name}: visual #{index + 1} original_photo needs location_metadata_removed")
+            if not str(visual.get("privacy_note", "")).strip():
+                errors.append(f"{name}: visual #{index + 1} original_photo needs privacy_note")
 
     if roles:
         if roles[0] not in SCENE_FIRST_ROLES:
@@ -164,6 +298,7 @@ def validate_post(post: dict, base: Path) -> list[str]:
         if VISUAL_CORRUPTION.search(visual_text):
             errors.append(f"{name}: corrupted visual source text found")
     image_hashes: set[str] = set()
+    perceptual_hashes: list[tuple[Path, int]] = []
     for index, raw in enumerate(images):
         path = base / str(raw)
         if not path.is_file():
@@ -174,6 +309,8 @@ def validate_post(post: dict, base: Path) -> list[str]:
                 image.verify()
             with Image.open(path) as image:
                 width, height = image.size
+                exif = image.getexif()
+                gps_info = exif.get(34853) if exif else None
             if width < 600 or height < 338:
                 errors.append(f"{name}: image is too small: {path} ({width}x{height})")
             ratio = width / height
@@ -183,6 +320,14 @@ def validate_post(post: dict, base: Path) -> list[str]:
             if digest in image_hashes:
                 errors.append(f"{name}: duplicate image content found: {path}")
             image_hashes.add(digest)
+            if visual_records[index].get("role") == "original_photo" and gps_info:
+                errors.append(f"{name}: original photo still contains GPS metadata: {path}")
+            perceptual = difference_hash(path)
+            for previous_path, previous_hash in perceptual_hashes:
+                if (perceptual ^ previous_hash).bit_count() <= 5:
+                    errors.append(f"{name}: near-duplicate images found: {previous_path.name} and {path.name}")
+                    break
+            perceptual_hashes.append((path, perceptual))
             if visual_records[index].get("contains_text") is True:
                 sidecar = path.with_suffix(path.suffix + ".visual.json")
                 if not sidecar.is_file():
@@ -212,6 +357,14 @@ def main() -> int:
     titles = [str(post.get("title", "")).strip().casefold() for post in posts]
     if len(set(titles)) != len(titles):
         errors.append("manifest contains duplicate titles")
+    reader_questions = [
+        normalized_text(str(post.get("intent_decision", {}).get("reader_question", "")))
+        for post in posts
+        if isinstance(post.get("intent_decision"), dict)
+    ]
+    reader_questions = [item for item in reader_questions if item]
+    if len(set(reader_questions)) != len(reader_questions):
+        errors.append("manifest contains duplicate reader questions")
     for post in posts:
         errors.extend(validate_post(post, manifest_path.parent))
 

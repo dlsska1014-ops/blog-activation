@@ -13,6 +13,8 @@ Record before touching an editor:
 - Expected image count per post.
 - Ordered visual roles and captions.
 - Experience basis, privacy-safe evidence note, and sponsorship status.
+- Reader question, `new_post` or `update_existing` action, cluster role, and canonical URL when updating.
+- Intended internal links or a recorded reason that none are suitable.
 - Affiliate status and disclosure requirement.
 - Dated working-folder ledger path.
 
@@ -33,6 +35,8 @@ For every post, require all of the following before editor transfer:
 8. Time-sensitive facts and non-self-created image sources include checked dates.
 9. Affiliate and sponsored posts contain the required disclosure near the top; affiliate links are verified.
 10. Every body visual has a functional caption; sourced visuals have reuse records and original photos have ownership records.
+11. Korean editorial QA and internal-link QA are confirmed.
+12. Original photos have full-resolution privacy notes, removed GPS metadata, and no near-duplicate frame in the selected set.
 
 Run `scripts/validate_publish_package.py` when a manifest is available. A failed gate blocks draft-save and publishing until fixed.
 Check `publication-receipts.jsonl` before retrying any post whose final action timed out.
@@ -44,9 +48,10 @@ Check `publication-receipts.jsonl` before retrying any post whose final action t
 3. Insert each image at its intended section, waiting for upload completion before continuing.
 4. Add each approved caption directly below its visual.
 5. Add tags and disclosure where required.
-6. Recount editor images from the editor DOM or visible canvas; file selection alone is not proof of upload.
-7. Inspect the first screen, visual-role order, captions, and final section.
-8. Search the editor text for raw markers such as `##`, `| --- |`, triple backticks, and `[이미지`.
+6. Add approved internal links with natural anchor text where planned.
+7. Recount editor images from the editor DOM or visible canvas; file selection alone is not proof of upload.
+8. Inspect the first screen, visual-role order, captions, and final section.
+9. Search the editor text for raw markers such as `##`, `| --- |`, triple backticks, and `[이미지`.
 
 Never publish when an upload is still processing, the editor state is ambiguous, or the image count is lower than planned.
 

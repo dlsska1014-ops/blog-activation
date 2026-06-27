@@ -23,13 +23,14 @@ Use this runbook for daily blog operation.
 10. Score candidates using the trend scoring method.
 11. Assign each topic to a role from `keyword-clusters.md`.
 12. Run `duplicate-intent-check.md`.
-13. Select:
+13. Use `content-portfolio-loop.md` to decide `new_post` or `update_existing`, record the canonical URL, and plan zero to three useful internal links.
+14. Select:
    - One experience-backed post when authentic evidence exists; otherwise one information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-14. Check `low-quality-prevention.md` before committing to three daily posts.
-15. Compare the latest complete 7-day traffic window with the previous one when data is available.
-16. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
+15. Check `low-quality-prevention.md` before committing to three daily posts.
+16. Compare the latest complete 7-day traffic window with the previous one when data is available.
+17. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
 
 ## Drafting
 
@@ -55,11 +56,12 @@ Use this runbook for daily blog operation.
 16. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
 17. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
 18. Run `naturalness-editor.md` as the final rewrite pass.
-19. Score with `quality-rubric.md`.
-20. Check low-quality risk with `low-quality-prevention.md`.
-21. Check publishing risk with `publish-risk-checklist.md`.
-22. Revise anything under 31/40 or with a failed mandatory gate.
-23. Prepare optional Tistory adaptation.
+19. Use `advanced-quality-gates.md` to confirm content intent, internal links, Korean editorial quality, and original-photo privacy.
+20. Score with `quality-rubric.md`.
+21. Check low-quality risk with `low-quality-prevention.md`.
+22. Check publishing risk with `publish-risk-checklist.md`.
+23. Revise anything under 31/40 or with a failed mandatory gate.
+24. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -92,6 +94,7 @@ Before any GitHub upload or saved automation artifact, follow `secret-handling.m
 8. Keep any style-memory update separate from raw scan notes; update only durable patterns.
 9. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
 10. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
+11. Record the single experiment variable and canonical/internal-link decision for later comparison.
 
 ## Weekly Improvement
 
@@ -105,6 +108,7 @@ Once per week:
 6. Update templates only if a pattern repeats across multiple posts.
 7. Compare equal-age windows and identify which exact inflow questions produced visits.
 8. Adjust the next week's content mix toward proven clusters before adding new categories.
+9. Use `content-portfolio-loop.md` to consolidate duplicates, strengthen orphan posts, and preserve canonical URLs.
 
 When the user provides metrics, use `performance-input.md` before updating `performance-log.md`.
 

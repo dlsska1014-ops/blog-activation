@@ -26,6 +26,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/reader-intent-map.md` to match each topic to the correct structure.
    - Use `references/content-calendar.md` for seasonal planning and `references/keyword-clusters.md` to assign each topic a cluster role.
    - Use `references/duplicate-intent-check.md` to reject posts that overlap recent reader intent.
+   - Use `references/content-portfolio-loop.md` to decide `new_post` or `update_existing`, preserve canonical URLs, and plan useful internal links before drafting.
    - Read `references/traffic-recovery-mode.md` when recent traffic falls or public defects exist. Continue planning three candidates, but publish at most one verified Naver post per day while recovery mode is active.
    - Find current topics inside the active `blog-profile.md` pillars first. Expand into an unrelated category only when the blog's own data or a clearly adjacent reader need supports it.
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
@@ -55,6 +56,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/editorial-presence-guide.md` to add truthful editorial presence without inventing personal use or visits.
    - Use `references/evidence-and-experience-policy.md` to label observed, official, inferred, and recommended content correctly.
    - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
+   - Use `references/advanced-quality-gates.md` to record the intent decision, Korean editorial QA, internal-link QA, and original-photo privacy state.
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
    - Use `references/title-ab-testing.md` to score title candidates before draft-save.
@@ -73,6 +75,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/visual-asset-policy.md` before preparing images. Prefer a strong user-owned hero photo; use a scene-first AI thumbnail only when authentic scene evidence is unavailable, then mix copyright-safe evidence, explanation, and decision-aid visuals.
    - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
    - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
+   - For every original photo, inspect private details at full resolution, remove GPS metadata, record the privacy decision, and reject burst or near-duplicate frames.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/visual-text-integrity.md` for every Korean text-bearing image. Keep Korean copy in UTF-8 files, reject repeated question marks, and visually inspect original-resolution pixels.
@@ -80,6 +83,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
+   - Treat failures from intent, naturalness, internal-link, original-photo privacy, GPS, or near-duplicate-image checks as publication blockers.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
    - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
    - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
@@ -99,6 +103,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
    - When metrics are available, compare performance at consistent 24-hour, 72-hour, and 7-day windows before changing strategy.
    - Use the blog's own winning posts and inflow queries to update `blog-profile.md`, `style-memory.md`, and future topic scores.
+   - Use `references/content-portfolio-loop.md` to compare equal-age results, change one major experiment variable at a time, consolidate duplicates, and strengthen orphan posts.
 
 ## Resources
 
@@ -124,6 +129,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
 - Read `references/keyword-clusters.md` to build pillar/support/affiliate topic clusters without duplication.
 - Read `references/duplicate-intent-check.md` before drafting posts that resemble recent topics.
+- Read `references/content-portfolio-loop.md` before deciding whether to create a new URL, update a canonical post, or place internal links.
+- Read `references/advanced-quality-gates.md` before editor transfer to enforce content-intent, Korean editorial, link, and photo-safety blockers.
 - Read `references/monetization-strategy.md` before planning AdPost, AdFit, AdSense, Coupang Partners, sponsored, or product-comparison revenue work.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
@@ -163,7 +170,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/analyze_traffic_windows.py` to compare consecutive complete traffic windows and trigger recovery mode consistently.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
-- Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, card-only visual packages, missing captions/source records, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
+- Use `scripts/validate_publish_package.py` before browser transfer to catch duplicate reader questions, invalid canonical decisions, repeated or internal-note text, unsafe original-photo records, GPS metadata, near-duplicate images, missing links, missing images, card-only visual packages, raw Markdown, placeholders, weak tags, and disclosure failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
@@ -172,9 +179,11 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Write original, helpful content. Do not scrape, reproduce, or spin other creators' posts.
 - Avoid fake personal experience. If experience is not provided by the user, use neutral wording such as "구매 전 확인할 점" instead of pretending to have used a product.
 - Record `experience_basis` for every package and block firsthand language in `research_only` posts.
+- Record one concrete reader question, a `new_post` or `update_existing` action, a cluster role, and a useful internal-link decision for every package.
 - Make writing feel natural by varying sentence length, adding concrete reader questions, using everyday Korean, and placing light emoticons only where they fit the blog's tone.
 - Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
 - Treat influencer-like quality as specific reader framing, truthful editorial judgment, visual proof, and balanced cautions; do not manufacture personal experience or excitement.
+- Strip location metadata and inspect private details before using original photos; automated checks do not replace full-resolution human review.
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
@@ -187,8 +196,9 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 For each daily run, return:
 
 1. Daily topic board with selected three posts.
-2. Source/research notes with dates checked.
-3. Three complete draft packages with an experience basis and evidence note.
-4. Visual storyboard with a scene-first thumbnail, image roles, captions, sources, copyright-safety notes, and placement.
-5. Draft-save checklist for Naver Blog and optional Tistory adaptation.
-6. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
+2. Content-portfolio decision with reader questions, `new_post` or `update_existing`, cluster roles, canonical URLs, and internal-link plans.
+3. Source/research notes with dates checked.
+4. Three complete draft packages with an experience basis and evidence note.
+5. Visual storyboard with a scene-first thumbnail, image roles, captions, sources, copyright/privacy notes, and placement.
+6. Draft-save checklist for Naver Blog and optional Tistory adaptation.
+7. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
