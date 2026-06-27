@@ -61,6 +61,7 @@ When browser automation is used:
 5. Verify the editor image count and scan for raw Markdown or placeholders.
 6. Save or publish according to the approved mode.
 7. Verify the resulting state and record a platform-specific receipt.
+8. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
 
 Do not report success from a click alone. Report only verified results and label partial or unknown outcomes honestly.
 
@@ -75,6 +76,7 @@ Before any GitHub upload or saved automation artifact, follow `secret-handling.m
 5. Record expected experiment in `performance-log.md` if the post is published later.
 6. Keep any style-memory update separate from raw scan notes; update only durable patterns.
 7. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
+8. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
 
 ## Weekly Improvement
 
