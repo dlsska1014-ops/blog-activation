@@ -22,3 +22,13 @@ Add dated notes in this format:
 - Layout pattern:
 - Image/table pattern:
 - Reusable lesson:
+
+### 2026-06-27
+
+- Topic area: family outings, camping, and seasonal practical content.
+- Observed title pattern: specific place, product model, facility, failure condition, or use case beats a broad generic topic.
+- Opening pattern: answer the concrete visit, setup, purchase, or problem question immediately.
+- Layout pattern: put parking, facilities, conditions, model specs, or decision criteria near the first screen.
+- Image/table pattern: original place/product photos and native tables build more trust than generic decorative cards.
+- Reusable lesson: use actual search-inflow wording as a question source; publish fewer verified posts and connect affiliate content to proven clusters.
+
