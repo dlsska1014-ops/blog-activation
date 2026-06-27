@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.2 seconds
-Output:
 # Naver Draft Runbook
 
 Use this when the user asks to place posts inside Naver Blog. Read `live-publish-runbook.md` for all browser transfers.
