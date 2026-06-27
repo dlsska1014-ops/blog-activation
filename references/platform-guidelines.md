@@ -30,9 +30,12 @@ Adapt Naver drafts for Tistory with:
 - A tighter table of contents when the post is long.
 - Source notes and checked dates.
 - More evergreen phrasing when possible.
+- Descriptive image alt text, a category, and mobile-safe tables.
+- A canonical or duplication plan when substantially similar content also appears on Naver.
 
 ## Draft-Save Rule
 
-Default to preparing draft content only. Do not publish automatically unless the user explicitly enables publishing and confirms the target platform, account, post, and timing.
+Default to preparing draft content only. Publish only when the latest explicit instruction enables it for the current batch.
 
-If browser automation is used, stop before final publish and ask for confirmation unless the user has already authorized draft-save for the session.
+If browser automation is used, follow `live-publish-runbook.md` and the platform runbook. Do not repeatedly reconfirm an already approved batch, but verify every final result.
+
