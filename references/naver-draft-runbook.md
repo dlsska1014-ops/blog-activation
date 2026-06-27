@@ -1,12 +1,15 @@
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
 # Naver Draft Runbook
 
-Use this when the user asks to prepare posts inside Naver Blog. Default to draft-save only.
+Use this when the user asks to place posts inside Naver Blog. Read `live-publish-runbook.md` for all browser transfers.
 
 ## Safety Mode
 
-- Do not publish unless the user explicitly asks and confirms the exact post.
+- Do not publish unless the latest explicit user instruction enables public publishing for the current batch.
 - Do not bypass login, security, or account checks.
-- Stop before any irreversible action.
+- In draft-only mode, stop after verifying the draft save. In auto-publish mode, complete and verify the approved batch.
 - Keep affiliate disclosure visible in the draft body.
 
 ## Draft-Save Procedure
@@ -15,11 +18,11 @@ Use this when the user asks to prepare posts inside Naver Blog. Default to draft
 2. Confirm the target blog account with the user if more than one account appears.
 3. Insert title.
 4. Insert body in Naver-friendly spacing.
-5. Add image placeholders or uploaded images if the user has provided them.
+5. Upload the prepared images and verify the actual editor image count. Do not treat a selected file as an uploaded image.
 6. Add tags.
 7. Check first screen readability.
 8. Save as draft.
-9. Report the draft title and any missing assets.
+9. Report the draft title, verified image count, and any missing assets.
 
 ## Body Transfer Format
 
@@ -49,4 +52,5 @@ Use this order:
 
 ## Automation Notes
 
-If browser automation is available, interact only with visible, confirmed controls. If the editor changes or a selector is uncertain, stop and ask for user confirmation rather than risking publication.
+If browser automation is available, interact only with visible, confirmed controls. Use a fresh editor tab if an old tab hangs. If a selector or final state is uncertain, inspect the editor or post list before retrying so a duplicate is not created.
+
