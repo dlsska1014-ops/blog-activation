@@ -20,6 +20,8 @@ Use this runbook for daily blog operation.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
 13. Check `low-quality-prevention.md` before committing to three daily posts.
+14. Compare the latest complete 7-day traffic window with the previous one when data is available.
+15. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
 
 ## Drafting
 
@@ -88,6 +90,8 @@ Once per week:
 4. Update `style-memory.md`.
 5. Fill `weekly-report-template.md`.
 6. Update templates only if a pattern repeats across multiple posts.
+7. Compare equal-age windows and identify which exact inflow questions produced visits.
+8. Adjust the next week's content mix toward proven clusters before adding new categories.
 
 When the user provides metrics, use `performance-input.md` before updating `performance-log.md`.
 
