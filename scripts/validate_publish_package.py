@@ -17,7 +17,10 @@ RAW_MARKERS = {
     "markdown table separator": re.compile(r"(?m)^\s*\|?\s*:?-{3,}"),
     "code fence": re.compile(r"```"),
     "image placeholder": re.compile(r"\[(?:이미지|image)\s*\d*\]", re.I),
+    "inline markdown code": re.compile(r"`[^`\n]+`"),
+    "internal image note": re.compile(r"(?:이미지\s*메모|visual\s*prompt|thumbnail\s*prompt)\s*:", re.I),
 }
+VISUAL_CORRUPTION = re.compile(r"\?{2,}|\ufffd")
 
 
 def validate_post(post: dict, base: Path) -> list[str]:
@@ -50,6 +53,15 @@ def validate_post(post: dict, base: Path) -> list[str]:
     expected = int(post.get("expected_image_count", 3))
     if len(images) < expected:
         errors.append(f"{name}: expected {expected} images, manifest has {len(images)}")
+    if images and post.get("visual_qa_confirmed") is not True:
+        errors.append(f"{name}: visual_qa_confirmed must be true after original-resolution review")
+    text_bearing_count = int(post.get("text_bearing_image_count", 0))
+    visual_texts = [str(item) for item in post.get("visual_texts", [])]
+    if text_bearing_count and not visual_texts:
+        errors.append(f"{name}: expected text for text-bearing images is missing")
+    for visual_text in visual_texts:
+        if VISUAL_CORRUPTION.search(visual_text):
+            errors.append(f"{name}: corrupted visual source text found")
     image_hashes: set[str] = set()
     for raw in images:
         path = base / str(raw)
