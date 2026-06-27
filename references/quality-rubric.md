@@ -14,6 +14,7 @@ Score each draft from 1 to 5 in each category before delivery. Revise any post s
 3. Fact Reliability
    - Are dates, prices, conditions, product claims, and benefit details checked?
    - Are uncertainties named?
+   - Is the fact-freshness level correct, and are live or current claims still inside their recheck window?
 
 4. Originality
    - Is the writing original rather than a close rewrite of another post?
@@ -65,6 +66,7 @@ Revise immediately if the draft:
 - Uses an AI scene as evidence of a real visit or product test.
 - Repeats broad forecast dates or generic definitions without a narrower reader decision.
 - Shows duplicate titles, exposed generation labels, or near-identical visual sequences.
+- Uses complete-guide, lowest-price, number-one, or guaranteed language without direct evidence.
 
 ## Mandatory Gates
 
@@ -80,6 +82,7 @@ Block delivery or publication when:
 - Original photos lack an ownership basis, or sponsored content lacks disclosure.
 - A high-risk duplicate is set to `new_post`, or the canonical/internal-link decision is missing.
 - Korean editorial QA, original-photo privacy QA, GPS removal, or near-duplicate-image checks are incomplete.
+- Fact freshness, owned-photo sidecar integrity, or strong-title evidence is missing.
 
 ## Final Polish Pass
 

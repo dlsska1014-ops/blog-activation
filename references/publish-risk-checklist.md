@@ -5,6 +5,7 @@ Use this before public publishing and before final draft-save for sensitive post
 ## Required Checks
 
 - Facts include checked dates for time-sensitive information.
+- Every package declares `stable`, `current`, or `live` fact freshness; current and live sources are still within their transfer window.
 - Event dates, eligibility, exclusions, and benefit limits are current.
 - Affiliate disclosure is present when Coupang Partners links or recommendations are included.
 - No fake personal experience is claimed.
@@ -15,6 +16,7 @@ Use this before public publishing and before final draft-save for sensitive post
 - Images are original, user-provided, licensed, generated, or properly sourced.
 - Original photos have an ownership basis; AI scenes are labeled as context and are not used as real-world proof.
 - Original photos have no exposed face, child, plate, address, receipt, screen, QR code, identifier, or risky reflection; GPS metadata is removed.
+- Every owned-photo file matches its privacy sidecar and completed manual review.
 - The selected image set contains no burst-series or perceptually near-duplicate frames.
 - Planned images are visibly present in the editor and their count matches the package manifest.
 - The first visual is scene-first and the editor order matches the manifest roles.
@@ -25,6 +27,8 @@ Use this before public publishing and before final draft-save for sensitive post
 - Tags are present and do not include irrelevant keyword stuffing.
 - Product claims are practical and not exaggerated.
 - The concrete reader question, content action, cluster role, canonical decision, and internal-link plan are recorded.
+- An updated canonical post includes a concise update summary.
+- Strong title claims have direct evidence or were removed.
 - The final Korean body contains no repeated long paragraph, dominant repetitive ending, visible generation label, TODO, or internal work note.
 
 ## Sensitive Topic Checks
@@ -61,5 +65,6 @@ Do not publish or draft-save until fixed if:
 - A sourced visual lacks a caption or reuse record.
 - A high-risk duplicate is being published as a new post instead of updating or consolidating the canonical post.
 - Original-photo privacy, location metadata, or near-duplicate checks are incomplete.
+- Current or live source records are stale, or a strong title claim lacks direct evidence.
 - The final title, body, tags, or public/draft state cannot be verified.
 - The public page has not been visually checked after upload or contains corrupted image text.

@@ -65,6 +65,9 @@ For each body section, choose the safest useful visual type:
    - inspect faces, children, plates, addresses, receipts, screens, QR codes, identifying signs, and reflections at full resolution,
    - strip GPS metadata before editor transfer,
    - record `privacy_qa_confirmed`, `privacy_note`, and `location_metadata_removed`.
+   - run `scripts/prepare_owned_photo.py` to auto-orient, resize, remove metadata, and optionally blur user-selected regions,
+   - prepare once without confirmation, inspect the output at full resolution, then rerun with `--confirm-manual-review` only when the privacy check is complete,
+   - use `original_photo` only as experience evidence and `owned_context_photo` for neutral research-only context.
 4. Licensed/free stock image:
    - use only from sources with clear reuse terms,
    - record the source URL and license note.
@@ -74,13 +77,23 @@ For each body section, choose the safest useful visual type:
 
 When copyright status is unclear, do not insert the image. Use a self-created card or AI-generated generic illustration instead.
 
+Owned-photo preparation:
+
+```powershell
+python scripts/prepare_owned_photo.py source.jpg prepared.jpg --blur 120,80,240,160
+# Inspect prepared.jpg at full resolution, then confirm only after the review.
+python scripts/prepare_owned_photo.py source.jpg prepared.jpg --blur 120,80,240,160 --confirm-manual-review
+```
+
+Use blur coordinates from the source image after EXIF orientation is applied. The generated `.privacy.json` belongs beside the prepared image and must not contain private narrative or account data.
+
 For every text-bearing image, read `visual-text-integrity.md`. A file existing on disk is not proof that Korean rendered correctly.
 
 ## Placement Standard
 
 For most Naver posts:
 
-1. Scene-first AI thumbnail, original photo, or licensed photo after the opening.
+1. Scene-first AI thumbnail, original photo, owned context photo, or licensed photo after the opening.
 2. Source-backed evidence, official screenshot, or explanatory diagram near the first factual section.
 3. Comparison table, checklist, or decision aid where the reader must choose.
 4. Optional final visual only when it adds a new function.
@@ -106,6 +119,7 @@ Allowed role names for publish manifests:
 
 - `ai_scene_thumbnail`
 - `original_photo`
+- `owned_context_photo`
 - `licensed_photo`
 - `official_screenshot`
 - `source_evidence`
@@ -129,8 +143,9 @@ Record every visual as an object with:
 - `contains_text`
 - `visual_qa_confirmed`
 - `source_url`, `checked_date`, and `reuse_basis` when the visual is sourced, official, licensed, or a product image
-- `ownership_basis` when the role is `original_photo`
-- `privacy_qa_confirmed`, `privacy_note`, and `location_metadata_removed` when the role is `original_photo`
+- `ownership_basis` when the role is `original_photo` or `owned_context_photo`
+- `privacy_qa_confirmed`, `privacy_note`, and `location_metadata_removed` for either owned-photo role
+- a matching `.privacy.json` sidecar created by `prepare_owned_photo.py` for either owned-photo role
 
 Use the same order as the editor. The first manifest visual must be the first image in the article.
 
@@ -161,7 +176,7 @@ Reject an image if:
 - It was not opened at original resolution and visually checked.
 - It exposes a face, child, plate, address, receipt, screen, QR code, identifying sign, or reflection without a clear safe-use decision.
 - It still contains GPS metadata.
-- It is perceptually near-duplicate to another selected image.
+- It is a user-owned photo perceptually near-duplicate to another selected user-owned photo.
 
 ## Delivery Requirement
 

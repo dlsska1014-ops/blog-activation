@@ -15,6 +15,7 @@ Record before touching an editor:
 - Experience basis, privacy-safe evidence note, and sponsorship status.
 - Reader question, `new_post` or `update_existing` action, cluster role, and canonical URL when updating.
 - Intended internal links or a recorded reason that none are suitable.
+- Fact freshness level, checked date, source records, and any strong-title evidence.
 - Affiliate status and disclosure requirement.
 - Dated working-folder ledger path.
 
@@ -36,7 +37,8 @@ For every post, require all of the following before editor transfer:
 9. Affiliate and sponsored posts contain the required disclosure near the top; affiliate links are verified.
 10. Every body visual has a functional caption; sourced visuals have reuse records and original photos have ownership records.
 11. Korean editorial QA and internal-link QA are confirmed.
-12. Original photos have full-resolution privacy notes, removed GPS metadata, and no near-duplicate frame in the selected set.
+12. User-owned photos have full-resolution privacy notes, removed GPS metadata, and no near-duplicate frame in the selected set.
+13. Every user-owned photo matches a prepared privacy sidecar; current and live facts remain inside their recheck window.
 
 Run `scripts/validate_publish_package.py` when a manifest is available. A failed gate blocks draft-save and publishing until fixed.
 Check `publication-receipts.jsonl` before retrying any post whose final action timed out.

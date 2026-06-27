@@ -19,18 +19,19 @@ Use this runbook for daily blog operation.
 6. Visit current Tistory examples for the day's target topic families.
 7. Record abstract observations in `influencer-scan-log.md`.
 8. Browse current factual sources from `research-sources.md`.
-9. Build 6 to 10 topic candidates and label each candidate's evidence basis.
-10. Score candidates using the trend scoring method.
-11. Assign each topic to a role from `keyword-clusters.md`.
-12. Run `duplicate-intent-check.md`.
-13. Use `content-portfolio-loop.md` to decide `new_post` or `update_existing`, record the canonical URL, and plan zero to three useful internal links.
-14. Select:
+9. Classify each candidate's facts as `stable`, `current`, or `live` with `fact-freshness-policy.md`; reject stale or weak primary-source support.
+10. Build 6 to 10 topic candidates and label each candidate's evidence basis.
+11. Score candidates using the trend scoring method.
+12. Assign each topic to a role from `keyword-clusters.md`.
+13. Run `duplicate-intent-check.md`.
+14. Use `content-portfolio-loop.md` to decide `new_post` or `update_existing`, record the canonical URL and update summary, and plan zero to three useful internal links.
+15. Select:
    - One experience-backed post when authentic evidence exists; otherwise one information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-15. Check `low-quality-prevention.md` before committing to three daily posts.
-16. Compare the latest complete 7-day traffic window with the previous one when data is available.
-17. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
+16. Check `low-quality-prevention.md` before committing to three daily posts.
+17. Compare the latest complete 7-day traffic window with the previous one when data is available.
+18. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
 
 ## Drafting
 
@@ -45,23 +46,24 @@ Use this runbook for daily blog operation.
 9. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
 10. Apply `emoji-emoticon-guide.md` only where tone fits.
 11. Add source notes and checked dates.
-12. Read `visual-asset-policy.md` and create a visual storyboard before generating any image.
-13. Use the strongest user-owned scene photo first when available. Generate a scene-first AI thumbnail only as a research-only fallback; never present it as visit or product proof.
-14. Prepare body images that match the section content using copyright-safe sources:
+12. Record `fact_freshness`; remove strong title claims unless direct evidence is recorded.
+13. Read `visual-asset-policy.md` and create a visual storyboard before generating any image.
+14. Use the strongest user-owned scene photo first when available. Use `original_photo` only for supported experience and `owned_context_photo` for neutral context. Prepare either with `prepare_owned_photo.py`.
+15. Prepare body images that match the section content using copyright-safe sources:
    - official/source screenshots with checked-date notes,
    - licensed/free-use images with source and license notes,
    - user-provided images,
    - self-created summary, checklist, comparison, or diagram cards.
-15. Add image paths, roles, captions, source/copyright notes, and placement notes directly into each draft.
-16. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
-17. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
-18. Run `naturalness-editor.md` as the final rewrite pass.
-19. Use `advanced-quality-gates.md` to confirm content intent, internal links, Korean editorial quality, and original-photo privacy.
-20. Score with `quality-rubric.md`.
-21. Check low-quality risk with `low-quality-prevention.md`.
-22. Check publishing risk with `publish-risk-checklist.md`.
-23. Revise anything under 31/40 or with a failed mandatory gate.
-24. Prepare optional Tistory adaptation.
+16. Add image paths, roles, captions, source/copyright notes, and placement notes directly into each draft.
+17. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
+18. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
+19. Run `naturalness-editor.md` as the final rewrite pass.
+20. Use `advanced-quality-gates.md` to confirm content intent, fact freshness, internal links, Korean editorial quality, and owned-photo privacy.
+21. Score with `quality-rubric.md`.
+22. Check low-quality risk with `low-quality-prevention.md`.
+23. Check publishing risk with `publish-risk-checklist.md`.
+24. Revise anything under 31/40 or with a failed mandatory gate.
+25. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 

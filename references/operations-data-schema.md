@@ -19,6 +19,9 @@ Required:
 - reader_question
 - canonical_url
 - internal_link_count
+- fact_freshness_level
+- fact_checked_date
+- source_record_count
 - affiliate_link_count
 - views
 - search_inflow_keywords
@@ -48,6 +51,8 @@ Optional:
 - experiment_result
 - naturalness_gate
 - photo_privacy_gate
+- risky_title_claim
+- title_claim_evidence
 
 ## Usage
 

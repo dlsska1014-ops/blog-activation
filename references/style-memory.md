@@ -49,3 +49,12 @@ Add dated notes in this format:
 - Layout pattern: follow the real reader journey or decision order; put one evidence-backed editorial verdict before a long table or explanation.
 - Image/table pattern: owned scene and detail photos are the strongest Naver evidence. Use AI scenes only as research-only context, and use tables where photos cannot compare conditions clearly.
 - Reusable lesson: declare the experience basis before drafting. Authentic evidence can support firsthand language; otherwise keep the post research-only and win through current sources, original judgment, and decision support.
+
+### 2026-06-27 Freshness And Claim Correction
+
+- Topic area: seasonal household guides, benefits, policy explainers, and product timing posts.
+- Observed title pattern: broad promises such as a complete guide, lowest price, or perfect preparation attract attention but often create claims the body cannot verify.
+- Opening pattern: state the current decision and checked date before adding urgency or a long checklist.
+- Layout pattern: place the primary source, update note, and changed condition near the first factual section; keep evergreen advice separate from live prices or forecasts.
+- Image/table pattern: source screenshots and decision diagrams should identify what was checked, while user-owned neutral scenes may provide context without becoming fake experience evidence.
+- Reusable lesson: treat facts as expiring data. Recheck prices, stock, dates, rankings, and policies at transfer time, and remove strong title claims that lack direct evidence.

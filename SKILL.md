@@ -59,6 +59,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/advanced-quality-gates.md` to record the intent decision, Korean editorial QA, internal-link QA, and original-photo privacy state.
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
+   - Record `stable`, `current`, or `live` fact freshness for every package; remove unsupported strong title claims.
    - Use `references/title-ab-testing.md` to score title candidates before draft-save.
    - Use `references/monetization-strategy.md` to separate traffic, trust, and conversion goals before choosing revenue topics.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
@@ -75,7 +76,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/visual-asset-policy.md` before preparing images. Prefer a strong user-owned hero photo; use a scene-first AI thumbnail only when authentic scene evidence is unavailable, then mix copyright-safe evidence, explanation, and decision-aid visuals.
    - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
    - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
-   - For every original photo, inspect private details at full resolution, remove GPS metadata, record the privacy decision, and reject burst or near-duplicate frames.
+   - Use `scripts/prepare_owned_photo.py` for every user-owned image. Use `original_photo` for supported experience evidence and `owned_context_photo` for neutral research-only context.
+   - Inspect private details at full resolution, confirm the privacy sidecar, and reject burst or near-duplicate owned-photo frames.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/visual-text-integrity.md` for every Korean text-bearing image. Keep Korean copy in UTF-8 files, reject repeated question marks, and visually inspect original-resolution pixels.
@@ -83,7 +85,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
-   - Treat failures from intent, naturalness, internal-link, original-photo privacy, GPS, or near-duplicate-image checks as publication blockers.
+   - Treat failures from intent, fact freshness, strong-title evidence, naturalness, internal links, owned-photo privacy, sidecar integrity, GPS, or near-duplicate-image checks as publication blockers.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
    - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
    - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
@@ -164,13 +166,15 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/weekly-report-template.md` for weekly performance summaries.
 - Read and update `references/style-memory.md` when the user asks to learn from current influencer posts or refresh the blog style.
 - Use `scripts/create_daily_pack.py` to create a dated folder with three markdown draft templates and a research log.
+- Use `scripts/prepare_owned_photo.py` to auto-orient, resize, strip metadata, blur selected regions, and create a verifiable privacy sidecar for user-owned images.
+- Use `scripts/self_test_quality_gates.py` after changing the validator, photo workflow, fact freshness, visual roles, or package schema.
 - Use `scripts/simulate_daily_strategy.py` to test topic selection and output structure against synthetic scenarios before major skill updates.
 - Use `scripts/score_topic_candidates.py` when the user provides a CSV of topic candidates and scores.
 - Use `scripts/score_revenue_topics.py` when the user provides a CSV of monetization candidates and wants revenue-priority scoring.
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/analyze_traffic_windows.py` to compare consecutive complete traffic windows and trigger recovery mode consistently.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
-- Use `scripts/validate_publish_package.py` before browser transfer to catch duplicate reader questions, invalid canonical decisions, repeated or internal-note text, unsafe original-photo records, GPS metadata, near-duplicate images, missing links, missing images, card-only visual packages, raw Markdown, placeholders, weak tags, and disclosure failures.
+- Use `scripts/validate_publish_package.py` before browser transfer to catch stale facts, unsupported strong title claims, duplicate reader questions, invalid canonical decisions, repeated or internal-note text, unsafe owned-photo records, sidecar mismatches, GPS metadata, near-duplicate owned photos, missing links, missing images, card-only packages, raw Markdown, weak tags, and disclosure failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
@@ -184,6 +188,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
 - Treat influencer-like quality as specific reader framing, truthful editorial judgment, visual proof, and balanced cautions; do not manufacture personal experience or excitement.
 - Strip location metadata and inspect private details before using original photos; automated checks do not replace full-resolution human review.
+- Keep factual claims on an explicit expiry clock and prefer canonical updates over new URLs when only current conditions changed.
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.

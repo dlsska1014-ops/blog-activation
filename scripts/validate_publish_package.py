@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import re
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -22,6 +23,8 @@ RAW_MARKERS = {
     "internal image note": re.compile(r"(?:이미지\s*메모|visual\s*prompt|thumbnail\s*prompt)\s*:", re.I),
 }
 VISUAL_CORRUPTION = re.compile(r"\?{2,}|\ufffd")
+RISKY_TITLE_CLAIM = re.compile(r"완벽|무조건|역대|최저가|(?<!\d)1위(?!\d)|폭발", re.I)
+VOLATILE_TITLE_CLAIM = re.compile(r"최저가|(?<!\d)1위(?!\d)|폭발", re.I)
 INTERNAL_BODY_MARKERS = {
     "AI or model disclosure": re.compile(r"(?:AI|인공지능|ChatGPT|챗GPT)\s*(?:가|로|를)?\s*(?:작성|생성|활용)", re.I),
     "internal drafting note": re.compile(r"(?:초안\s*메모|작업\s*메모|내부\s*메모|TODO|FIXME|프롬프트\s*:)", re.I),
@@ -42,6 +45,7 @@ ENDING_PATTERNS = {
 ALLOWED_VISUAL_ROLES = {
     "ai_scene_thumbnail",
     "original_photo",
+    "owned_context_photo",
     "licensed_photo",
     "official_screenshot",
     "source_evidence",
@@ -53,7 +57,9 @@ ALLOWED_VISUAL_ROLES = {
     "product_image",
     "category_illustration",
 }
-SCENE_FIRST_ROLES = {"ai_scene_thumbnail", "original_photo", "licensed_photo"}
+SCENE_FIRST_ROLES = {"ai_scene_thumbnail", "original_photo", "owned_context_photo", "licensed_photo"}
+OWNED_PHOTO_ROLES = {"original_photo", "owned_context_photo"}
+NEAR_DUPLICATE_ROLES = OWNED_PHOTO_ROLES
 TEXT_CARD_ROLES = {"comparison_table", "checklist_card", "summary_card", "faq_card"}
 EVIDENCE_ROLES = {"official_screenshot", "source_evidence", "diagram"}
 DECISION_ROLES = {"comparison_table", "checklist_card", "diagram"}
@@ -74,6 +80,8 @@ CLUSTER_ROLES = {
     "affiliate",
     "experience_report",
 }
+FACT_LEVEL_MAX_AGE = {"stable": 90, "current": 7, "live": 1}
+SOURCE_TYPES = {"official", "primary", "merchant", "reputable_secondary"}
 FIRSTHAND_CLAIM = re.compile(
     r"(?:직접\s*(?:다녀(?:왔|와)|방문(?:했|해)|써\s*봤|사용(?:했|해\s*봤)|구매(?:했|해)|먹어\s*봤|체험(?:했|해))"
     r"|(?:제가|저는|저도|저\s*역시|저희\s*아이|우리\s*아이).{0,40}(?:다녀왔|다니|즐기|써봤|사용해봤|구매했|먹어봤|체험했|좋아했|챙기는\s*편)"
@@ -117,17 +125,96 @@ def validate_editorial_text(body: str, name: str) -> list[str]:
     return errors
 
 
-def difference_hash(path: Path) -> int:
+def visual_signature(path: Path) -> tuple[int, tuple[int, ...]]:
     with Image.open(path) as image:
         gray = image.convert("L").resize((9, 8))
         pixels = list(gray.get_flattened_data())
+        color = tuple(image.convert("RGB").resize((16, 16)).tobytes())
     bits = 0
     for row in range(8):
         for column in range(8):
             left = pixels[row * 9 + column]
             right = pixels[row * 9 + column + 1]
             bits = (bits << 1) | int(left > right)
-    return bits
+    return bits, color
+
+
+def signatures_are_near_duplicate(
+    first: tuple[int, tuple[int, ...]], second: tuple[int, tuple[int, ...]]
+) -> bool:
+    first_hash, first_pixels = first
+    second_hash, second_pixels = second
+    hash_distance = (first_hash ^ second_hash).bit_count()
+    mean_absolute_error = sum(abs(a - b) for a, b in zip(first_pixels, second_pixels)) / len(first_pixels)
+    return hash_distance <= 5 and mean_absolute_error <= 12
+
+
+def parse_checked_date(raw: str, label: str, errors: list[str]) -> date | None:
+    try:
+        value = date.fromisoformat(raw)
+    except ValueError:
+        errors.append(f"{label}: checked_date must use YYYY-MM-DD")
+        return None
+    if value > date.today():
+        errors.append(f"{label}: checked_date cannot be in the future")
+        return None
+    return value
+
+
+def validate_fact_freshness(post: dict, name: str) -> list[str]:
+    errors: list[str] = []
+    facts = post.get("fact_freshness")
+    if not isinstance(facts, dict):
+        return [f"{name}: fact_freshness object is required"]
+    level = str(facts.get("level", "")).strip()
+    if level not in FACT_LEVEL_MAX_AGE:
+        errors.append(f"{name}: fact_freshness.level must be stable, current, or live")
+    checked_raw = str(facts.get("checked_date", "")).strip()
+    checked = parse_checked_date(checked_raw, f"{name}: fact_freshness", errors) if checked_raw else None
+    if not checked_raw:
+        errors.append(f"{name}: fact_freshness.checked_date is required")
+    if checked and level in FACT_LEVEL_MAX_AGE:
+        age = (date.today() - checked).days
+        if age > FACT_LEVEL_MAX_AGE[level]:
+            errors.append(f"{name}: {level} facts are stale ({age} days old)")
+    if facts.get("fact_qa_confirmed") is not True:
+        errors.append(f"{name}: fact_freshness.fact_qa_confirmed must be true")
+
+    records = facts.get("source_records", [])
+    if not isinstance(records, list):
+        errors.append(f"{name}: fact_freshness.source_records must be a list")
+        records = []
+    if level in {"current", "live"} and not records:
+        errors.append(f"{name}: {level} facts require at least one source record")
+    if level == "stable" and not records and not str(facts.get("fact_note", "")).strip():
+        errors.append(f"{name}: stable facts need a source record or fact_note")
+    strong_source = False
+    for index, record in enumerate(records):
+        label = f"{name}: source record #{index + 1}"
+        if not isinstance(record, dict):
+            errors.append(f"{label} must be an object")
+            continue
+        for field in ("source_name", "claim_summary"):
+            if not str(record.get(field, "")).strip():
+                errors.append(f"{label} needs {field}")
+        if not valid_http_url(str(record.get("url", "")).strip()):
+            errors.append(f"{label} needs a valid URL")
+        source_type = str(record.get("source_type", "")).strip()
+        if source_type not in SOURCE_TYPES:
+            errors.append(f"{label} has unsupported source_type: {source_type or 'missing'}")
+        if source_type in {"official", "primary", "merchant"}:
+            strong_source = True
+        source_date_raw = str(record.get("checked_date", "")).strip()
+        source_date = parse_checked_date(source_date_raw, label, errors) if source_date_raw else None
+        if not source_date_raw:
+            errors.append(f"{label} needs checked_date")
+        if source_date and level in FACT_LEVEL_MAX_AGE:
+            source_age = (date.today() - source_date).days
+            if source_age > FACT_LEVEL_MAX_AGE[level]:
+                errors.append(f"{label} is stale for {level} content ({source_age} days old)")
+    if level in {"current", "live"} and records and not strong_source:
+        errors.append(f"{name}: {level} facts need an official, primary, or merchant source")
+    return errors
 
 
 def validate_post(post: dict, base: Path) -> list[str]:
@@ -137,6 +224,18 @@ def validate_post(post: dict, base: Path) -> list[str]:
         errors.append("untitled: title is required")
     elif len(str(post["title"]).strip()) > 60:
         errors.append(f"{name}: title is too long ({len(str(post['title']).strip())} characters)")
+    risky_title = RISKY_TITLE_CLAIM.search(str(post.get("title", "")))
+    if risky_title:
+        if not str(post.get("title_claim_evidence", "")).strip():
+            errors.append(f"{name}: risky title claim needs title_claim_evidence")
+        fact_manifest = post.get("fact_freshness", {})
+        if not isinstance(fact_manifest, dict):
+            fact_manifest = {}
+        source_records = fact_manifest.get("source_records", [])
+        if not source_records:
+            errors.append(f"{name}: risky title claim needs a recorded source")
+        if VOLATILE_TITLE_CLAIM.search(str(post.get("title", ""))) and fact_manifest.get("level") != "live":
+            errors.append(f"{name}: volatile title claim requires live fact freshness")
     body_path = base / str(post.get("body_path", ""))
     if not body_path.is_file():
         return [f"{name}: body file not found: {body_path}"]
@@ -148,6 +247,7 @@ def validate_post(post: dict, base: Path) -> list[str]:
         if pattern.search(body):
             errors.append(f"{name}: contains {label}")
     errors.extend(validate_editorial_text(body, name))
+    errors.extend(validate_fact_freshness(post, name))
     if post.get("naturalness_qa_confirmed") is not True:
         errors.append(f"{name}: naturalness_qa_confirmed must be true after the final Korean editorial pass")
 
@@ -175,6 +275,8 @@ def validate_post(post: dict, base: Path) -> list[str]:
     canonical_url = str(intent.get("canonical_url", "")).strip()
     if action == "update_existing" and not valid_http_url(canonical_url):
         errors.append(f"{name}: update_existing requires a valid canonical_url")
+    if action == "update_existing" and not str(intent.get("update_summary", "")).strip():
+        errors.append(f"{name}: update_existing requires intent_decision.update_summary")
     if action == "new_post" and duplicate_risk == "high":
         errors.append(f"{name}: high duplicate risk must update or merge an existing post")
 
@@ -253,15 +355,15 @@ def validate_post(post: dict, base: Path) -> list[str]:
             for field in ("source_url", "checked_date", "reuse_basis"):
                 if not str(visual.get(field, "")).strip():
                     errors.append(f"{name}: visual #{index + 1} ({role}) needs {field}")
-        if role == "original_photo" and not str(visual.get("ownership_basis", "")).strip():
-            errors.append(f"{name}: visual #{index + 1} original_photo needs ownership_basis")
-        if role == "original_photo":
+        if role in OWNED_PHOTO_ROLES and not str(visual.get("ownership_basis", "")).strip():
+            errors.append(f"{name}: visual #{index + 1} {role} needs ownership_basis")
+        if role in OWNED_PHOTO_ROLES:
             if visual.get("privacy_qa_confirmed") is not True:
-                errors.append(f"{name}: visual #{index + 1} original_photo needs privacy_qa_confirmed")
+                errors.append(f"{name}: visual #{index + 1} {role} needs privacy_qa_confirmed")
             if visual.get("location_metadata_removed") is not True:
-                errors.append(f"{name}: visual #{index + 1} original_photo needs location_metadata_removed")
+                errors.append(f"{name}: visual #{index + 1} {role} needs location_metadata_removed")
             if not str(visual.get("privacy_note", "")).strip():
-                errors.append(f"{name}: visual #{index + 1} original_photo needs privacy_note")
+                errors.append(f"{name}: visual #{index + 1} {role} needs privacy_note")
 
     if roles:
         if roles[0] not in SCENE_FIRST_ROLES:
@@ -298,7 +400,7 @@ def validate_post(post: dict, base: Path) -> list[str]:
         if VISUAL_CORRUPTION.search(visual_text):
             errors.append(f"{name}: corrupted visual source text found")
     image_hashes: set[str] = set()
-    perceptual_hashes: list[tuple[Path, int]] = []
+    perceptual_hashes: list[tuple[Path, tuple[int, tuple[int, ...]]]] = []
     for index, raw in enumerate(images):
         path = base / str(raw)
         if not path.is_file():
@@ -320,14 +422,28 @@ def validate_post(post: dict, base: Path) -> list[str]:
             if digest in image_hashes:
                 errors.append(f"{name}: duplicate image content found: {path}")
             image_hashes.add(digest)
-            if visual_records[index].get("role") == "original_photo" and gps_info:
-                errors.append(f"{name}: original photo still contains GPS metadata: {path}")
-            perceptual = difference_hash(path)
-            for previous_path, previous_hash in perceptual_hashes:
-                if (perceptual ^ previous_hash).bit_count() <= 5:
-                    errors.append(f"{name}: near-duplicate images found: {previous_path.name} and {path.name}")
-                    break
-            perceptual_hashes.append((path, perceptual))
+            role = str(visual_records[index].get("role", ""))
+            if role in OWNED_PHOTO_ROLES:
+                if gps_info:
+                    errors.append(f"{name}: owned photo still contains GPS metadata: {path}")
+                privacy_sidecar = path.with_suffix(path.suffix + ".privacy.json")
+                if not privacy_sidecar.is_file():
+                    errors.append(f"{name}: owned photo is missing its privacy sidecar: {privacy_sidecar}")
+                else:
+                    privacy = json.loads(privacy_sidecar.read_text(encoding="utf-8-sig"))
+                    if privacy.get("output_sha256") != digest:
+                        errors.append(f"{name}: owned photo changed after privacy preparation: {path}")
+                    if privacy.get("metadata_removed") is not True:
+                        errors.append(f"{name}: owned photo metadata removal is not verified: {path}")
+                    if privacy.get("manual_privacy_review_confirmed") is not True:
+                        errors.append(f"{name}: owned photo manual privacy review is not confirmed: {path}")
+            if role in NEAR_DUPLICATE_ROLES:
+                perceptual = visual_signature(path)
+                for previous_path, previous_signature in perceptual_hashes:
+                    if signatures_are_near_duplicate(perceptual, previous_signature):
+                        errors.append(f"{name}: near-duplicate owned photos found: {previous_path.name} and {path.name}")
+                        break
+                perceptual_hashes.append((path, perceptual))
             if visual_records[index].get("contains_text") is True:
                 sidecar = path.with_suffix(path.suffix + ".visual.json")
                 if not sidecar.is_file():

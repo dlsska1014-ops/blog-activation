@@ -29,6 +29,7 @@ POST_TEMPLATE = """# {label}
 - Canonical URL when updating:
 - Concrete reader question:
 - Difference from the closest existing post:
+- Update summary when refreshing an existing post:
 - Internal links (0-3):
 - Reason when no internal link is suitable:
 - Title A/B score:
@@ -43,6 +44,15 @@ POST_TEMPLATE = """# {label}
 - Inference:
 - Recommendation:
 - Uncertainties:
+
+## Fact Freshness
+
+- Level: stable / current / live
+- Checked date:
+- Fact QA confirmed:
+- Source records: source name / URL / source type / checked date / claim summary
+- Stable fact note when no external source is needed:
+- Title claim evidence for words such as 완벽, 최저가, or 1위:
 
 ## Draft Package
 
@@ -72,7 +82,7 @@ POST_TEMPLATE = """# {label}
 
 ### Visual Storyboard
 
-- Image 1 scene-first thumbnail: path / role / placement / caption / QA
+- Image 1 scene-first thumbnail: path / role / placement / caption / QA / privacy sidecar when user-owned
 - Image 2 evidence or explanation: path / role / placement / caption / source / reuse basis / QA
 - Image 3 decision aid: path / role / placement / caption / source / reuse basis / QA
 - Image 4 supporting visual: path / role / placement / caption / source / reuse basis / QA
@@ -127,6 +137,8 @@ POST_TEMPLATE = """# {label}
 - [ ] Original photos have an ownership basis; AI scenes are not presented as real evidence
 - [ ] Sponsorship disclosure is visible when a product was provided
 - [ ] Source/date notes included
+- [ ] Fact freshness level, checked date, and source records are valid
+- [ ] Strong title claims have direct evidence or were removed
 - [ ] New-post versus update-existing decision is recorded
 - [ ] Reader question differs from the other two daily posts
 - [ ] Related existing posts are linked, or the no-link reason is recorded
@@ -138,6 +150,7 @@ POST_TEMPLATE = """# {label}
 - [ ] All images prepared and visually checked
 - [ ] Original photos have no visible face, plate, address, receipt, or screen privacy leak
 - [ ] Original-photo GPS metadata is removed and recorded in the manifest
+- [ ] User-owned photos were processed with `prepare_owned_photo.py` and have a matching privacy sidecar
 - [ ] Near-duplicate or burst-series photos are removed
 - [ ] Korean card text verified at original resolution; no question marks, boxes, or clipping
 - [ ] Expected visual text recorded in publish manifest
@@ -188,6 +201,7 @@ def main() -> None:
 - Sponsored product evidence:
 - Research-only fallback topics:
 - Privacy or reuse restrictions:
+- User-owned context photos that do not prove a visit or use:
 
 ## High-Performing Blog Pattern Notes
 
@@ -248,6 +262,12 @@ def main() -> None:
 - Emoji/emoticon rule:
 - Naturalness edit:
 
+## Fact Freshness Plan
+
+| Topic | Level | Checked date | Strong source | Title claim evidence | Recheck deadline |
+| --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |
+
 ## Search Exposure Follow-Up
 
 - Exact title check date:
@@ -271,7 +291,9 @@ def main() -> None:
         '  "experience_basis_required": true,\n'
         '  "expected_image_count_per_long_post": 4,\n'
         '  "required_distinct_visual_roles": 3,\n'
-        '  "advanced_quality_gates_required": true\n'
+        '  "advanced_quality_gates_required": true,\n'
+        '  "fact_freshness_required": true,\n'
+        '  "owned_photo_privacy_sidecar_required": true\n'
         '}\n',
         encoding="utf-8",
     )

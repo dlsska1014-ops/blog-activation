@@ -12,6 +12,8 @@ Prefer evidence in this order:
 4. Licensed or merchant-approved images plus a research-only buying guide.
 5. AI-generated scene images only as visual context, never as proof that a visit or product test happened.
 
+A user-owned neutral scene may be used as `owned_context_photo` in a `research_only` post when it illustrates the topic without being described as visit, purchase, or use evidence. Keep its caption factual and limited to what is visibly shown.
+
 Do not lower the evidence standard merely to keep a three-post schedule.
 
 ## Experience Basis
@@ -85,6 +87,7 @@ Block publication when:
 
 - First-person experience appears in a `research_only` package.
 - Original photos lack an ownership or reuse basis.
+- A user-owned context photo is described as hands-on evidence without supporting notes.
 - Sponsored content lacks a visible disclosure.
 - A current facility, price, schedule, or product condition is inferred from an old photo without a checked date.
 - AI imagery could be mistaken for proof of a real place, product test, or event screen.

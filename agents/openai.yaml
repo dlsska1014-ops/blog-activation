@@ -1,4 +1,4 @@
 interface:
   display_name: "블로그 활성화"
-  short_description: "글 기획부터 사진 안전, 중복 방지, 내부 연결, 발행 검증까지 고도화한 블로그 운영 스킬"
-  default_prompt: "Use $blog-activation to research current Korean blog patterns, choose new-versus-update actions, create three original posts with privacy-safe visuals and natural Korean, connect useful existing posts, and verify every publishing gate."
+  short_description: "사진 전처리, 사실 유효기간, 중복 방지, 자연스러운 글과 발행 검증을 통합한 블로그 운영 스킬"
+  default_prompt: "Use $blog-activation to research current Korean blog patterns, verify fact freshness, choose new-versus-update actions, create three original posts with prepared privacy-safe visuals and natural Korean, connect useful existing posts, and verify every publishing gate."

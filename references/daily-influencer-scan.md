@@ -62,12 +62,15 @@ Record only abstract observations:
 - Table, bullet, FAQ, checklist, or comparison block usage.
 - CTA or comment question.
 - Trust devices: checked date, source note, watch-out, who should skip.
+- Fact expiry: whether exact prices, dates, rankings, stock, or forecasts have a visible checked date and primary source.
+- Canonical refresh signal: whether an existing guide shows what changed instead of creating another near-duplicate URL.
 - First visual type and whether it matches the opening situation.
 - Visual-role sequence across the post.
 - Caption quality and the presence of visual proof.
 - One truthful editorial action that makes the post feel checked rather than generated.
 - Experience basis: firsthand photos, supplied experience, sponsored product, or research-only.
 - Negative signals: duplicated titles, exposed AI labels, unsupported exact dates, fake review language, or excessive near-duplicate images.
+- Strong-claim risk: `완벽`, `최저가`, `1위`, health protection, guaranteed savings, or urgency without direct evidence.
 
 Do not save:
 
