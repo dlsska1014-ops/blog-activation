@@ -16,6 +16,9 @@ POST_TEMPLATE = """# {label}
 - Platform: Naver Blog first, Tistory adaptation optional
 - Search intent:
 - Target reader:
+- Experience basis: research_only / user_provided_experience / user_owned_photo_report / sponsored_product_review
+- Experience note:
+- User-owned photos available:
 - Checked date:
 - Template type:
 - Topic score:
@@ -28,9 +31,11 @@ POST_TEMPLATE = """# {label}
 
 ## Research Notes
 
-- Source 1:
-- Source 2:
-- Source 3:
+- Observed from user evidence:
+- Official source 1:
+- Official source 2:
+- Inference:
+- Recommendation:
 - Uncertainties:
 
 ## Draft Package
@@ -112,6 +117,9 @@ POST_TEMPLATE = """# {label}
 ### Draft-Save Checklist
 
 - [ ] Facts checked
+- [ ] Experience basis recorded and consistent with all first-person language
+- [ ] Original photos have an ownership basis; AI scenes are not presented as real evidence
+- [ ] Sponsorship disclosure is visible when a product was provided
 - [ ] Source/date notes included
 - [ ] Long post has at least four visuals and three distinct roles
 - [ ] First image is a scene-first thumbnail or photo, not a text card
@@ -159,6 +167,14 @@ def main() -> None:
 | Candidate | Timeliness | Reader pain | Search demand | Monetization fit | Trust fit | Total |
 | --- | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |  |
+
+## Evidence Inventory
+
+- User-provided experience notes:
+- User-owned reusable photos:
+- Sponsored product evidence:
+- Research-only fallback topics:
+- Privacy or reuse restrictions:
 
 ## High-Performing Blog Pattern Notes
 
@@ -233,6 +249,7 @@ def main() -> None:
         '  "platforms": ["naver"],\n'
         '  "mode": "draft-only",\n'
         '  "expected_post_count": 3,\n'
+        '  "experience_basis_required": true,\n'
         '  "expected_image_count_per_long_post": 4,\n'
         '  "required_distinct_visual_roles": 3\n'
         '}\n',

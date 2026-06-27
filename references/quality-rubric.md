@@ -18,6 +18,7 @@ Score each draft from 1 to 5 in each category before delivery. Revise any post s
 4. Originality
    - Is the writing original rather than a close rewrite of another post?
    - Does it add comparison, interpretation, or practical framing?
+   - Is the experience basis declared and consistent with the language?
 
 5. Human Editorial Presence
    - Does the first screen name a real reader situation and give an editorial priority?
@@ -59,6 +60,9 @@ Revise immediately if the draft:
 - Uses only repeated text-card visuals for a long post.
 - Uses a generic card as the first image when a scene-first image is possible.
 - Uses fake personal experience to sound more human.
+- Uses an AI scene as evidence of a real visit or product test.
+- Repeats broad forecast dates or generic definitions without a narrower reader decision.
+- Shows duplicate titles, exposed generation labels, or near-identical visual sequences.
 
 ## Mandatory Gates
 
@@ -70,6 +74,8 @@ Block delivery or publication when:
 - Sourced visuals lack source, checked date, reuse basis, or a useful caption.
 - Korean text-bearing images were not inspected at original resolution.
 - The editorial-presence check scores below 5 out of 6.
+- `experience_basis` is missing or contradicts firsthand language.
+- Original photos lack an ownership basis, or sponsored content lacks disclosure.
 
 ## Final Polish Pass
 

@@ -2,6 +2,34 @@
 
 Use the matching template for the selected topic. Adapt structure naturally instead of forcing every section into every post.
 
+Read `evidence-and-experience-policy.md` first and record the experience basis.
+
+## Experience-Backed Place Or Use Report
+
+Use only when the user supplied reusable photos or concrete visit/use notes.
+
+Structure:
+
+1. Specific title: place or model + current condition + reader question.
+2. First screen:
+   - who visited or used it, at a privacy-safe level,
+   - when it was observed,
+   - the most useful verdict,
+   - what changed or what was unexpectedly important.
+3. One-screen practical summary: parking, fee, operating time, age/use fit, and main caution.
+4. Visit or use sequence with original evidence photos.
+5. Reader-question sections: facilities, setup, comfort, food, shade, storage, cleaning, or model-specific details.
+6. Who it suits and who should skip.
+7. Current official facts separated from observed conditions.
+8. Final preparation list or next action.
+
+Naver visual rhythm:
+
+- Lead with the strongest original scene or product-use photo.
+- Follow the reader journey; use wide context, practical detail, and proof photos.
+- Add a table or checklist only where photos cannot compare conditions clearly.
+- Do not add an AI thumbnail when a strong owned hero photo already exists.
+
 ## Information Or News Explainer
 
 Use for current issues, policies, consumer news, platform changes, and event announcements.
@@ -28,9 +56,10 @@ Structure:
 
 Naver image rhythm:
 
-- Image 1 after opening: event/news summary image or official screenshot note.
-- Image 2 near key facts: table or condition summary.
-- Image 3 near action guide: checklist or step image.
+- Image 1 after opening: owned scene photo when available, otherwise a scene-first AI thumbnail.
+- Image 2 near key facts: official evidence or explanatory diagram.
+- Image 3 near the main decision: table or condition summary.
+- Image 4 near the action guide: checklist or step image.
 
 ## Event And Benefit Shopping Guide
 

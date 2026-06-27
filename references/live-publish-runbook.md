@@ -12,6 +12,7 @@ Record before touching an editor:
 - Expected post count.
 - Expected image count per post.
 - Ordered visual roles and captions.
+- Experience basis, privacy-safe evidence note, and sponsorship status.
 - Affiliate status and disclosure requirement.
 - Dated working-folder ledger path.
 
@@ -24,13 +25,14 @@ For every post, require all of the following before editor transfer:
 1. Final title and plain-text body exist.
 2. Body contains no Markdown headings, table separators, code fences, image placeholders, or internal notes.
 3. Tags are present and relevant.
-4. A short post has at least three usable images; a post of 1,800 characters or more has at least four unless a documented exception is approved.
-5. Image 1 is scene-first; later images provide evidence or explanation and a decision aid. Use at least three roles for long posts and no more than two text cards.
-6. Each image opens successfully, has nonzero dimensions, and is visually checked for text errors, clipping, and topic mismatch.
+4. `experience_basis` is recorded and consistent with the body; research-only posts contain no firsthand claims.
+5. A short post has at least three usable images; a post of 1,800 characters or more has at least four unless a documented exception is approved.
+6. Image 1 is scene-first; evidence-backed posts lead with an owned original photo. Later images provide evidence or explanation and a decision aid.
+7. Each image opens successfully, has nonzero dimensions, and is visually checked for text errors, clipping, and topic mismatch.
    - For Korean cards, verify the actual pixels contain readable Korean rather than `??`, boxes, or missing glyphs.
-7. Time-sensitive facts and non-self-created image sources include checked dates.
-8. Affiliate posts contain the required disclosure near the top and use only verified links.
-9. Every body visual has a functional caption and every sourced visual has a reuse record.
+8. Time-sensitive facts and non-self-created image sources include checked dates.
+9. Affiliate and sponsored posts contain the required disclosure near the top; affiliate links are verified.
+10. Every body visual has a functional caption; sourced visuals have reuse records and original photos have ownership records.
 
 Run `scripts/validate_publish_package.py` when a manifest is available. A failed gate blocks draft-save and publishing until fixed.
 Check `publication-receipts.jsonl` before retrying any post whose final action timed out.

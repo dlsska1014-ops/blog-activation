@@ -13,14 +13,14 @@ Use this before preparing images for Naver Blog or Tistory drafts.
 
 Treat thumbnails and body images as different assets.
 
-- Thumbnail: create a scene-first custom AI image that matches the article's topic, reader problem, season, and emotional hook. A recognizable place, object, room, product category, or action should be visible.
+- Thumbnail: use the strongest user-owned scene photo when available. Otherwise create a scene-first custom AI image that matches the article's topic, reader problem, season, and emotional hook.
 - Body images: use copyright-safe visuals that directly support the written section.
 
 Do not use copied images from other bloggers, news sites, shopping pages, or social posts unless the user owns them or the license clearly allows reuse.
 
 ## Thumbnail Workflow
 
-For every daily Naver draft, prepare one main thumbnail prompt and generate or request a thumbnail image unless the user asks for text-only output.
+For every daily Naver draft, choose the hero asset after checking the experience basis. Do not generate an AI thumbnail merely to replace a stronger owned photo.
 
 The thumbnail should:
 
@@ -60,6 +60,8 @@ For each body section, choose the safest useful visual type:
    - do not imply endorsement or affiliation.
 3. User-provided image:
    - use when the user confirms they own or can use it.
+   - record `ownership_basis` and the observation date when the image supports a current condition,
+   - keep the image tied to the supplied note rather than inventing a new story.
 4. Licensed/free stock image:
    - use only from sources with clear reuse terms,
    - record the source URL and license note.
@@ -81,6 +83,8 @@ For most Naver posts:
 4. Optional final visual only when it adds a new function.
 
 Never place images only for decoration. Each image should answer a reader question, reduce confusion, or make scanning easier.
+
+For experience-backed posts, original photos may exceed four when each image proves a different condition or step. Do not insert near-duplicates, burst-series frames, or repeated angles merely to imitate high image counts.
 
 ## Visual Diversity Gate
 
@@ -122,6 +126,7 @@ Record every visual as an object with:
 - `contains_text`
 - `visual_qa_confirmed`
 - `source_url`, `checked_date`, and `reuse_basis` when the visual is sourced, official, licensed, or a product image
+- `ownership_basis` when the role is `original_photo`
 
 Use the same order as the editor. The first manifest visual must be the first image in the article.
 
@@ -147,6 +152,7 @@ Reject an image if:
 - It overstates a benefit, discount, ranking, product performance, or personal experience.
 - It is not connected to the nearby paragraph.
 - It repeats the same template role as the preceding image.
+- It is an AI scene presented as if it were a real visit or product test.
 - Any Korean is replaced by question marks, boxes, missing glyphs, or mojibake.
 - It was not opened at original resolution and visually checked.
 

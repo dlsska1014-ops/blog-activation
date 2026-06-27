@@ -12,52 +12,54 @@ Use this runbook for daily blog operation.
 ## Morning Or Start-Of-Run
 
 1. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
-2. Review `content-calendar.md` for seasonal timing.
-3. Read `daily-influencer-scan.md`.
-4. Visit current Naver Blog examples for the day's target topic families.
-5. Visit current Tistory examples for the day's target topic families.
-6. Record abstract observations in `influencer-scan-log.md`.
-7. Browse current factual sources from `research-sources.md`.
-8. Build 6 to 10 topic candidates.
-9. Score candidates using the trend scoring method.
-10. Assign each topic to a role from `keyword-clusters.md`.
-11. Run `duplicate-intent-check.md`.
-12. Select:
-   - One information/news/event post.
+2. Read `evidence-and-experience-policy.md` and check whether the user supplied reusable photos or experience notes for a proven content pillar.
+3. Review `content-calendar.md` for seasonal timing.
+4. Read `daily-influencer-scan.md`.
+5. Visit current Naver Blog examples for the day's target topic families.
+6. Visit current Tistory examples for the day's target topic families.
+7. Record abstract observations in `influencer-scan-log.md`.
+8. Browse current factual sources from `research-sources.md`.
+9. Build 6 to 10 topic candidates and label each candidate's evidence basis.
+10. Score candidates using the trend scoring method.
+11. Assign each topic to a role from `keyword-clusters.md`.
+12. Run `duplicate-intent-check.md`.
+13. Select:
+   - One experience-backed post when authentic evidence exists; otherwise one information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-13. Check `low-quality-prevention.md` before committing to three daily posts.
-14. Compare the latest complete 7-day traffic window with the previous one when data is available.
-15. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
+14. Check `low-quality-prevention.md` before committing to three daily posts.
+15. Compare the latest complete 7-day traffic window with the previous one when data is available.
+16. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
 
 ## Drafting
 
 1. Choose the closest template from `post-templates.md`.
-2. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
-3. Use `writing-patterns-ko.md` for natural Korean title, first screen, and paragraph rhythm.
-4. Use `editorial-presence-guide.md` to define the reader scene, editorial priority, truthful first-person moves, and practical closing.
-5. Generate and score titles with `title-ab-testing.md`.
-6. For Coupang Partners posts, score candidates with `affiliate-scoring.md`, check `affiliate-link-density.md`, and use `product-category-playbooks.md`.
-7. Draft for Naver Blog first.
-8. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
-9. Apply `emoji-emoticon-guide.md` only where tone fits.
-10. Add source notes and checked dates.
-11. Read `visual-asset-policy.md` and create a visual storyboard before generating any image.
-12. Prepare a scene-first AI thumbnail or owned/licensed photo for each post based on the final opening. Do not substitute a generic text card.
-13. Prepare body images that match the section content using copyright-safe sources:
+2. Record `experience_basis` and a privacy-safe evidence note before writing the opening.
+3. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
+4. Use `writing-patterns-ko.md` for natural Korean title, first screen, and paragraph rhythm.
+5. Use `editorial-presence-guide.md` to define the reader scene, editorial priority, truthful first-person moves, and practical closing.
+6. Generate and score titles with `title-ab-testing.md`.
+7. For Coupang Partners posts, score candidates with `affiliate-scoring.md`, check `affiliate-link-density.md`, and use `product-category-playbooks.md`.
+8. Draft for Naver Blog first.
+9. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
+10. Apply `emoji-emoticon-guide.md` only where tone fits.
+11. Add source notes and checked dates.
+12. Read `visual-asset-policy.md` and create a visual storyboard before generating any image.
+13. Use the strongest user-owned scene photo first when available. Generate a scene-first AI thumbnail only as a research-only fallback; never present it as visit or product proof.
+14. Prepare body images that match the section content using copyright-safe sources:
    - official/source screenshots with checked-date notes,
    - licensed/free-use images with source and license notes,
    - user-provided images,
    - self-created summary, checklist, comparison, or diagram cards.
-14. Add image paths, roles, captions, source/copyright notes, and placement notes directly into each draft.
-15. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
-16. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
-17. Run `naturalness-editor.md` as the final rewrite pass.
-18. Score with `quality-rubric.md`.
-19. Check low-quality risk with `low-quality-prevention.md`.
-20. Check publishing risk with `publish-risk-checklist.md`.
-21. Revise anything under 31/40 or with a failed mandatory gate.
-22. Prepare optional Tistory adaptation.
+15. Add image paths, roles, captions, source/copyright notes, and placement notes directly into each draft.
+16. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
+17. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
+18. Run `naturalness-editor.md` as the final rewrite pass.
+19. Score with `quality-rubric.md`.
+20. Check low-quality risk with `low-quality-prevention.md`.
+21. Check publishing risk with `publish-risk-checklist.md`.
+22. Revise anything under 31/40 or with a failed mandatory gate.
+23. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -84,11 +86,12 @@ Before any GitHub upload or saved automation artifact, follow `secret-handling.m
 2. List AI thumbnail prompts or generated thumbnail paths.
 3. List body image sources, copyright-safety notes, and uncertainties.
 4. List image roles and final captions in editor order.
-5. Suggest style-memory updates.
-6. Record expected experiment in `performance-log.md` if the post is published later.
-7. Keep any style-memory update separate from raw scan notes; update only durable patterns.
-8. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
-9. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
+5. Report each post's experience basis and whether firsthand language was allowed.
+6. Suggest style-memory updates.
+7. Record expected experiment in `performance-log.md` if the post is published later.
+8. Keep any style-memory update separate from raw scan notes; update only durable patterns.
+9. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
+10. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
 
 ## Weekly Improvement
 

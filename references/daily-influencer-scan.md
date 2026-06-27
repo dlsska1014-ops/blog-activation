@@ -66,6 +66,8 @@ Record only abstract observations:
 - Visual-role sequence across the post.
 - Caption quality and the presence of visual proof.
 - One truthful editorial action that makes the post feel checked rather than generated.
+- Experience basis: firsthand photos, supplied experience, sponsored product, or research-only.
+- Negative signals: duplicated titles, exposed AI labels, unsupported exact dates, fake review language, or excessive near-duplicate images.
 
 Do not save:
 
@@ -84,6 +86,8 @@ Convert each observation into this form:
 - Why it may work:
 - Reusable version:
 - Risk to avoid:
+- Experience basis:
+- Negative lesson:
 
 Score each example from 0 to 2 on:
 
@@ -92,6 +96,8 @@ Score each example from 0 to 2 on:
 - Visual-role diversity.
 - Original utility such as a decision table, map, calculator, checklist, or scenario.
 - Trust and source handling.
+
+Do not reward raw image count. Give visual-role credit only when photos prove a facility, product feature, changed condition, or reader step.
 
 Do not learn from an example scoring below 7 out of 10 even if its title is attractive. Visible engagement is a clue, not proof of quality.
 

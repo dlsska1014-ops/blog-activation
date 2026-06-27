@@ -21,6 +21,16 @@ The blog should feel like a careful operator is checking the details for the rea
 - Event and benefit explainers only when the event directly supports travel, family spending, camping, or seasonal living.
 - Affiliate buying guides adjacent to proven clusters; do not require one affiliate post every day during traffic recovery.
 
+## Preferred Daily Mix
+
+When usable user-owned photos or experience notes are available, prefer:
+
+1. One photo-backed place, camping, facility, or product-use post.
+2. One current seasonal problem-solving or event-condition post.
+3. One adjacent buying-guide candidate, published only when the evidence and trust gates pass.
+
+When no firsthand evidence is available, keep the package research-only and do not imitate a visit or hands-on review. A strong single verified post is better than three generic posts.
+
 ## Current Evidence - 2026-06-27
 
 - The 2026-06-15 to 2026-06-21 weekly leader was a specific local outing post with 74 views.
@@ -45,6 +55,7 @@ Readers are busy and want:
 - Balanced rather than hype-heavy.
 - Reader-protective: explain limits, hidden conditions, and who should skip.
 - Monetization-aware but trust-first.
+- Experience-first when authentic evidence exists; research-only when it does not.
 
 ## Avoid
 
@@ -54,4 +65,3 @@ Readers are busy and want:
 - Repeating the same structure across all posts.
 - Treating affiliate products as universally best.
 - Publishing broad unrelated news or finance topics without clear connection to the main pillars.
-

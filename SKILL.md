@@ -20,6 +20,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
+   - Read `references/evidence-and-experience-policy.md` and identify whether reusable user-owned photos or user-provided experience notes exist.
    - Use `references/research-sources.md` to decide where to check current sources.
    - Use `references/daily-topic-gate.md` to reject weak topics before drafting.
    - Use `references/reader-intent-map.md` to match each topic to the correct structure.
@@ -30,6 +31,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
    - During recovery mode, treat the affiliate topic as a candidate or draft rather than a mandatory daily publication, and limit affiliate-first publishing to two posts per week.
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
+   - When authentic user evidence exists, prioritize one photo-backed place, facility, camping, or product-use candidate over a broad generic explainer.
+   - When it does not exist, keep the package `research_only`; never imitate a visit or hands-on review.
 
 3. Learn from high-performing blog examples:
    - Read `references/daily-influencer-scan.md` before observing current examples.
@@ -43,13 +46,14 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Update `references/style-memory.md` only with durable patterns that appear repeatedly or are supported by real performance.
 
 4. Create three daily drafts:
-   - Draft 1: information/news explainer based on current issue or event.
+   - Draft 1: experience-backed place/camping/use post when authentic evidence exists; otherwise an information/news explainer.
    - Draft 2: seasonal or search-demand post matched to the blog theme.
    - Draft 3: Coupang Partners TOP 5 post, selected for seasonal demand, buyer intent, likely order value, and practical usefulness.
    - Use the closest structure from `references/post-templates.md`.
    - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
    - Use `references/writing-patterns-ko.md` for natural Korean first-screen, paragraph rhythm, title, and closing patterns.
    - Use `references/editorial-presence-guide.md` to add truthful editorial presence without inventing personal use or visits.
+   - Use `references/evidence-and-experience-policy.md` to label observed, official, inferred, and recommended content correctly.
    - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
@@ -66,7 +70,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Tistory: adapt into a slightly more structured article with headings, tables, source notes, and SEO-friendly title/description.
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
-   - Use `references/visual-asset-policy.md` before preparing images. Generate a scene-first AI thumbnail that matches the opening, then mix copyright-safe evidence, explanation, and decision-aid visuals inside the body.
+   - Use `references/visual-asset-policy.md` before preparing images. Prefer a strong user-owned hero photo; use a scene-first AI thumbnail only when authentic scene evidence is unavailable, then mix copyright-safe evidence, explanation, and decision-aid visuals.
    - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
    - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
@@ -99,6 +103,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 ## Resources
 
 - Read `references/blog-profile.md` to keep the blog's niche, audience, and editorial stance consistent.
+- Read `references/evidence-and-experience-policy.md` before topic selection and whenever a draft may contain first-person visits, product use, owned photos, or sponsorship.
 - Read `references/voice-guide.md` before writing or revising Korean blog copy.
 - Read `references/research-sources.md` before topic research.
 - Read `references/daily-topic-gate.md` before selecting daily topics.
@@ -166,6 +171,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 
 - Write original, helpful content. Do not scrape, reproduce, or spin other creators' posts.
 - Avoid fake personal experience. If experience is not provided by the user, use neutral wording such as "구매 전 확인할 점" instead of pretending to have used a product.
+- Record `experience_basis` for every package and block firsthand language in `research_only` posts.
 - Make writing feel natural by varying sentence length, adding concrete reader questions, using everyday Korean, and placing light emoticons only where they fit the blog's tone.
 - Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
 - Treat influencer-like quality as specific reader framing, truthful editorial judgment, visual proof, and balanced cautions; do not manufacture personal experience or excitement.
@@ -182,7 +188,7 @@ For each daily run, return:
 
 1. Daily topic board with selected three posts.
 2. Source/research notes with dates checked.
-3. Three complete draft packages.
+3. Three complete draft packages with an experience basis and evidence note.
 4. Visual storyboard with a scene-first thumbnail, image roles, captions, sources, copyright-safety notes, and placement.
 5. Draft-save checklist for Naver Blog and optional Tistory adaptation.
 6. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.

@@ -40,6 +40,17 @@ TEXT_CARD_ROLES = {"comparison_table", "checklist_card", "summary_card", "faq_ca
 EVIDENCE_ROLES = {"official_screenshot", "source_evidence", "diagram"}
 DECISION_ROLES = {"comparison_table", "checklist_card", "diagram"}
 SOURCE_REQUIRED_ROLES = {"licensed_photo", "official_screenshot", "source_evidence", "product_image"}
+EXPERIENCE_BASES = {
+    "research_only",
+    "user_provided_experience",
+    "user_owned_photo_report",
+    "sponsored_product_review",
+}
+FIRSTHAND_CLAIM = re.compile(
+    r"(?:직접\s*(?:다녀(?:왔|와)|방문(?:했|해)|써\s*봤|사용(?:했|해\s*봤)|구매(?:했|해)|먹어\s*봤|체험(?:했|해))"
+    r"|(?:제가|저는|저도|저\s*역시|저희\s*아이|우리\s*아이).{0,40}(?:다녀왔|다니|즐기|써봤|사용해봤|구매했|먹어봤|체험했|좋아했|챙기는\s*편)"
+    r"|작년에.{0,40}(?:샀|구매|다녀|사용))"
+)
 
 
 def validate_post(post: dict, base: Path) -> list[str]:
@@ -59,6 +70,17 @@ def validate_post(post: dict, base: Path) -> list[str]:
     for label, pattern in RAW_MARKERS.items():
         if pattern.search(body):
             errors.append(f"{name}: contains {label}")
+
+    experience_basis = str(post.get("experience_basis", "")).strip()
+    if experience_basis not in EXPERIENCE_BASES:
+        errors.append(f"{name}: valid experience_basis is required")
+    if experience_basis != "research_only" and not str(post.get("experience_note", "")).strip():
+        errors.append(f"{name}: experience_note is required for {experience_basis}")
+    if experience_basis == "research_only" and FIRSTHAND_CLAIM.search(body):
+        errors.append(f"{name}: research_only body contains firsthand experience language")
+    sponsored = post.get("sponsored") is True
+    if experience_basis == "sponsored_product_review" and not sponsored:
+        errors.append(f"{name}: sponsored_product_review must set sponsored to true")
 
     tags = [str(tag).strip() for tag in post.get("tags", []) if str(tag).strip()]
     if len(tags) < 3:
@@ -98,12 +120,14 @@ def validate_post(post: dict, base: Path) -> list[str]:
             errors.append(f"{name}: visual #{index + 1} needs a useful body caption")
         if visual.get("visual_qa_confirmed") is not True:
             errors.append(f"{name}: visual #{index + 1} lacks original-resolution QA confirmation")
-        if "contains_text" not in visual:
-            errors.append(f"{name}: visual #{index + 1} must declare contains_text")
+        if not isinstance(visual.get("contains_text"), bool):
+            errors.append(f"{name}: visual #{index + 1} must declare contains_text as true or false")
         if role in SOURCE_REQUIRED_ROLES:
             for field in ("source_url", "checked_date", "reuse_basis"):
                 if not str(visual.get(field, "")).strip():
                     errors.append(f"{name}: visual #{index + 1} ({role}) needs {field}")
+        if role == "original_photo" and not str(visual.get("ownership_basis", "")).strip():
+            errors.append(f"{name}: visual #{index + 1} original_photo needs ownership_basis")
 
     if roles:
         if roles[0] not in SCENE_FIRST_ROLES:
@@ -120,6 +144,10 @@ def validate_post(post: dict, base: Path) -> list[str]:
                 errors.append(f"{name}: long posts require an evidence or explanation visual")
             if not any(role in DECISION_ROLES for role in roles):
                 errors.append(f"{name}: long posts require a comparison, checklist, or decision diagram")
+        if experience_basis in {"user_owned_photo_report", "sponsored_product_review"} and roles[0] != "original_photo":
+            errors.append(f"{name}: evidence-backed package must lead with an original_photo")
+        if experience_basis == "research_only" and "original_photo" in roles:
+            errors.append(f"{name}: research_only package cannot claim original visit/use photos")
 
     text_bearing_count = int(post.get("text_bearing_image_count", 0))
     declared_text_bearing = sum(
@@ -162,10 +190,11 @@ def validate_post(post: dict, base: Path) -> list[str]:
         except Exception as exc:
             errors.append(f"{name}: invalid image {path}: {exc}")
 
-    if post.get("affiliate"):
+    if post.get("affiliate") or sponsored:
         disclosure = str(post.get("disclosure_text", "")).strip()
         if not disclosure or disclosure not in body[:600]:
-            errors.append(f"{name}: affiliate disclosure missing near the top")
+            errors.append(f"{name}: affiliate or sponsorship disclosure missing near the top")
+    if post.get("affiliate"):
         if not post.get("verified_links"):
             errors.append(f"{name}: affiliate links are not marked verified")
     return errors

@@ -8,10 +8,12 @@ Use this before public publishing and before final draft-save for sensitive post
 - Event dates, eligibility, exclusions, and benefit limits are current.
 - Affiliate disclosure is present when Coupang Partners links or recommendations are included.
 - No fake personal experience is claimed.
+- The manifest experience basis matches every visit, purchase, use, and family-experience statement.
 - No sales rank, review count, discount, stock, or price claim is made without a current source.
 - No copied paragraphs, copied image layouts, or unique creator phrasing from other blogs.
 - No private login/account information appears in the post or notes.
 - Images are original, user-provided, licensed, generated, or properly sourced.
+- Original photos have an ownership basis; AI scenes are labeled as context and are not used as real-world proof.
 - Planned images are visibly present in the editor and their count matches the package manifest.
 - The first visual is scene-first and the editor order matches the manifest roles.
 - Long posts use at least four visuals, three distinct roles, and no more than two text cards.
@@ -33,6 +35,7 @@ For medical, health, finance, investment, legal, childcare, safety, or public be
 ## Advertising And Affiliate Checks
 
 - Put affiliate disclosure near the top, not hidden at the bottom.
+- Put product-provision or sponsorship disclosure near the top even when there is no affiliate link.
 - Do not imply official endorsement.
 - Do not use fake urgency.
 - Do not claim "best-selling" unless verified.
@@ -45,6 +48,8 @@ Do not publish or draft-save until fixed if:
 - A fact cannot be verified.
 - A source contradicts the draft.
 - A product recommendation depends on unsupported claims.
+- A `research_only` package contains firsthand language.
+- A sponsored product package lacks disclosure or an evidence note.
 - The post is mostly rewritten from another creator.
 - The post contains credentials, cookies, or private account data.
 - The editor image count is lower than planned or any upload is still processing.

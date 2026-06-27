@@ -23,6 +23,7 @@ First person is allowed only for work actually performed during the run:
 - "여러 안내를 비교해보면 공통으로 남는 조건은"
 
 Do not claim purchases, visits, tests, conversations, or personal results that the user did not provide.
+Read `evidence-and-experience-policy.md` and state the package's experience basis before using any first-person experience.
 
 ## First-Screen Pattern
 
@@ -34,6 +35,8 @@ Within the opening 5 to 8 mobile lines:
 4. Add one limit or exception.
 
 Place a scene-first thumbnail immediately after this opening. Do not use a generic text card as the first visual when the topic has a recognizable place, object, room, product category, or action.
+
+For an experience-backed post, replace the generated scene with the strongest user-owned evidence photo and name the observation date or changed condition near the first screen.
 
 ## Section Construction
 

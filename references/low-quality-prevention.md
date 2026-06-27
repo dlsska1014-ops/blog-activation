@@ -11,6 +11,7 @@ Publish fewer stronger posts rather than many similar posts. Every post should a
 - Reader-specific decision criteria.
 - A table, checklist, calculation, or FAQ that reduces confusion.
 - A clear experience-based note from the user if actually provided.
+- Original user-owned visual evidence when a visit or product-use claim is made.
 
 ## Avoid Thin Content
 
@@ -24,6 +25,9 @@ Avoid:
 - Similar posts targeting tiny keyword variations.
 - Images or paragraphs copied from other blogs.
 - Generic AI-like introductions.
+- Research-only posts written as firsthand reviews.
+- AI scenes presented as real places, products, or visits.
+- Broad seasonal summaries that repeat the same forecast dates without a distinct reader decision.
 
 ## Naver-Friendly Quality Habits
 
@@ -50,6 +54,7 @@ Before creating three posts in one day:
 2. Confirm at least one post is not affiliate-driven.
 3. Confirm each post has a unique reader intent.
 4. Confirm no post is a shallow variant of yesterday's content.
+5. Confirm every post has a declared experience basis and evidence level.
 
 ## Low-Quality Risk Score
 
@@ -80,4 +85,3 @@ If performance drops:
 - Improve or consolidate weak posts.
 - Track changes in `performance-log.md`.
 - Focus future posts on helpful, specific, verifiable content.
-

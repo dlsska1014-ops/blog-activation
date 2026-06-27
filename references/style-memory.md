@@ -40,3 +40,12 @@ Add dated notes in this format:
 - Layout pattern: alternate short verdicts, concrete scenarios, evidence, and cautions instead of giving every section the same rhythm.
 - Image/table pattern: deterministic cards are useful for one comparison or checklist, but a full set of similar cards feels templated. Start with a believable scene, include evidence or an explanatory visual, and limit text cards to two.
 - Reusable lesson: influencer-like trust comes from specific observation, useful visual proof, honest limits, and captions. It does not require fake first-person experience or decorative excitement.
+
+### 2026-06-27 Evidence-First Update
+
+- Topic area: place visits, camping use, family facilities, seasonal problems, and adjacent buying guides.
+- Observed title pattern: a specific place or product plus one current condition and one reader task is stronger than a broad seasonal "total summary" title.
+- Opening pattern: identify the exact reader, state one useful verdict or changed condition, then show the quick operating or decision facts.
+- Layout pattern: follow the real reader journey or decision order; put one evidence-backed editorial verdict before a long table or explanation.
+- Image/table pattern: owned scene and detail photos are the strongest Naver evidence. Use AI scenes only as research-only context, and use tables where photos cannot compare conditions clearly.
+- Reusable lesson: declare the experience basis before drafting. Authentic evidence can support firsthand language; otherwise keep the post research-only and win through current sources, original judgment, and decision support.
