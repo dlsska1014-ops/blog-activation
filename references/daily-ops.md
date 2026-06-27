@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.2 seconds
-Output:
 # Daily Operations
 
 Use this runbook for daily blog operation.
