@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
 #!/usr/bin/env python3
 """Create a dated blog draft workspace for the blog-activation skill."""
 
@@ -108,10 +111,14 @@ POST_TEMPLATE = """# {label}
 
 - [ ] Facts checked
 - [ ] Source/date notes included
-- [ ] Images or image prompts prepared
+- [ ] Three images prepared and visually checked
+- [ ] Editor image count matches the plan
+- [ ] Plain-text body has no Markdown or image placeholders
+- [ ] Tags prepared
 - [ ] Naver spacing reviewed
 - [ ] Tistory adaptation prepared if needed
-- [ ] Publish disabled; draft-save only
+- [ ] Run mode recorded: draft-only or auto-publish
+- [ ] Final state and URL/draft receipt verified
 """
 
 
@@ -205,8 +212,13 @@ def main() -> None:
         encoding="utf-8",
     )
 
+    (out_dir / "publish-manifest.json").write_text(
+        '{\n  "posts": []\n}\n', encoding="utf-8"
+    )
+
     print(out_dir)
 
 
 if __name__ == "__main__":
     main()
+
