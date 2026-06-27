@@ -65,6 +65,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/visual-asset-policy.md` before preparing images. Generate AI thumbnails that match the article's topic and reader emotion, and use copyright-safe sourced, official, user-provided, or self-created visuals inside the body.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
+   - Use `references/visual-text-integrity.md` for every Korean text-bearing image. Keep Korean copy in UTF-8 files, reject repeated question marks, and visually inspect original-resolution pixels.
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
@@ -72,6 +73,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
    - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
    - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
+   - Use `references/published-post-audit.md` to inspect public text, first/middle/last images, and recent-list duplication before reporting success.
    - Record results with `scripts/record_publication_receipt.py` and refuse an accidental second verified action for the same platform and content fingerprint.
 
 6. Improve the system:
@@ -116,11 +118,13 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/product-category-playbooks.md` before drafting recurring product category posts.
 - Read `references/visual-asset-policy.md` before generating thumbnails, collecting body images, using official screenshots, or inserting product/event visuals.
 - Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
+- Read `references/visual-text-integrity.md` before rendering or uploading any Korean text-bearing image.
 - Read `references/visual-prompt-library.md` when generating or planning thumbnail, summary card, checklist, FAQ, or comparison visuals.
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/live-publish-runbook.md` for browser transfer, image verification, publishing, receipts, duplicate prevention, and recovery.
 - Read `references/tistory-publish-runbook.md` for Tistory adaptation, metadata, editor checks, and result verification.
 - Read `references/publication-ledger.md` before retrying timed-out saves or publications.
+- Read `references/published-post-audit.md` after every public publish and when reviewing existing posts for visual or formatting defects.
 - Read `references/post-templates.md` to select the correct article structure.
 - Read `references/title-ab-testing.md` before selecting final post titles.
 - Read `references/quality-rubric.md` before final delivery.
@@ -146,6 +150,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 - Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
+- Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
 ## Editorial Rules
 
