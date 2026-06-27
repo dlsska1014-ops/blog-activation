@@ -212,6 +212,17 @@ def main() -> None:
     (out_dir / "publish-manifest.json").write_text(
         '{\n  "posts": []\n}\n', encoding="utf-8"
     )
+    (out_dir / "publication-receipts.jsonl").touch()
+    (out_dir / "run-contract.json").write_text(
+        '{\n'
+        '  "run_date": "' + args.date + '",\n'
+        '  "platforms": ["naver"],\n'
+        '  "mode": "draft-only",\n'
+        '  "expected_post_count": 3,\n'
+        '  "expected_image_count_per_post": 3\n'
+        '}\n',
+        encoding="utf-8",
+    )
 
     print(out_dir)
 
