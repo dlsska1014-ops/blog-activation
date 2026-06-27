@@ -32,6 +32,13 @@ Optional:
 - exact_title_exposure
 - main_keyword_exposure
 - rewrite_action
+- publication_status
+- public_url
+- image_count
+- content_fingerprint
+- checked_at_24h
+- checked_at_72h
+- checked_at_7d
 
 ## Usage
 
@@ -45,3 +52,5 @@ Optional:
 - Look for repeated patterns across 3 or more posts.
 - Separate search demand from purchase intent.
 - Track affiliate ratio so the blog does not become product-only.
+- Compare posts at similar ages; do not compare a 24-hour post directly with a 30-day post without labeling the window.
+
