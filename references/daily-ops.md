@@ -1,3 +1,6 @@
+Exit code: 0
+Wall time: 0.2 seconds
+Output:
 # Daily Operations
 
 Use this runbook for daily blog operation.
@@ -32,13 +35,21 @@ Use this runbook for daily blog operation.
 7. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
 8. Apply `emoji-emoticon-guide.md` only where tone fits.
 9. Add source notes and checked dates.
-10. Add image and thumbnail notes from `image-thumbnail-guide.md` and `visual-prompt-library.md`.
-11. Run `naturalness-editor.md` as the final rewrite pass.
-12. Score with `quality-rubric.md`.
-13. Check low-quality risk with `low-quality-prevention.md`.
-14. Check publishing risk with `publish-risk-checklist.md`.
-15. Revise anything under 22/30 or with elevated low-quality risk.
-16. Prepare optional Tistory adaptation.
+10. Read `visual-asset-policy.md`.
+11. Prepare a custom AI thumbnail concept or generated thumbnail for each post based on the final draft topic and opening.
+12. Prepare body images that match the section content using copyright-safe sources:
+   - official/source screenshots with checked-date notes,
+   - licensed/free-use images with source and license notes,
+   - user-provided images,
+   - self-created summary, checklist, comparison, or diagram cards.
+13. Add image paths, source/copyright notes, and placement notes directly into each draft.
+14. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
+15. Run `naturalness-editor.md` as the final rewrite pass.
+16. Score with `quality-rubric.md`.
+17. Check low-quality risk with `low-quality-prevention.md`.
+18. Check publishing risk with `publish-risk-checklist.md`.
+19. Revise anything under 22/30 or with elevated low-quality risk.
+20. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -46,24 +57,27 @@ Default to draft-only.
 
 When browser automation is used:
 
-1. Follow `naver-draft-runbook.md`.
-2. Open the target platform.
-3. Create a new post.
-4. Insert title, body, tags, and image placeholders.
-5. Save as draft.
-6. Stop before publishing.
+1. Follow `live-publish-runbook.md` and the platform runbook.
+2. Record the current run contract, including the latest explicit draft/publish instruction.
+3. Validate the prepared package with `validate_publish_package.py`.
+4. Open a new post and insert clean plain text, tags, generated thumbnail, and copyright-safe body images.
+5. Verify the editor image count and scan for raw Markdown or placeholders.
+6. Save or publish according to the approved mode.
+7. Verify the resulting state and record a platform-specific receipt.
 
-Ask for confirmation before any public publish action.
+Do not report success from a click alone. Report only verified results and label partial or unknown outcomes honestly.
 
 Before any GitHub upload or saved automation artifact, follow `secret-handling.md`.
 
 ## End-Of-Run
 
 1. Summarize the three draft packages.
-2. List source checks and uncertainties.
-3. Suggest style-memory updates.
-4. Record expected experiment in `performance-log.md` if the post is published later.
-5. Keep any style-memory update separate from raw scan notes; update only durable patterns.
+2. List AI thumbnail prompts or generated thumbnail paths.
+3. List body image sources, copyright-safety notes, and uncertainties.
+4. Suggest style-memory updates.
+5. Record expected experiment in `performance-log.md` if the post is published later.
+6. Keep any style-memory update separate from raw scan notes; update only durable patterns.
+7. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
 
 ## Weekly Improvement
 
@@ -87,3 +101,4 @@ When the user provides CSV performance data, use `operations-data-schema.md` and
 When testing a new title, layout, thumbnail, or affiliate approach, record it in `experiment-log.md`.
 
 When a post performs unusually well or poorly, review it with `post-mortem-review.md`.
+
