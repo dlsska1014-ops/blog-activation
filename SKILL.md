@@ -25,8 +25,10 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/reader-intent-map.md` to match each topic to the correct structure.
    - Use `references/content-calendar.md` for seasonal planning and `references/keyword-clusters.md` to assign each topic a cluster role.
    - Use `references/duplicate-intent-check.md` to reject posts that overlap recent reader intent.
+   - Read `references/traffic-recovery-mode.md` when recent traffic falls or public defects exist. Continue planning three candidates, but publish at most one verified Naver post per day while recovery mode is active.
    - Find current Korean search/trend/news topics relevant to consumer decisions, seasonal needs, public benefits, electronics, household goods, finance-lite explainers, local events, and practical how-to information.
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
+   - During recovery mode, treat the affiliate topic as a candidate or draft rather than a mandatory daily publication, and limit affiliate-first publishing to two posts per week.
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
 
 3. Learn from high-performing blog examples:
@@ -88,6 +90,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/weekly-report-template.md` after seven daily runs or whenever the user asks for a performance review.
    - Update style memory only when a lesson is reusable and supported by repeated observation or real performance.
    - When metrics are available, compare performance at consistent 24-hour, 72-hour, and 7-day windows before changing strategy.
+   - Use the blog's own winning posts and inflow queries to update `blog-profile.md`, `style-memory.md`, and future topic scores.
 
 ## Resources
 
@@ -136,6 +139,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
 - Read `references/performance-input.md` when converting real performance data into next actions.
 - Read `references/search-exposure-check.md` when reviewing published post exposure, search inflow, or indexing concerns.
+- Read `references/traffic-recovery-mode.md` when the latest 7-day average declines, new posts receive weak inflow, or public quality defects are found.
 - Read `references/rewrite-rules.md` before rewriting existing posts.
 - Read `references/experiment-log.md` when planning or evaluating blog optimization tests.
 - Read `references/post-mortem-review.md` when reviewing unusually strong or weak posts.
@@ -147,6 +151,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/score_topic_candidates.py` when the user provides a CSV of topic candidates and scores.
 - Use `scripts/score_revenue_topics.py` when the user provides a CSV of monetization candidates and wants revenue-priority scoring.
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
+- Use `scripts/analyze_traffic_windows.py` to compare consecutive complete traffic windows and trigger recovery mode consistently.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 - Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
