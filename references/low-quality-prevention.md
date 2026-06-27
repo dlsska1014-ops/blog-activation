@@ -42,6 +42,8 @@ Avoid:
 
 Daily posting is acceptable only if each post has distinct value.
 
+Creating three drafts does not require publishing three posts. If traffic is declining or public defects exist, follow `traffic-recovery-mode.md` and publish at most one verified Naver post per day.
+
 Before creating three posts in one day:
 
 1. Confirm the three topics are meaningfully different.
@@ -78,3 +80,4 @@ If performance drops:
 - Improve or consolidate weak posts.
 - Track changes in `performance-log.md`.
 - Focus future posts on helpful, specific, verifiable content.
+
