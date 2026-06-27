@@ -9,6 +9,7 @@ Answer these for every topic candidate:
 1. Why does this post need to exist today?
 2. What specific reader question does it answer?
 3. What original value will it add beyond a summary or product list?
+4. What evidence from this blog's search inflow, winning cluster, or real experience supports choosing it?
 
 Reject the topic if any answer is vague.
 
@@ -33,6 +34,7 @@ Before drafting three posts:
 - The Coupang Partners post must have clear buyer intent.
 - At least one post should strengthen a keyword cluster.
 - No post should exist only because a keyword looks popular.
+- During traffic recovery, all three candidates must fit the proven or adjacent clusters and only the strongest verified post is published that day.
 
 ## Output
 
@@ -43,3 +45,5 @@ For each selected topic, record:
 - Original value:
 - Cluster role:
 - Decision:
+- Performance evidence:
+
