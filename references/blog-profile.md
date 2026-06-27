@@ -9,17 +9,24 @@ Use this file to keep the blog strategy consistent across daily runs. Update it 
 
 ## Core Positioning
 
-Operate the blog as a practical Korean consumer-information blog that helps readers make timely decisions about benefits, events, shopping, electronics, seasonal products, and useful daily-life information.
+Operate the blog as a practical family-outing, camping, and seasonal-life blog. Help Korean families make concrete decisions about places, facilities, camping gear, seasonal household problems, and adjacent purchases.
 
 The blog should feel like a careful operator is checking the details for the reader, not like a generic news rewrite.
 
 ## Main Content Pillars
 
-- Event and benefit explainers: discounts, payback events, public benefits, local or brand campaigns.
-- Shopping decision guides: best-value lists, budget scenarios, product comparison, seasonal buying guides.
-- Timely news explainers: issues that affect consumers, households, electronics, platforms, or money-saving behavior.
-- Seasonal trend posts: weather, holidays, school seasons, moving season, travel season, gifting season, and year-end needs.
-- Coupang Partners TOP 5: one daily recommendation post focused on practical buyer intent.
+- Family outings and local places: parking, facilities, water play, stores, routes, child suitability, and current operating conditions.
+- Camping and outdoor use: campsites, tents, cooling, storage, setup, maintenance, and model-specific questions.
+- Seasonal household problem solving: rainy-season moisture, laundry, cooling, food safety, and travel preparation when tied to family life.
+- Event and benefit explainers only when the event directly supports travel, family spending, camping, or seasonal living.
+- Affiliate buying guides adjacent to proven clusters; do not require one affiliate post every day during traffic recovery.
+
+## Current Evidence - 2026-06-27
+
+- The 2026-06-15 to 2026-06-21 weekly leader was a specific local outing post with 74 views.
+- Tent and campsite experience posts materially outperformed broad generic information posts.
+- Search inflow repeatedly included place/facility, product-model/review, event-problem, and technical product criteria.
+- Broad category switching across finance, news, household, electronics, alcohol, and shopping weakens a clear reader expectation.
 
 ## Reader Assumptions
 
@@ -46,3 +53,5 @@ Readers are busy and want:
 - Sensational titles that the body cannot support.
 - Repeating the same structure across all posts.
 - Treating affiliate products as universally best.
+- Publishing broad unrelated news or finance topics without clear connection to the main pillars.
+
