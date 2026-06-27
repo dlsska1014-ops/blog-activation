@@ -12,6 +12,7 @@ Record before touching an editor:
 - Expected post count.
 - Expected image count per post.
 - Affiliate status and disclosure requirement.
+- Dated working-folder ledger path.
 
 Do not store login data, private browser state, or authentication material.
 
@@ -29,6 +30,7 @@ For every post, require all of the following before editor transfer:
 8. Affiliate posts contain the required disclosure near the top and use only verified links.
 
 Run `scripts/validate_publish_package.py` when a manifest is available. A failed gate blocks draft-save and publishing until fixed.
+Check `publication-receipts.jsonl` before retrying any post whose final action timed out.
 
 ## Editor Transfer
 
@@ -48,6 +50,7 @@ Never publish when an upload is still processing, the editor state is ambiguous,
 - In `auto-publish`, use the visible final publish control only after the preflight and editor checks pass.
 - After publishing, verify the resulting public URL, displayed title, body ending, and image count.
 - Record one receipt per platform: title, status, URL or draft identifier, image count, checked time, and any exception.
+- Use `scripts/record_publication_receipt.py` so a verified duplicate is blocked by content fingerprint.
 
 Use these status values:
 
