@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.2 seconds
-Output:
 # Live Publish Runbook
 
 Use this only when the user has explicitly requested draft-save or public publishing. Treat the latest explicit instruction in the current conversation as the run mode; do not repeatedly ask for confirmation for every post in the same approved batch.
