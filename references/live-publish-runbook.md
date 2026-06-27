@@ -26,6 +26,7 @@ For every post, require all of the following before editor transfer:
 4. At least three usable images exist unless the user explicitly requests text-only output.
 5. Image 1 is the topic thumbnail; images 2 and 3 support specific body sections.
 6. Each image opens successfully, has nonzero dimensions, and is visually checked for text errors, clipping, and topic mismatch.
+   - For Korean cards, verify the actual pixels contain readable Korean rather than `??`, boxes, or missing glyphs.
 7. Time-sensitive facts and non-self-created image sources include checked dates.
 8. Affiliate posts contain the required disclosure near the top and use only verified links.
 
@@ -49,6 +50,8 @@ Never publish when an upload is still processing, the editor state is ambiguous,
 - In `draft-only`, save the draft and verify it appears in the draft list or editor state.
 - In `auto-publish`, use the visible final publish control only after the preflight and editor checks pass.
 - After publishing, verify the resulting public URL, displayed title, body ending, and image count.
+- Follow `published-post-audit.md`: inspect the first, middle, and last public image and scan the public body for raw Markdown and internal notes.
+- Confirm the recent-post list contains the intended title once and that the URL resolves to that title.
 - Record one receipt per platform: title, status, URL or draft identifier, image count, checked time, and any exception.
 - Use `scripts/record_publication_receipt.py` so a verified duplicate is blocked by content fingerprint.
 
