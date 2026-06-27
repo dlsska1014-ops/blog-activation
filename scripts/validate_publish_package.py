@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -22,6 +23,10 @@ RAW_MARKERS = {
 def validate_post(post: dict, base: Path) -> list[str]:
     errors: list[str] = []
     name = post.get("title") or "untitled"
+    if not str(post.get("title", "")).strip():
+        errors.append("untitled: title is required")
+    elif len(str(post["title"]).strip()) > 60:
+        errors.append(f"{name}: title is too long ({len(str(post['title']).strip())} characters)")
     body_path = base / str(post.get("body_path", ""))
     if not body_path.is_file():
         return [f"{name}: body file not found: {body_path}"]
@@ -36,11 +41,16 @@ def validate_post(post: dict, base: Path) -> list[str]:
     tags = [str(tag).strip() for tag in post.get("tags", []) if str(tag).strip()]
     if len(tags) < 3:
         errors.append(f"{name}: provide at least 3 tags")
+    if len(tags) > 15:
+        errors.append(f"{name}: too many tags ({len(tags)})")
+    if len({tag.casefold() for tag in tags}) != len(tags):
+        errors.append(f"{name}: duplicate tags found")
 
     images = post.get("image_paths", [])
     expected = int(post.get("expected_image_count", 3))
     if len(images) < expected:
         errors.append(f"{name}: expected {expected} images, manifest has {len(images)}")
+    image_hashes: set[str] = set()
     for raw in images:
         path = base / str(raw)
         if not path.is_file():
@@ -53,6 +63,13 @@ def validate_post(post: dict, base: Path) -> list[str]:
                 width, height = image.size
             if width < 600 or height < 338:
                 errors.append(f"{name}: image is too small: {path} ({width}x{height})")
+            ratio = width / height
+            if ratio < 0.75 or ratio > 2.2:
+                errors.append(f"{name}: unusual image aspect ratio: {path} ({width}x{height})")
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            if digest in image_hashes:
+                errors.append(f"{name}: duplicate image content found: {path}")
+            image_hashes.add(digest)
         except Exception as exc:
             errors.append(f"{name}: invalid image {path}: {exc}")
 
@@ -71,9 +88,12 @@ def main() -> int:
     args = parser.parse_args()
 
     manifest_path = Path(args.manifest).resolve()
-    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    data = json.loads(manifest_path.read_text(encoding="utf-8-sig"))
     posts = data.get("posts", [])
     errors = [] if posts else ["manifest contains no posts"]
+    titles = [str(post.get("title", "")).strip().casefold() for post in posts]
+    if len(set(titles)) != len(titles):
+        errors.append("manifest contains duplicate titles")
     for post in posts:
         errors.extend(validate_post(post, manifest_path.parent))
 
@@ -88,5 +108,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
 
