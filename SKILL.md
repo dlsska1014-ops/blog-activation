@@ -26,7 +26,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/content-calendar.md` for seasonal planning and `references/keyword-clusters.md` to assign each topic a cluster role.
    - Use `references/duplicate-intent-check.md` to reject posts that overlap recent reader intent.
    - Read `references/traffic-recovery-mode.md` when recent traffic falls or public defects exist. Continue planning three candidates, but publish at most one verified Naver post per day while recovery mode is active.
-   - Find current Korean search/trend/news topics relevant to consumer decisions, seasonal needs, public benefits, electronics, household goods, finance-lite explainers, local events, and practical how-to information.
+   - Find current topics inside the active `blog-profile.md` pillars first. Expand into an unrelated category only when the blog's own data or a clearly adjacent reader need supports it.
    - Include one Coupang Partners candidate topic for a TOP 5 recommendation post.
    - During recovery mode, treat the affiliate topic as a candidate or draft rather than a mandatory daily publication, and limit affiliate-first publishing to two posts per week.
    - Prefer topics where readers have urgent questions: eligibility, dates, price/value, steps, comparison, risk, best picks, or "what should I buy/do now?"
