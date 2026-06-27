@@ -12,6 +12,10 @@ Use this every 7 daily runs or whenever the user provides performance data.
 - Weakest post:
 - Strongest keyword cluster:
 - Strongest product cluster:
+- Latest 7-day average:
+- Previous 7-day average:
+- Change percentage:
+- Recovery mode status:
 
 ## Post Table
 
@@ -48,6 +52,8 @@ Use this every 7 daily runs or whenever the user provides performance data.
 3. Template updates:
 4. Style-memory updates:
 5. Affiliate focus:
+6. Specific inflow questions to answer:
+7. Public defects to repair before new publishing:
 
 ## Decision
 
@@ -57,3 +63,4 @@ Update these files if the evidence supports it:
 - `post-templates.md`
 - `affiliate-scoring.md`
 - `blog-profile.md`
+
