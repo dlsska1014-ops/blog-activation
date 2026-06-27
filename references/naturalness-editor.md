@@ -11,6 +11,9 @@ Use this as the final rewrite pass for Korean blog drafts. The goal is natural, 
 5. Break dense paragraphs with intentional spacing.
 6. Remove exaggerated words unless the source supports them.
 7. Check that affiliate disclosure is visible and natural.
+8. Add one truthful editorial action when research was actually performed.
+9. Replace repeated instruction endings with varied judgment, explanation, and next-action sentences.
+10. Check that the opening and first visual describe the same reader situation.
 
 ## Common Generic Phrases To Replace
 
@@ -27,6 +30,8 @@ Prefer:
 - "구매 전에 먼저 볼 부분은 세 가지입니다."
 - "이 글은 예산별로 어떤 선택이 현실적인지 정리한 글입니다."
 - "이런 경우라면 추천하기 어렵습니다."
+- "공식 안내를 다시 확인해보니, 먼저 볼 부분은 지역보다 객실 표시였습니다."
+- "금액만 보면 단순해 보이지만 숙박 일수가 바뀌면 권종도 달라집니다."
 
 ## Sentence Ending Mix
 
@@ -50,3 +55,6 @@ Ask:
 - Are recommendations balanced with cautions?
 - Does the layout feel intentionally edited?
 - Does the post avoid sounding like a generic summary?
+- Is the first-person wording limited to work actually performed?
+- Could any paragraph be moved to an unrelated article without changing it? If so, make it more specific.
+- Do visual captions explain why each image matters?

@@ -1,6 +1,6 @@
 ---
 name: blog-activation
-description: Plan, research, draft, and prepare daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 recommendation posts. Use when the user asks to operate or grow a Korean blog, visit and learn from recent high-performing Naver Blog and Tistory posts, create reader-focused drafts, prepare posts as drafts rather than publishing, or update blog writing/style memory from recent Korean blog trends.
+description: Plan, research, visually storyboard, draft, and publish or draft-save daily Korean blog posts for Naver Blog first and Tistory second, including trend/news explainers, seasonal search topics, event-shopping guides, and Coupang Partners TOP 5 posts. Use when the user asks to operate or grow a Korean blog, learn original reusable patterns from current high-performing Naver Blog and Tistory posts, create natural influencer-quality writing without copying or fake experience, improve thumbnails/body images, automate editor transfer, or update blog style memory.
 ---
 
 # Blog Activation
@@ -38,6 +38,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Extract reusable patterns only: title hooks, opening rhythm, spacing, section order, image placement ideas, table use, comparison blocks, conclusion style, and comment-inducing questions.
    - Do not imitate a specific creator's unique voice, personal claims, photos, or proprietary structure.
    - Use `references/influencer-style-learning.md` to convert observations into abstract, reusable style lessons.
+   - Use `references/editorial-presence-guide.md` to convert those lessons into an original reader scene, editorial priority, visual proof, and practical close.
    - Record observations in `references/influencer-scan-log.md` as abstract pattern notes, not copied text.
    - Update `references/style-memory.md` only with durable patterns that appear repeatedly or are supported by real performance.
 
@@ -48,6 +49,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use the closest structure from `references/post-templates.md`.
    - Use `references/sample-bank.md` for synthetic title, opening, section, and layout variations.
    - Use `references/writing-patterns-ko.md` for natural Korean first-screen, paragraph rhythm, title, and closing patterns.
+   - Use `references/editorial-presence-guide.md` to add truthful editorial presence without inventing personal use or visits.
    - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
@@ -64,7 +66,9 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Tistory: adapt into a slightly more structured article with headings, tables, source notes, and SEO-friendly title/description.
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
-   - Use `references/visual-asset-policy.md` before preparing images. Generate AI thumbnails that match the article's topic and reader emotion, and use copyright-safe sourced, official, user-provided, or self-created visuals inside the body.
+   - Use `references/visual-asset-policy.md` before preparing images. Generate a scene-first AI thumbnail that matches the opening, then mix copyright-safe evidence, explanation, and decision-aid visuals inside the body.
+   - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
+   - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
    - Use `references/image-thumbnail-guide.md` to plan thumbnails, summary cards, comparison images, and checklist images.
    - Use `references/visual-prompt-library.md` when generating thumbnail, summary card, checklist, or comparison image prompts.
    - Use `references/visual-text-integrity.md` for every Korean text-bearing image. Keep Korean copy in UTF-8 files, reject repeated question marks, and visually inspect original-resolution pixels.
@@ -107,6 +111,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/emoji-emoticon-guide.md` before using emoji, emoticons, or visual markers.
 - Read `references/daily-influencer-scan.md` before visiting current Naver Blog or Tistory examples for style learning.
 - Read `references/influencer-style-learning.md` when learning from high-performing blog posts.
+- Read `references/editorial-presence-guide.md` before the final rewrite when the post should feel human-edited or influencer-quality without copying.
 - Read and update `references/influencer-scan-log.md` after each daily observation pass.
 - Read `references/naturalness-editor.md` for the final natural Korean rewrite pass.
 - Read `references/trust-language-filter.md` before finalizing recommendations, affiliate sections, and benefit claims.
@@ -153,7 +158,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/analyze_performance_csv.py` when the user provides a CSV of published post performance data.
 - Use `scripts/analyze_traffic_windows.py` to compare consecutive complete traffic windows and trigger recovery mode consistently.
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
-- Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
+- Use `scripts/validate_publish_package.py` before browser transfer to catch missing images, card-only visual packages, missing captions/source records, raw Markdown, placeholders, weak tags, and affiliate disclosure/link failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
@@ -163,6 +168,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Avoid fake personal experience. If experience is not provided by the user, use neutral wording such as "구매 전 확인할 점" instead of pretending to have used a product.
 - Make writing feel natural by varying sentence length, adding concrete reader questions, using everyday Korean, and placing light emoticons only where they fit the blog's tone.
 - Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
+- Treat influencer-like quality as specific reader framing, truthful editorial judgment, visual proof, and balanced cautions; do not manufacture personal experience or excitement.
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
@@ -177,7 +183,6 @@ For each daily run, return:
 1. Daily topic board with selected three posts.
 2. Source/research notes with dates checked.
 3. Three complete draft packages.
-4. Visual asset plan with thumbnail prompt, body image sources, copyright-safety notes, and placement.
+4. Visual storyboard with a scene-first thumbnail, image roles, captions, sources, copyright-safety notes, and placement.
 5. Draft-save checklist for Naver Blog and optional Tistory adaptation.
 6. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
-

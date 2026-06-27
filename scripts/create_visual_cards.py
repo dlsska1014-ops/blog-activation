@@ -46,6 +46,16 @@ def validate_card(card: dict) -> list[str]:
         errors.append(f"{card.get('filename', 'card')}: repeated question marks or replacement characters found")
     if card.get("language", "ko") == "ko" and not HANGUL.search(joined):
         errors.append(f"{card.get('filename', 'card')}: Korean text expected but no Hangul found")
+    if len(str(card.get("title", ""))) > 42:
+        errors.append(f"{card.get('filename', 'card')}: title is too long for safe rendering")
+    if len(card.get("bullets", [])) > 4:
+        errors.append(f"{card.get('filename', 'card')}: use no more than 4 bullets")
+    if any(len(str(item)) > 44 for item in card.get("bullets", [])):
+        errors.append(f"{card.get('filename', 'card')}: a bullet is too long for safe rendering")
+    if card.get("table"):
+        table = card["table"]
+        if len(table[0]) > 3 or len(table) > 6:
+            errors.append(f"{card.get('filename', 'card')}: table must be at most 3 columns and 5 data rows")
     return errors
 
 
@@ -119,6 +129,8 @@ def save_card(card: dict, out_dir: Path) -> Path:
     image.save(out_path, quality=95)
     metadata = {
         "language": card.get("language", "ko"),
+        "asset_role": card.get("role", "summary_card"),
+        "contains_text": True,
         "rendered_text": card_text(card),
         "font": FONT,
         "font_bold": FONT_BOLD,
@@ -150,4 +162,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

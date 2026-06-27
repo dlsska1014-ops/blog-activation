@@ -62,6 +62,10 @@ Record only abstract observations:
 - Table, bullet, FAQ, checklist, or comparison block usage.
 - CTA or comment question.
 - Trust devices: checked date, source note, watch-out, who should skip.
+- First visual type and whether it matches the opening situation.
+- Visual-role sequence across the post.
+- Caption quality and the presence of visual proof.
+- One truthful editorial action that makes the post feel checked rather than generated.
 
 Do not save:
 
@@ -80,6 +84,16 @@ Convert each observation into this form:
 - Why it may work:
 - Reusable version:
 - Risk to avoid:
+
+Score each example from 0 to 2 on:
+
+- Search-intent fit.
+- First-screen clarity.
+- Visual-role diversity.
+- Original utility such as a decision table, map, calculator, checklist, or scenario.
+- Trust and source handling.
+
+Do not learn from an example scoring below 7 out of 10 even if its title is attractive. Visible engagement is a clue, not proof of quality.
 
 ## Update Rule
 
@@ -101,3 +115,4 @@ Before using a learned pattern in a draft, confirm:
 - The structure is common enough to be reusable.
 - The post adds new reader value with current facts, comparison, checklist, or cautions.
 - The draft would not look like a near-clone if the original creator saw it.
+- The pattern improves a reader decision rather than merely making the post look busy.

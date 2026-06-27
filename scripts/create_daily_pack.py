@@ -59,21 +59,24 @@ POST_TEMPLATE = """# {label}
 ### Table Or Checklist
 
 
-### Image Placement Notes
+### Visual Storyboard
 
-- Image 1:
-- Image 2:
-- Image 3:
+- Image 1 scene-first thumbnail: path / role / placement / caption / QA
+- Image 2 evidence or explanation: path / role / placement / caption / source / reuse basis / QA
+- Image 3 decision aid: path / role / placement / caption / source / reuse basis / QA
+- Image 4 supporting visual: path / role / placement / caption / source / reuse basis / QA
 
 ### Visual Prompt Notes
 
 - Thumbnail prompt:
-- Summary card prompt:
+- Evidence/diagram prompt:
 - Checklist/comparison prompt:
+- Text-card count:
 
 ### Layout And Tone Check
 
 - First-screen pattern:
+- Editorial presence score:
 - Blank line rhythm:
 - Emoji/emoticon count:
 - Naturalness edits:
@@ -100,15 +103,21 @@ POST_TEMPLATE = """# {label}
 - Reader usefulness:
 - Fact reliability:
 - Originality:
+- Human editorial presence:
+- Visual storytelling:
 - Readability/layout:
-- Monetization fit:
-- Total:
+- Monetization/low-quality safety:
+- Total / 40:
 
 ### Draft-Save Checklist
 
 - [ ] Facts checked
 - [ ] Source/date notes included
-- [ ] Three images prepared and visually checked
+- [ ] Long post has at least four visuals and three distinct roles
+- [ ] First image is a scene-first thumbnail or photo, not a text card
+- [ ] No more than two text cards; no consecutive text cards
+- [ ] Every body visual has a useful caption and required source/reuse notes
+- [ ] All images prepared and visually checked
 - [ ] Korean card text verified at original resolution; no question marks, boxes, or clipping
 - [ ] Expected visual text recorded in publish manifest
 - [ ] Editor image count matches the plan
@@ -189,10 +198,12 @@ def main() -> None:
 
 ## Visual Plan
 
-- Thumbnail text:
-- First image:
-- Summary card:
-- Comparison/checklist image:
+- Thumbnail scene and optional short overlay:
+- First visual role:
+- Evidence/explanation visual:
+- Comparison/checklist visual:
+- Supporting visual:
+- Text-card count:
 
 ## Layout And Style Plan
 
@@ -222,7 +233,8 @@ def main() -> None:
         '  "platforms": ["naver"],\n'
         '  "mode": "draft-only",\n'
         '  "expected_post_count": 3,\n'
-        '  "expected_image_count_per_post": 3\n'
+        '  "expected_image_count_per_long_post": 4,\n'
+        '  "required_distinct_visual_roles": 3\n'
         '}\n',
         encoding="utf-8",
     )
@@ -232,4 +244,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

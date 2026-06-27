@@ -15,6 +15,9 @@ Observe:
 - How cautions are phrased.
 - How the post transitions into recommendations.
 - Comment-inducing closing questions.
+- The first visual's role: scene, proof, comparison, or card.
+- Whether visual captions add context rather than repeat headings.
+- Truthful editorial moves such as source checking, prioritization, and balanced judgment.
 
 Do not copy:
 
@@ -33,6 +36,8 @@ Record only abstracted lessons:
 - Why it likely works:
 - Reusable version:
 - Risk to avoid:
+- Visual role worth testing:
+- Trust device worth testing:
 
 Example:
 
@@ -60,3 +65,5 @@ Turn observed style into your own:
 - Use the user's blog positioning from `blog-profile.md`.
 - Keep one consistent editorial voice.
 - Vary layout patterns across posts to avoid sameness.
+- Use `editorial-presence-guide.md` to turn observations into an original reader scene, editorial priority, visual proof, and practical next action.
+- Treat influencer-like quality as presence and usefulness, not excitement, decorative emoji, or first-person claims.

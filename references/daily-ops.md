@@ -2,6 +2,13 @@
 
 Use this runbook for daily blog operation.
 
+## Contents
+
+- Start-of-run research and topic selection
+- Drafting and visual storyboard
+- Draft-save or publication
+- End-of-run and weekly improvement
+
 ## Morning Or Start-Of-Run
 
 1. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
@@ -28,27 +35,29 @@ Use this runbook for daily blog operation.
 1. Choose the closest template from `post-templates.md`.
 2. Use `sample-bank.md` to vary the title, opening, and layout without copying real creators.
 3. Use `writing-patterns-ko.md` for natural Korean title, first screen, and paragraph rhythm.
-4. Generate and score titles with `title-ab-testing.md`.
-5. For Coupang Partners posts, score candidates with `affiliate-scoring.md`, check `affiliate-link-density.md`, and use `product-category-playbooks.md`.
-6. Draft for Naver Blog first.
-7. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
-8. Apply `emoji-emoticon-guide.md` only where tone fits.
-9. Add source notes and checked dates.
-10. Read `visual-asset-policy.md`.
-11. Prepare a custom AI thumbnail concept or generated thumbnail for each post based on the final draft topic and opening.
-12. Prepare body images that match the section content using copyright-safe sources:
+4. Use `editorial-presence-guide.md` to define the reader scene, editorial priority, truthful first-person moves, and practical closing.
+5. Generate and score titles with `title-ab-testing.md`.
+6. For Coupang Partners posts, score candidates with `affiliate-scoring.md`, check `affiliate-link-density.md`, and use `product-category-playbooks.md`.
+7. Draft for Naver Blog first.
+8. Apply `layout-spacing-guide.md` for spacing, section rhythm, and mobile readability.
+9. Apply `emoji-emoticon-guide.md` only where tone fits.
+10. Add source notes and checked dates.
+11. Read `visual-asset-policy.md` and create a visual storyboard before generating any image.
+12. Prepare a scene-first AI thumbnail or owned/licensed photo for each post based on the final opening. Do not substitute a generic text card.
+13. Prepare body images that match the section content using copyright-safe sources:
    - official/source screenshots with checked-date notes,
    - licensed/free-use images with source and license notes,
    - user-provided images,
    - self-created summary, checklist, comparison, or diagram cards.
-13. Add image paths, source/copyright notes, and placement notes directly into each draft.
-14. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
-15. Run `naturalness-editor.md` as the final rewrite pass.
-16. Score with `quality-rubric.md`.
-17. Check low-quality risk with `low-quality-prevention.md`.
-18. Check publishing risk with `publish-risk-checklist.md`.
-19. Revise anything under 22/30 or with elevated low-quality risk.
-20. Prepare optional Tistory adaptation.
+14. Add image paths, roles, captions, source/copyright notes, and placement notes directly into each draft.
+15. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
+16. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
+17. Run `naturalness-editor.md` as the final rewrite pass.
+18. Score with `quality-rubric.md`.
+19. Check low-quality risk with `low-quality-prevention.md`.
+20. Check publishing risk with `publish-risk-checklist.md`.
+21. Revise anything under 31/40 or with a failed mandatory gate.
+22. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -59,7 +68,7 @@ When browser automation is used:
 1. Follow `live-publish-runbook.md` and the platform runbook.
 2. Record the current run contract, including the latest explicit draft/publish instruction.
 3. Validate the prepared package with `validate_publish_package.py`.
-4. Open a new post and insert clean plain text, tags, generated thumbnail, and copyright-safe body images.
+4. Open a new post and insert clean plain text, tags, the scene-first thumbnail, and copyright-safe body images in manifest order.
 5. Verify the editor image count and scan for raw Markdown or placeholders.
 6. Save or publish according to the approved mode.
 7. Verify the resulting state and record a platform-specific receipt.
@@ -74,11 +83,12 @@ Before any GitHub upload or saved automation artifact, follow `secret-handling.m
 1. Summarize the three draft packages.
 2. List AI thumbnail prompts or generated thumbnail paths.
 3. List body image sources, copyright-safety notes, and uncertainties.
-4. Suggest style-memory updates.
-5. Record expected experiment in `performance-log.md` if the post is published later.
-6. Keep any style-memory update separate from raw scan notes; update only durable patterns.
-7. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
-8. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
+4. List image roles and final captions in editor order.
+5. Suggest style-memory updates.
+6. Record expected experiment in `performance-log.md` if the post is published later.
+7. Keep any style-memory update separate from raw scan notes; update only durable patterns.
+8. Record each platform as verified, partial, blocked, or unknown with URL/draft state and image count.
+9. Schedule evidence collection at roughly 24 hours, 72 hours, and 7 days when metrics are available; never invent unavailable values.
 
 ## Weekly Improvement
 
@@ -104,4 +114,3 @@ When the user provides CSV performance data, use `operations-data-schema.md` and
 When testing a new title, layout, thumbnail, or affiliate approach, record it in `experiment-log.md`.
 
 When a post performs unusually well or poorly, review it with `post-mortem-review.md`.
-

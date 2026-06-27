@@ -34,6 +34,18 @@ Example:
 - Say who should skip a product or event.
 - Explain the order of decision-making.
 - Use "정리하면" only near actual summary points.
+- Use truthful process language when the work was performed: "공식 안내를 다시 확인해보니", "조건을 표로 나눠보면".
+- Add two concrete reader scenarios to long posts.
+- Put a mini-verdict before a long explanation when the reader needs a decision.
+- Let headings carry advice or contrast instead of using only category labels.
+
+## Anti-Uniformity
+
+- Do not give every section the same number of paragraphs.
+- Do not end three consecutive paragraphs with the same verb or tone.
+- Do not repeat "확인하세요" as the default instruction.
+- Mix one-line verdicts, medium explanations, a compact list, and a useful visual.
+- Keep cautions next to the relevant recommendation rather than collecting all cautions at the end.
 
 ## Avoid
 

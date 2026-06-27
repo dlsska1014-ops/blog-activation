@@ -13,6 +13,9 @@ Use this before public publishing and before final draft-save for sensitive post
 - No private login/account information appears in the post or notes.
 - Images are original, user-provided, licensed, generated, or properly sourced.
 - Planned images are visibly present in the editor and their count matches the package manifest.
+- The first visual is scene-first and the editor order matches the manifest roles.
+- Long posts use at least four visuals, three distinct roles, and no more than two text cards.
+- Body visuals have useful captions; sourced visuals have source URL, checked date, and reuse basis.
 - The editor body contains no Markdown syntax, image placeholders, prompt notes, or internal source notes.
 - Every text-bearing image was opened at original resolution and contains readable Korean with no replacement glyphs.
 - Tags are present and do not include irrelevant keyword stuffing.
@@ -45,6 +48,7 @@ Do not publish or draft-save until fixed if:
 - The post is mostly rewritten from another creator.
 - The post contains credentials, cookies, or private account data.
 - The editor image count is lower than planned or any upload is still processing.
+- The visual package is card-only, has consecutive text cards, or lacks a scene-first thumbnail.
+- A sourced visual lacks a caption or reuse record.
 - The final title, body, tags, or public/draft state cannot be verified.
 - The public page has not been visually checked after upload or contains corrupted image text.
-

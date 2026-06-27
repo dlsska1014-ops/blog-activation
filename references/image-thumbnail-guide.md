@@ -6,12 +6,13 @@ Use this guide to plan blog visuals after reading `visual-asset-policy.md`. Thum
 
 For most posts:
 
-1. AI-made thumbnail or first image after the opening.
-2. Summary image or table after the quick answer.
-3. Copyright-safe body image, checklist, comparison, or step image in the middle.
-4. Optional closing image only if it adds value.
+1. Scene-first AI thumbnail or owned/licensed photo after the opening.
+2. Evidence image, official crop, or explanatory diagram after the quick answer.
+3. Comparison, checklist, or step image at the decision point.
+4. Optional closing image only if it adds a new function.
 
 Avoid placing too many similar images in a row.
+Do not use three deterministic cards as the complete visual package for a long post.
 
 ## Thumbnail Formula
 
@@ -29,10 +30,25 @@ Examples:
 - "삼성 행사 구매 전 확인"
 
 Keep thumbnail text to 8 to 16 Korean characters when possible.
+Prefer 4 to 10 Korean characters when a scene already carries the context.
 
 If exact Korean text must appear in the thumbnail, prefer generating a text-free AI background and adding Korean text with a deterministic card/text overlay workflow. Do not deliver AI-rendered Korean text until it has been visually checked.
 
 Never pass Korean card text inline through PowerShell or another shell command. Save the copy in a UTF-8 JSON specification, render with `create_visual_cards.py`, validate its sidecar, and then inspect the image pixels at original resolution.
+
+## Scene-First Thumbnail
+
+Build the thumbnail around:
+
+- One recognizable reader situation.
+- One focal subject with clean surrounding space.
+- Natural Korean context where relevant: family travel planning, a humid laundry room, a campsite setup, or a shopping comparison moment.
+- Bright, believable light and realistic object proportions.
+- Central safe space for an optional short overlay.
+
+Avoid flat presentation-card backgrounds, floating icons, fake app screens, random Korean letters, and generic stock-photo poses.
+
+When an AI scene is generated, inspect hands, object geometry, logos, labels, reflections, and background text before adding an overlay.
 
 ## Visual Types
 
@@ -81,4 +97,5 @@ Brand safety: no fake official seal, no misleading discount claim
 - Do not put critical conditions only inside an image.
 - Repeat important dates and conditions in text.
 - If using product screenshots, cite checked date in the draft notes.
-
+- Add a short functional caption below each body image.
+- Keep critical facts in body text even when a card repeats them.

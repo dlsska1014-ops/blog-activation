@@ -21,6 +21,25 @@ RAW_MARKERS = {
     "internal image note": re.compile(r"(?:이미지\s*메모|visual\s*prompt|thumbnail\s*prompt)\s*:", re.I),
 }
 VISUAL_CORRUPTION = re.compile(r"\?{2,}|\ufffd")
+ALLOWED_VISUAL_ROLES = {
+    "ai_scene_thumbnail",
+    "original_photo",
+    "licensed_photo",
+    "official_screenshot",
+    "source_evidence",
+    "diagram",
+    "comparison_table",
+    "checklist_card",
+    "summary_card",
+    "faq_card",
+    "product_image",
+    "category_illustration",
+}
+SCENE_FIRST_ROLES = {"ai_scene_thumbnail", "original_photo", "licensed_photo"}
+TEXT_CARD_ROLES = {"comparison_table", "checklist_card", "summary_card", "faq_card"}
+EVIDENCE_ROLES = {"official_screenshot", "source_evidence", "diagram"}
+DECISION_ROLES = {"comparison_table", "checklist_card", "diagram"}
+SOURCE_REQUIRED_ROLES = {"licensed_photo", "official_screenshot", "source_evidence", "product_image"}
 
 
 def validate_post(post: dict, base: Path) -> list[str]:
@@ -49,13 +68,67 @@ def validate_post(post: dict, base: Path) -> list[str]:
     if len({tag.casefold() for tag in tags}) != len(tags):
         errors.append(f"{name}: duplicate tags found")
 
-    images = post.get("image_paths", [])
+    visuals = post.get("visuals", [])
+    if not isinstance(visuals, list) or not visuals:
+        errors.append(f"{name}: visuals manifest is required; include path, role, caption, and QA fields")
+        visuals = []
+    visual_records = [item for item in visuals if isinstance(item, dict)]
+    images = [str(item.get("path", "")) for item in visual_records]
+    legacy_images = [str(item) for item in post.get("image_paths", [])]
+    if visuals and legacy_images and images != legacy_images:
+        errors.append(f"{name}: visuals paths and image_paths are not in the same editor order")
     expected = int(post.get("expected_image_count", 3))
     if len(images) < expected:
         errors.append(f"{name}: expected {expected} images, manifest has {len(images)}")
+    if len(body) >= 1800 and len(images) < 4:
+        errors.append(f"{name}: long posts require at least 4 visuals ({len(images)} provided)")
     if images and post.get("visual_qa_confirmed") is not True:
         errors.append(f"{name}: visual_qa_confirmed must be true after original-resolution review")
+
+    roles: list[str] = []
+    for index, visual in enumerate(visuals):
+        if not isinstance(visual, dict):
+            errors.append(f"{name}: visual #{index + 1} must be an object")
+            continue
+        role = str(visual.get("role", "")).strip()
+        roles.append(role)
+        if role not in ALLOWED_VISUAL_ROLES:
+            errors.append(f"{name}: visual #{index + 1} has unsupported role: {role or 'missing'}")
+        if index > 0 and not str(visual.get("caption", "")).strip():
+            errors.append(f"{name}: visual #{index + 1} needs a useful body caption")
+        if visual.get("visual_qa_confirmed") is not True:
+            errors.append(f"{name}: visual #{index + 1} lacks original-resolution QA confirmation")
+        if "contains_text" not in visual:
+            errors.append(f"{name}: visual #{index + 1} must declare contains_text")
+        if role in SOURCE_REQUIRED_ROLES:
+            for field in ("source_url", "checked_date", "reuse_basis"):
+                if not str(visual.get(field, "")).strip():
+                    errors.append(f"{name}: visual #{index + 1} ({role}) needs {field}")
+
+    if roles:
+        if roles[0] not in SCENE_FIRST_ROLES:
+            errors.append(f"{name}: first visual must be a scene-first thumbnail or photo, not {roles[0]}")
+        card_count = sum(role in TEXT_CARD_ROLES for role in roles)
+        if card_count > 2:
+            errors.append(f"{name}: use no more than 2 text-card visuals ({card_count} provided)")
+        if any(a in TEXT_CARD_ROLES and b in TEXT_CARD_ROLES for a, b in zip(roles, roles[1:])):
+            errors.append(f"{name}: consecutive text-card visuals are not allowed")
+        if len(body) >= 1800:
+            if len(set(roles)) < 3:
+                errors.append(f"{name}: long posts require at least 3 distinct visual roles")
+            if not any(role in EVIDENCE_ROLES for role in roles):
+                errors.append(f"{name}: long posts require an evidence or explanation visual")
+            if not any(role in DECISION_ROLES for role in roles):
+                errors.append(f"{name}: long posts require a comparison, checklist, or decision diagram")
+
     text_bearing_count = int(post.get("text_bearing_image_count", 0))
+    declared_text_bearing = sum(
+        item.get("contains_text") is True for item in visuals if isinstance(item, dict)
+    )
+    if visuals and declared_text_bearing != text_bearing_count:
+        errors.append(
+            f"{name}: text_bearing_image_count is {text_bearing_count}, visual records declare {declared_text_bearing}"
+        )
     visual_texts = [str(item) for item in post.get("visual_texts", [])]
     if text_bearing_count and not visual_texts:
         errors.append(f"{name}: expected text for text-bearing images is missing")
@@ -63,7 +136,7 @@ def validate_post(post: dict, base: Path) -> list[str]:
         if VISUAL_CORRUPTION.search(visual_text):
             errors.append(f"{name}: corrupted visual source text found")
     image_hashes: set[str] = set()
-    for raw in images:
+    for index, raw in enumerate(images):
         path = base / str(raw)
         if not path.is_file():
             errors.append(f"{name}: image not found: {path}")
@@ -82,6 +155,10 @@ def validate_post(post: dict, base: Path) -> list[str]:
             if digest in image_hashes:
                 errors.append(f"{name}: duplicate image content found: {path}")
             image_hashes.add(digest)
+            if visual_records[index].get("contains_text") is True:
+                sidecar = path.with_suffix(path.suffix + ".visual.json")
+                if not sidecar.is_file():
+                    errors.append(f"{name}: text-bearing visual is missing its sidecar: {sidecar}")
         except Exception as exc:
             errors.append(f"{name}: invalid image {path}: {exc}")
 
@@ -120,4 +197,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
