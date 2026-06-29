@@ -17,6 +17,8 @@ Use this as the final rewrite pass for Korean blog drafts. The goal is natural, 
 11. Remove repeated long paragraphs and repeated generic phrases.
 12. Check whether one formal ending dominates most sentences; revise the paragraph function, not only the suffix.
 13. Remove prompts, TODOs, internal notes, and visible tool-generation disclosures.
+14. Run `editorial-authenticity-gate.md` and revise paragraphs that repeat the same function or could belong to an unrelated article.
+15. Reject fake typos, invented anecdotes, random slang, and mechanical ending swaps. Naturalness must come from specific thinking and truthful evidence.
 
 ## Common Generic Phrases To Replace
 
@@ -65,3 +67,5 @@ Ask:
 - Could any internal work note or generated-text marker appear in the public editor?
 
 Set `naturalness_qa_confirmed: true` only after this pass and the automated package check both succeed.
+
+This check improves reader quality. It must not be used to claim that a post is human-written or to evade an AI detector.

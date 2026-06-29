@@ -48,6 +48,15 @@ Daily posting is acceptable only if each post has distinct value.
 
 Creating three drafts does not require publishing three posts. If traffic is declining or public defects exist, follow `traffic-recovery-mode.md` and publish at most one verified Naver post per day.
 
+For unattended operation:
+
+- Create three candidates, but publicly publish at most one verified Naver post per day.
+- Keep other eligible candidates as drafts rather than forcing volume.
+- Publish no more than two affiliate-first posts in a rolling seven-day window.
+- Keep verified non-affiliate posts greater than affiliate-first posts in that window.
+- Never publish affiliate-first posts on consecutive days.
+- Treat missing performance data as a reason to prefer information content, not as permission to increase volume.
+
 Before creating three posts in one day:
 
 1. Confirm the three topics are meaningfully different.
@@ -69,6 +78,8 @@ Score from 0 to 2 for each risk:
 - No source dates for time-sensitive claims.
 - Multiple posts overlap the same intent.
 - Affiliate link density is too high for the post type.
+- The post exists mainly to satisfy an automation quota.
+- The writing uses fake mistakes, invented memories, or meaningless variation to appear human.
 
 Risk level:
 

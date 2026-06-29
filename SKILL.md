@@ -17,6 +17,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Default to `draft-only` when no publication instruction exists.
    - Honor the latest explicit `draft-only` or `auto-publish` instruction for the current batch; do not repeatedly reconfirm every post in an already approved batch.
    - For browser transfer, record the target account, platform, post count, image count, affiliate status, and mode without storing login/session data.
+   - For unattended or recurring runs, read `references/autonomous-operations.md` and create a persisted run id, state, publication budget, and fail-closed contract before research.
 
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
@@ -56,6 +57,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/editorial-presence-guide.md` to add truthful editorial presence without inventing personal use or visits.
    - Use `references/evidence-and-experience-policy.md` to label observed, official, inferred, and recommended content correctly.
    - Use `references/layout-spacing-guide.md`, `references/emoji-emoticon-guide.md`, and `references/naturalness-editor.md` for final Naver Blog editing.
+   - Use `references/editorial-authenticity-gate.md` for an independent paragraph-function and specificity pass. Improve genuine editorial value; never optimize for AI-detector evasion.
    - Use `references/advanced-quality-gates.md` to record the intent decision, Korean editorial QA, internal-link QA, and original-photo privacy state.
    - Use `references/trust-language-filter.md` to remove overclaims, fake experience, and unsupported certainty.
    - Use `references/fact-freshness-policy.md` when the post depends on current facts.
@@ -85,6 +87,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
+   - For unattended runs, run `scripts/decide_autonomous_run.py` after package validation. Publicly publish at most the selected item and draft-save other eligible items.
    - Treat failures from intent, fact freshness, strong-title evidence, naturalness, internal links, owned-photo privacy, sidecar integrity, GPS, or near-duplicate-image checks as publication blockers.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
    - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
@@ -106,6 +109,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - When metrics are available, compare performance at consistent 24-hour, 72-hour, and 7-day windows before changing strategy.
    - Use the blog's own winning posts and inflow queries to update `blog-profile.md`, `style-memory.md`, and future topic scores.
    - Use `references/content-portfolio-loop.md` to compare equal-age results, change one major experiment variable at a time, consolidate duplicates, and strengthen orphan posts.
+   - Use publication receipts as the only source of truth for autonomous retries. Never infer success from a click, timeout, or missing browser response.
 
 ## Resources
 
@@ -126,6 +130,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/editorial-presence-guide.md` before the final rewrite when the post should feel human-edited or influencer-quality without copying.
 - Read and update `references/influencer-scan-log.md` after each daily observation pass.
 - Read `references/naturalness-editor.md` for the final natural Korean rewrite pass.
+- Read `references/editorial-authenticity-gate.md` before setting editorial QA complete.
+- Read `references/autonomous-operations.md` for recurring, unattended, or auto-publish runs.
 - Read `references/trust-language-filter.md` before finalizing recommendations, affiliate sections, and benefit claims.
 - Read `references/fact-freshness-policy.md` before drafting time-sensitive or source-dependent posts.
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
@@ -176,6 +182,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/scan_sensitive_terms.py` before uploading skill changes to GitHub when any account, automation, affiliate, or browser-login work was discussed.
 - Use `scripts/validate_publish_package.py` before browser transfer to catch stale facts, unsupported strong title claims, duplicate reader questions, invalid canonical decisions, repeated or internal-note text, unsafe owned-photo records, sidecar mismatches, GPS metadata, near-duplicate owned photos, missing links, missing images, card-only packages, raw Markdown, weak tags, and disclosure failures.
 - Use `scripts/record_publication_receipt.py` after every draft-save or publish attempt to record status and block accidental verified duplicates.
+- Use `scripts/decide_autonomous_run.py` to enforce the three-candidate plan, rolling affiliate ratio, one-public-post budget, quality gates, and duplicate receipts.
+- Use `scripts/self_test_autonomous_run.py` after changing autonomous publication, content-mix, or retry rules.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
 ## Editorial Rules
@@ -185,6 +193,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Record `experience_basis` for every package and block firsthand language in `research_only` posts.
 - Record one concrete reader question, a `new_post` or `update_existing` action, a cluster role, and a useful internal-link decision for every package.
 - Make writing feel natural by varying sentence length, adding concrete reader questions, using everyday Korean, and placing light emoticons only where they fit the blog's tone.
+- Aim for truthful, specific editorial quality rather than detection avoidance. Never add fake mistakes, invented memories, random slang, or fabricated use experience to disguise tool assistance.
 - Treat layout, blank lines, image placement, emoji/emoticon use, and title rhythm as part of the writing quality, not afterthoughts.
 - Treat influencer-like quality as specific reader framing, truthful editorial judgment, visual proof, and balanced cautions; do not manufacture personal experience or excitement.
 - Strip location metadata and inspect private details before using original photos; automated checks do not replace full-resolution human review.
@@ -195,6 +204,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Do not store credentials, cookies, tokens, private affiliate dashboard data, or account-specific secrets in GitHub or skill files.
 - Avoid thin, duplicate, keyword-stuffed, or affiliate-heavy posts that do not add original reader value.
 - Keep publication mode as draft-only unless the user explicitly instructs otherwise; then follow that instruction for the approved batch and verify every final result.
+- In autonomous mode, create three candidates but publish at most one verified Naver post per day, no more than two affiliate-first posts per rolling seven days, and never affiliate-first posts on consecutive days.
 
 ## Output Format
 
@@ -207,3 +217,4 @@ For each daily run, return:
 5. Visual storyboard with a scene-first thumbnail, image roles, captions, sources, copyright/privacy notes, and placement.
 6. Draft-save checklist for Naver Blog and optional Tistory adaptation.
 7. Daily influencer scan summary and any suggested `style-memory.md` updates if durable patterns were found.
+8. Autonomous decision report with publish, draft-save, blocked, retry, and receipt status for every candidate.

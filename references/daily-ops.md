@@ -11,27 +11,28 @@ Use this runbook for daily blog operation.
 
 ## Morning Or Start-Of-Run
 
-1. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
-2. Read `evidence-and-experience-policy.md` and check whether the user supplied reusable photos or experience notes for a proven content pillar.
-3. Review `content-calendar.md` for seasonal timing.
-4. Read `daily-influencer-scan.md`.
-5. Visit current Naver Blog examples for the day's target topic families.
-6. Visit current Tistory examples for the day's target topic families.
-7. Record abstract observations in `influencer-scan-log.md`.
-8. Browse current factual sources from `research-sources.md`.
-9. Classify each candidate's facts as `stable`, `current`, or `live` with `fact-freshness-policy.md`; reject stale or weak primary-source support.
-10. Build 6 to 10 topic candidates and label each candidate's evidence basis.
-11. Score candidates using the trend scoring method.
-12. Assign each topic to a role from `keyword-clusters.md`.
-13. Run `duplicate-intent-check.md`.
-14. Use `content-portfolio-loop.md` to decide `new_post` or `update_existing`, record the canonical URL and update summary, and plan zero to three useful internal links.
-15. Select:
+1. For unattended runs, read `autonomous-operations.md`, create the run id and state file, and recover any prior `partial` or `unknown` action before starting new work.
+2. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
+3. Read `evidence-and-experience-policy.md` and check whether the user supplied reusable photos or experience notes for a proven content pillar.
+4. Review `content-calendar.md` for seasonal timing.
+5. Read `daily-influencer-scan.md`.
+6. Visit current Naver Blog examples for the day's target topic families.
+7. Visit current Tistory examples for the day's target topic families.
+8. Record abstract observations in `influencer-scan-log.md`.
+9. Browse current factual sources from `research-sources.md`.
+10. Classify each candidate's facts as `stable`, `current`, or `live` with `fact-freshness-policy.md`; reject stale or weak primary-source support.
+11. Build 6 to 10 topic candidates and label each candidate's evidence basis.
+12. Score candidates using the trend scoring method.
+13. Assign each topic to a role from `keyword-clusters.md`.
+14. Run `duplicate-intent-check.md`.
+15. Use `content-portfolio-loop.md` to decide `new_post` or `update_existing`, record the canonical URL and update summary, and plan zero to three useful internal links.
+16. Select:
    - One experience-backed post when authentic evidence exists; otherwise one information/news/event post.
    - One seasonal/search-demand post.
    - One Coupang Partners TOP 5 post.
-16. Check `low-quality-prevention.md` before committing to three daily posts.
-17. Compare the latest complete 7-day traffic window with the previous one when data is available.
-18. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one for public publishing.
+17. Check `low-quality-prevention.md` before committing to three daily posts.
+18. Compare the latest complete 7-day traffic window with the previous one when data is available.
+19. If `traffic-recovery-mode.md` is triggered, create three candidates but select only one non-affiliate item for possible public publishing.
 
 ## Drafting
 
@@ -58,12 +59,13 @@ Use this runbook for daily blog operation.
 17. For posts of at least 1,800 characters, require four visuals, three distinct roles, and no more than two text cards.
 18. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
 19. Run `naturalness-editor.md` as the final rewrite pass.
-20. Use `advanced-quality-gates.md` to confirm content intent, fact freshness, internal links, Korean editorial quality, and owned-photo privacy.
-21. Score with `quality-rubric.md`.
-22. Check low-quality risk with `low-quality-prevention.md`.
-23. Check publishing risk with `publish-risk-checklist.md`.
-24. Revise anything under 31/40 or with a failed mandatory gate.
-25. Prepare optional Tistory adaptation.
+20. Run `editorial-authenticity-gate.md` as an independent read and record the five answers.
+21. Use `advanced-quality-gates.md` to confirm content intent, fact freshness, internal links, Korean editorial quality, and owned-photo privacy.
+22. Score with `quality-rubric.md`.
+23. Check low-quality risk with `low-quality-prevention.md`.
+24. Check publishing risk with `publish-risk-checklist.md`.
+25. Revise anything under 31/40 or with a failed mandatory gate.
+26. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -74,11 +76,12 @@ When browser automation is used:
 1. Follow `live-publish-runbook.md` and the platform runbook.
 2. Record the current run contract, including the latest explicit draft/publish instruction.
 3. Validate the prepared package with `validate_publish_package.py`.
-4. Open a new post and insert clean plain text, tags, the scene-first thumbnail, and copyright-safe body images in manifest order.
-5. Verify the editor image count and scan for raw Markdown or placeholders.
-6. Save or publish according to the approved mode.
-7. Verify the resulting state and record a platform-specific receipt.
-8. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
+4. For unattended runs, run `decide_autonomous_run.py` with the daily plan and receipt history.
+5. Open a new post and insert clean plain text, tags, the scene-first thumbnail, and copyright-safe body images in manifest order.
+6. Verify the editor image count and scan for raw Markdown or placeholders.
+7. Publish only the selected candidate; draft-save other eligible candidates.
+8. Verify the resulting state and record a platform-specific receipt before any retry.
+9. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
 
 Do not report success from a click alone. Report only verified results and label partial or unknown outcomes honestly.
 

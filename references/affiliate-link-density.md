@@ -20,6 +20,9 @@ Across a week, avoid making most posts affiliate-first. A healthy mix is:
 - More helpful information posts than affiliate posts.
 - Affiliate posts tied to clear buyer intent.
 - No clusters where every support post is product-heavy.
+- No more than two affiliate-first publications in a rolling seven-day window.
+- No affiliate-first publications on consecutive days.
+- In autonomous mode, choose information content when the recent receipt history is missing or ambiguous.
 
 ## Disclosure
 

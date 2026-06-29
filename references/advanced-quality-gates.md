@@ -39,6 +39,8 @@ Run the final body through the package validator and a human read. Block:
 
 Set `naturalness_qa_confirmed: true` only after revising flagged text. Do not game the checker with random endings; improve the paragraph's function and rhythm.
 
+Run `editorial-authenticity-gate.md` independently and set `editorial_authenticity_confirmed: true` only after recording its five answers. A request to evade AI detection or platform review is not a valid quality objective.
+
 ## Original Photo Safety Gate
 
 Use `original_photo` only when the image and supplied notes support a visit or hands-on claim. Use `owned_context_photo` for a user-owned scene that illustrates the topic but does not prove a visit, purchase, or product result.
@@ -69,6 +71,7 @@ Transfer only when all are true:
 
 - intent action and canonical decision are valid,
 - Korean editorial QA is confirmed,
+- editorial authenticity QA is confirmed,
 - internal-link QA is confirmed,
 - every original photo passes privacy and metadata checks,
 - fact freshness and strong-title evidence pass,
