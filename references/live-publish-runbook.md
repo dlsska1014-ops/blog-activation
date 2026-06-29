@@ -42,6 +42,7 @@ For every post, require all of the following before editor transfer:
 
 Run `scripts/validate_publish_package.py` when a manifest is available. A failed gate blocks draft-save and publishing until fixed.
 Check `publication-receipts.jsonl` before retrying any post whose final action timed out.
+For unattended runs, also read `unattended-editor-verification.md` and confirm the run owns the active local lock.
 
 ## Editor Transfer
 
@@ -54,6 +55,7 @@ Check `publication-receipts.jsonl` before retrying any post whose final action t
 7. Recount editor images from the editor DOM or visible canvas; file selection alone is not proof of upload.
 8. Inspect the first screen, visual-role order, captions, and final section.
 9. Search the editor text for raw markers such as `##`, `| --- |`, triple backticks, and `[이미지`.
+10. Record each image's text position and intended section anchor. Images grouped at the body ending fail even when the count matches.
 
 Never publish when an upload is still processing, the editor state is ambiguous, or the image count is lower than planned.
 
@@ -67,6 +69,7 @@ Never publish when an upload is still processing, the editor state is ambiguous,
 - Confirm the recent-post list contains the intended title once and that the URL resolves to that title.
 - Record one receipt per platform: title, status, URL or draft identifier, image count, checked time, and any exception.
 - Use `scripts/record_publication_receipt.py` so a verified duplicate is blocked by content fingerprint.
+- Write `editor-verification.json` and run `scripts/validate_editor_verification.py`; do not finish autonomous state when it fails.
 
 Use these status values:
 

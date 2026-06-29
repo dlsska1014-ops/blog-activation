@@ -11,7 +11,7 @@ Use this runbook for daily blog operation.
 
 ## Morning Or Start-Of-Run
 
-1. For unattended runs, read `autonomous-operations.md`, create the run id and state file, and recover any prior `partial` or `unknown` action before starting new work.
+1. For unattended runs, read `autonomous-operations.md`, run `manage_autonomous_state.py begin`, obey its canary mode, and recover any prior `partial` or `unknown` action before starting new work.
 2. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
 3. Read `evidence-and-experience-policy.md` and check whether the user supplied reusable photos or experience notes for a proven content pillar.
 4. Review `content-calendar.md` for seasonal timing.
@@ -60,12 +60,13 @@ Use this runbook for daily blog operation.
 18. Use `image-thumbnail-guide.md` and `visual-prompt-library.md` to refine visual rhythm and prompts.
 19. Run `naturalness-editor.md` as the final rewrite pass.
 20. Run `editorial-authenticity-gate.md` as an independent read and record the five answers.
-21. Use `advanced-quality-gates.md` to confirm content intent, fact freshness, internal links, Korean editorial quality, and owned-photo privacy.
-22. Score with `quality-rubric.md`.
-23. Check low-quality risk with `low-quality-prevention.md`.
-24. Check publishing risk with `publish-risk-checklist.md`.
-25. Revise anything under 31/40 or with a failed mandatory gate.
-26. Prepare optional Tistory adaptation.
+21. Run `check_editorial_reuse.py` against recent owned post bodies and revise excessive phrase reuse.
+22. Use `advanced-quality-gates.md` to confirm content intent, fact freshness, internal links, Korean editorial quality, and owned-photo privacy.
+23. Score with `quality-rubric.md`.
+24. Check low-quality risk with `low-quality-prevention.md`.
+25. Check publishing risk with `publish-risk-checklist.md`.
+26. Revise anything under 31/40 or with a failed mandatory gate.
+27. Prepare optional Tistory adaptation.
 
 ## Draft-Save
 
@@ -81,7 +82,9 @@ When browser automation is used:
 6. Verify the editor image count and scan for raw Markdown or placeholders.
 7. Publish only the selected candidate; draft-save other eligible candidates.
 8. Verify the resulting state and record a platform-specific receipt before any retry.
-9. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
+9. Write and validate `editor-verification.json`, including image positions, captions, representative image, tags, and final state.
+10. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
+11. Run `manage_autonomous_state.py finish` only after all receipts and verification files are complete.
 
 Do not report success from a click alone. Report only verified results and label partial or unknown outcomes honestly.
 

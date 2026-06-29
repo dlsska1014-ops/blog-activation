@@ -15,7 +15,17 @@ Run these states in order and persist the result of each state in the dated pack
 7. `audit`: verify title, clean body, image count, disclosure, mode, URL or draft state, and recent-list duplication.
 8. `learn`: record receipts and schedule 24-hour, 72-hour, and 7-day performance checks.
 
-Never skip a state because the browser, source, image upload, or metric is inconvenient.
+Before state 1, run `scripts/manage_autonomous_state.py begin` with a unique run id and the local state file. Stop if another run owns the lock or the state is paused. Never skip a state because the browser, source, image upload, or metric is inconvenient.
+
+After state 8, run `scripts/manage_autonomous_state.py finish` with the verified result. A canary counts only when all three drafts, account QA, image QA, and editor QA are verified.
+
+## Canary Phase
+
+- Force the first three verified unattended runs to `draft-only`, even when the long-term approved mode is `auto-publish`.
+- Require all three candidates to appear in the draft list with exact titles and verified image placement.
+- Do not count a partial, unknown, blocked, account-mismatch, or image-defect run as a completed canary.
+- After three verified canaries, allow `auto-publish` subject to the daily decision guard.
+- Two consecutive failed or incomplete runs set `paused: true`. Do not resume by deleting evidence; inspect the last run and fix the cause.
 
 ## Fail-Closed Rules
 
@@ -29,6 +39,8 @@ Draft-save instead of publishing when:
 - the editor state cannot be verified after a save or publish action,
 - the latest receipt has an unknown or partial result for the same fingerprint,
 - browser recovery would require guessing whether an action already succeeded.
+- recent owned post bodies are unavailable for self-reuse comparison.
+- the editor verification shows images clustered at the ending, missing captions, broken text, or the wrong representative image.
 
 Block the run instead of draft-saving when content contains unsupported firsthand claims, copied phrasing, private data, unsafe advice, or a duplicate verified fingerprint.
 
@@ -50,6 +62,8 @@ Block the run instead of draft-saving when content contains unsupported firsthan
 - Never repeat a final save or publish action when a verified receipt already exists.
 - Use bounded retries: one normal retry after a fresh observation, then stop with `partial` or `unknown`.
 - Preserve the editor tab and package files when stopping so the next run can recover from evidence instead of memory.
+- Hold one local run lock from preflight through receipt recording. A second run must stop without touching an editor.
+- Treat an expired login or a visible account mismatch as `blocked`, not as a reason to switch accounts automatically.
 
 ## Human-Quality Standard
 
@@ -63,6 +77,7 @@ The goal is original, useful editorial work, not AI-detector evasion. A post is 
 - first-person wording describes work actually performed,
 - images support nearby sections and captions explain their purpose,
 - no sentence exists only to repeat a keyword or imitate a creator.
+- recent owned posts pass the phrase-reuse gate; repeated title frames, opening sentences, and closing formulas are revised.
 
 Do not insert random typos, fake anecdotes, invented purchases, artificial slang, or meaningless sentence variation to appear human.
 
@@ -72,7 +87,9 @@ An unattended scheduler must explicitly state:
 
 - the workspace and `blog-activation` skill to use,
 - the approved publication mode,
+- the local state path and first-three-run canary rule,
 - the three-candidate portfolio and one-public-post daily budget,
 - fail-closed behavior and receipt verification,
 - that login data, session exports, authentication values, and private affiliate identifiers must never be written to files or GitHub,
 - that the run must report `verified`, `partial`, `blocked`, or `unknown` for each platform.
+- that two consecutive failed or incomplete runs pause further editor actions.

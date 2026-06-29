@@ -27,7 +27,9 @@ def post(post_id: str, kind: str, score: int = 34) -> dict:
         "mandatory_gates_passed": True,
         "naturalness_qa_confirmed": True,
         "editorial_authenticity_confirmed": True,
+        "self_similarity_qa_confirmed": True,
         "fact_qa_confirmed": True,
+        "visual_qa_confirmed": True,
         "body_chars": 2200,
         "image_count": 4,
         "affiliate_link_count": 5 if affiliate else 0,
@@ -53,6 +55,12 @@ def main() -> int:
     plan["recovery_mode"] = True
     result = MODULE.decide(plan, history)
     assert result["publish"] == ["info"], result
+
+    plan["recovery_mode"] = False
+    plan["canary_mode"] = True
+    result = MODULE.decide(plan, history)
+    assert result["publish"] == [], result
+    assert len(result["draft_save"]) == 3, result
 
     broken = post("broken", "affiliate")
     broken["disclosure_present"] = False

@@ -23,7 +23,9 @@ REQUIRED_POST_FIELDS = {
     "mandatory_gates_passed",
     "naturalness_qa_confirmed",
     "editorial_authenticity_confirmed",
+    "self_similarity_qa_confirmed",
     "fact_qa_confirmed",
+    "visual_qa_confirmed",
     "body_chars",
     "image_count",
     "affiliate_link_count",
@@ -84,7 +86,9 @@ def validate_post(post: dict[str, Any]) -> list[str]:
         "mandatory_gates_passed",
         "naturalness_qa_confirmed",
         "editorial_authenticity_confirmed",
+        "self_similarity_qa_confirmed",
         "fact_qa_confirmed",
+        "visual_qa_confirmed",
     ):
         if post[field] is not True:
             reasons.append(f"{field} is not true")
@@ -185,10 +189,12 @@ def decide(plan: dict[str, Any], history: list[dict[str, Any]]) -> dict[str, Any
         result["warnings"].append("daily plan has no non-affiliate candidate")
 
     mode = plan.get("mode", "draft-only")
-    if mode == "auto-publish" and len(posts) == 3:
+    if mode == "auto-publish" and not bool(plan.get("canary_mode")) and len(posts) == 3:
         selected = choose_publishable(run_date, eligible, history, bool(plan.get("recovery_mode")))
     else:
         selected = None
+    if bool(plan.get("canary_mode")):
+        result["warnings"].append("canary mode forces draft-only transfer")
     if selected:
         result["publish"].append(selected["id"])
     result["draft_save"] = [post["id"] for post in eligible if post is not selected]

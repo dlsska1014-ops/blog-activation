@@ -41,6 +41,8 @@ Set `naturalness_qa_confirmed: true` only after revising flagged text. Do not ga
 
 Run `editorial-authenticity-gate.md` independently and set `editorial_authenticity_confirmed: true` only after recording its five answers. A request to evade AI detection or platform review is not a valid quality objective.
 
+Run `check_editorial_reuse.py` against recent owned post bodies and set `self_similarity_qa_confirmed: true` only when it passes. Run asset and storyboard checks and set `visual_qa_confirmed: true` only when every planned visual is usable before transfer.
+
 ## Original Photo Safety Gate
 
 Use `original_photo` only when the image and supplied notes support a visit or hands-on claim. Use `owned_context_photo` for a user-owned scene that illustrates the topic but does not prove a visit, purchase, or product result.
@@ -72,6 +74,7 @@ Transfer only when all are true:
 - intent action and canonical decision are valid,
 - Korean editorial QA is confirmed,
 - editorial authenticity QA is confirmed,
+- self-similarity and visual QA are confirmed,
 - internal-link QA is confirmed,
 - every original photo passes privacy and metadata checks,
 - fact freshness and strong-title evidence pass,
