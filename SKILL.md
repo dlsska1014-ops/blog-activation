@@ -78,6 +78,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
    - Use `references/visual-asset-policy.md` before preparing images. Prefer a strong user-owned hero photo; use a scene-first AI thumbnail only when authentic scene evidence is unavailable, then mix copyright-safe evidence, explanation, and decision-aid visuals.
+   - Read `references/visual-quality-standard.md`. Build a photo-led editorial sequence with at least two photographic visuals, at least two non-AI origins, at most one AI scene, and at most one text card for long posts.
    - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
    - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
    - Use `scripts/prepare_owned_photo.py` for every user-owned image. Use `original_photo` for supported experience evidence and `owned_context_photo` for neutral research-only context.
@@ -89,6 +90,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
+   - Run `scripts/validate_visual_storyboard.py` before generating final assets and again before editor transfer after paths and QA records are complete.
    - For unattended runs, run `scripts/decide_autonomous_run.py` after package validation. Publicly publish at most the selected item and draft-save other eligible items.
    - Read `references/unattended-editor-verification.md`, write `editor-verification.json`, and run `scripts/validate_editor_verification.py` before recording success.
    - Treat failures from intent, fact freshness, strong-title evidence, naturalness, internal links, owned-photo privacy, sidecar integrity, GPS, or near-duplicate-image checks as publication blockers.
@@ -150,6 +152,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.
 - Read `references/product-category-playbooks.md` before drafting recurring product category posts.
 - Read `references/visual-asset-policy.md` before generating thumbnails, collecting body images, using official screenshots, or inserting product/event visuals.
+- Read `references/visual-quality-standard.md` before selecting a visual mix, writing AI prompts, or approving photo realism.
 - Read `references/image-thumbnail-guide.md` when planning visual assets, thumbnail text, image prompts, or in-post image rhythm.
 - Read `references/visual-text-integrity.md` before rendering or uploading any Korean text-bearing image.
 - Read `references/visual-prompt-library.md` when generating or planning thumbnail, summary card, checklist, FAQ, or comparison visuals.
@@ -193,6 +196,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/check_editorial_reuse.py` to compare a draft with recent owned bodies before editor transfer.
 - Use `scripts/validate_editor_verification.py` to reject broken, clustered, uncaptioned, or unverified editor transfers.
 - Use `scripts/self_test_unattended_safety.py` after changing canary, lock, reuse, or editor-verification rules.
+- Use `scripts/validate_visual_storyboard.py` to reject card-heavy, AI-heavy, staged, inconsistent, or poorly placed visual packages.
+- Use `scripts/self_test_visual_storyboard.py` after changing visual mix, realism, card, or placement rules.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
 
 ## Editorial Rules

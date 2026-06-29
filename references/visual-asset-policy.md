@@ -13,6 +13,8 @@ Use this before preparing images for Naver Blog or Tistory drafts.
 
 Treat thumbnails and body images as different assets.
 
+Read `visual-quality-standard.md` before selecting or generating any asset. Prefer a photographic editorial sequence over a set of summary cards.
+
 - Thumbnail: use the strongest user-owned scene photo when available. Otherwise create a scene-first custom AI image that matches the article's topic, reader problem, season, and emotional hook.
 - Body images: use copyright-safe visuals that directly support the written section.
 
@@ -77,6 +79,8 @@ For each body section, choose the safest useful visual type:
 
 When copyright status is unclear, do not insert the image. Use a self-created card or AI-generated generic illustration instead.
 
+Do not treat a card as the default fallback. First look for an owned photo, clearly licensed editorial photo, official/source crop, merchant-authorized product image, or a photographable process. Use AI for at most one carefully reviewed context scene per post.
+
 Owned-photo preparation:
 
 ```powershell
@@ -98,6 +102,8 @@ For most Naver posts:
 3. Comparison table, checklist, or decision aid where the reader must choose.
 4. Optional final visual only when it adds a new function.
 
+For long posts, use at least two photographic visuals and at least two non-AI origins. Use no more than one text card.
+
 Never place images only for decoration. Each image should answer a reader question, reduce confusion, or make scanning easier.
 
 For experience-backed posts, original photos may exceed four when each image proves a different condition or step. Do not insert near-duplicates, burst-series frames, or repeated angles merely to imitate high image counts.
@@ -108,7 +114,9 @@ For posts of 1,800 Korean characters or more:
 
 - Use at least four visuals.
 - Use at least three distinct visual roles.
-- Use no more than two text-card roles.
+- Use no more than one text-card role unless the user explicitly approves a data-heavy exception.
+- Use no more than one AI-generated scene.
+- Use at least two photographic visuals and at least two non-AI origins.
 - Never place two text cards consecutively.
 - Make the first visual a scene, original photo, or licensed photo rather than a text card.
 - Include at least one evidence or explanation role and one decision-aid role.
@@ -118,6 +126,7 @@ For shorter posts, three visuals are acceptable only when they still include a s
 Allowed role names for publish manifests:
 
 - `ai_scene_thumbnail`
+- `ai_context_scene`
 - `original_photo`
 - `owned_context_photo`
 - `licensed_photo`
@@ -132,6 +141,8 @@ Allowed role names for publish manifests:
 - `category_illustration`
 
 Treat `comparison_table`, `checklist_card`, `summary_card`, and `faq_card` as text-card roles.
+
+Record the fields required by `visual-quality-standard.md` and run `scripts/validate_visual_storyboard.py`. The stricter one-card limit takes precedence over older package defaults.
 
 ## Visual Manifest
 
@@ -172,6 +183,9 @@ Reject an image if:
 - It is not connected to the nearby paragraph.
 - It repeats the same template role as the preceding image.
 - It is an AI scene presented as if it were a real visit or product test.
+- It adds synthetic weather, damage, crowds, or outcomes to an owned or licensed photograph.
+- It uses inconsistent weather, dramatic fake rain streaks, plastic texture, impossible shadows, duplicated objects, or a perfectly staged stock-photo pose.
+- It is a second text card in the same post without an approved data-heavy exception.
 - Any Korean is replaced by question marks, boxes, missing glyphs, or mojibake.
 - It was not opened at original resolution and visually checked.
 - It exposes a face, child, plate, address, receipt, screen, QR code, identifying sign, or reflection without a clear safe-use decision.

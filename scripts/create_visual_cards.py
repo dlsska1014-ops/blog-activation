@@ -13,10 +13,10 @@ W, H = 1200, 675
 FONT = "C:/Windows/Fonts/malgun.ttf"
 FONT_BOLD = "C:/Windows/Fonts/malgunbd.ttf"
 THEMES = {
-    "blue": ("#f7fbff", "#2477b3", "#17324d", "#4e6175", "#ffffff"),
-    "green": ("#f4fbf8", "#21806b", "#173d35", "#4d665e", "#ffffff"),
-    "brown": ("#fbfaf5", "#8a5a1f", "#3d2b17", "#6a5a45", "#ffffff"),
-    "gray": ("#f7f7f5", "#5f6f73", "#273133", "#596568", "#ffffff"),
+    "blue": ("#f6f8f9", "#3f7188", "#1f3139", "#66777e", "#e8eef1"),
+    "green": ("#f7f8f6", "#557b69", "#24352d", "#68766f", "#e9eeea"),
+    "brown": ("#f8f7f4", "#8a6b48", "#3c3024", "#766b5d", "#eee9e1"),
+    "gray": ("#f7f7f6", "#6c7779", "#2d3536", "#6b7475", "#e9ebea"),
 }
 HANGUL = re.compile(r"[가-힣]")
 CORRUPTION = re.compile(r"\?{2,}|\ufffd")
@@ -48,8 +48,8 @@ def validate_card(card: dict) -> list[str]:
         errors.append(f"{card.get('filename', 'card')}: Korean text expected but no Hangul found")
     if len(str(card.get("title", ""))) > 42:
         errors.append(f"{card.get('filename', 'card')}: title is too long for safe rendering")
-    if len(card.get("bullets", [])) > 4:
-        errors.append(f"{card.get('filename', 'card')}: use no more than 4 bullets")
+    if len(card.get("bullets", [])) > 3:
+        errors.append(f"{card.get('filename', 'card')}: use no more than 3 bullets")
     if any(len(str(item)) > 44 for item in card.get("bullets", [])):
         errors.append(f"{card.get('filename', 'card')}: a bullet is too long for safe rendering")
     if card.get("table"):
@@ -80,51 +80,52 @@ def save_card(card: dict, out_dir: Path) -> Path:
     bg, accent, dark, mid, pale = THEMES.get(card.get("theme", "gray"), THEMES["gray"])
     image = Image.new("RGB", (W, H), bg)
     draw = ImageDraw.Draw(image)
-    draw.rectangle([0, 0, W, 96], fill=accent)
-    draw.rectangle([0, H - 72, W, H], fill=dark)
-    draw.rounded_rectangle([58, 132, 1142, 586], radius=18, fill=pale)
-    draw.text((72, 30), card.get("eyebrow", ""), font=make_font(32, True), fill="white")
+    draw.rectangle([56, 48, 62, H - 48], fill=accent)
+    draw.text((92, 52), card.get("eyebrow", ""), font=make_font(24, True), fill=accent)
+    draw.line([92, 92, W - 72, 92], fill=pale, width=2)
 
-    y = 166
-    for line in wrap_kr(card.get("title", ""), 21):
-        draw.text((92, y), line, font=make_font(58, True), fill=dark)
-        y += 72
+    y = 122
+    for line in wrap_kr(card.get("title", ""), 24):
+        draw.text((92, y), line, font=make_font(48, True), fill=dark)
+        y += 60
 
     if card.get("subtitle"):
-        y += 4
-        for line in wrap_kr(card["subtitle"], 36):
-            draw.text((96, y), line, font=make_font(30), fill=mid)
-            y += 42
+        y += 2
+        for line in wrap_kr(card["subtitle"], 42):
+            draw.text((94, y), line, font=make_font(27), fill=mid)
+            y += 38
 
     if card.get("bullets"):
-        y = max(y + 18, 376)
-        for bullet in card["bullets"][:4]:
-            draw.ellipse([98, y + 9, 114, y + 25], fill=accent)
-            for line in wrap_kr(str(bullet), 42)[:2]:
-                draw.text((128, y), line, font=make_font(28), fill=dark)
-                y += 36
-            y += 8
+        y = max(y + 28, 320)
+        for number, bullet in enumerate(card["bullets"][:3], 1):
+            draw.text((94, y + 2), f"{number:02d}", font=make_font(21, True), fill=accent)
+            for line in wrap_kr(str(bullet), 46)[:2]:
+                draw.text((152, y), line, font=make_font(27), fill=dark)
+                y += 35
+            draw.line([94, y + 8, W - 82, y + 8], fill=pale, width=1)
+            y += 18
 
     if card.get("table"):
         table = card["table"]
-        x0, y0 = 88, 260
+        x0, y0 = 92, max(y + 22, 270)
         cols, rows = table[0], table[1:]
-        colw = 1024 // len(cols)
-        header_h = 46
-        row_h = 48
-        draw.rectangle([x0, y0, x0 + 1024, y0 + header_h], fill=dark)
+        table_width = 1018
+        colw = table_width // len(cols)
+        header_h = 48
+        row_h = 50
+        draw.rectangle([x0, y0, x0 + table_width, y0 + 5], fill=accent)
         for i, col in enumerate(cols):
-            draw.text((x0 + i * colw + 18, y0 + 10), str(col), font=make_font(23, True), fill="white")
+            draw.text((x0 + i * colw + 14, y0 + 15), str(col), font=make_font(22, True), fill=dark)
         y = y0 + header_h
         for ridx, row in enumerate(rows[:5]):
-            fill = "white" if ridx % 2 == 0 else "#f7f8f6"
-            draw.rectangle([x0, y, x0 + 1024, y + row_h], fill=fill)
+            fill = bg if ridx % 2 == 0 else pale
+            draw.rectangle([x0, y, x0 + table_width, y + row_h], fill=fill)
             for i, cell in enumerate(row):
-                draw.text((x0 + i * colw + 18, y + 12), str(cell), font=make_font(21), fill=dark)
+                draw.text((x0 + i * colw + 14, y + 13), str(cell), font=make_font(21), fill=dark)
             y += row_h
-        draw.rectangle([x0, y0, x0 + 1024, y], outline="#c9d0ca", width=2)
+        draw.line([x0, y, x0 + table_width, y], fill=accent, width=2)
 
-    draw.text((72, H - 52), card.get("footer", "작성일 기준"), font=make_font(24), fill="white")
+    draw.text((92, H - 50), card.get("footer", "작성일 기준"), font=make_font(20), fill=mid)
     out_path = out_dir / card["filename"]
     image.save(out_path, quality=95)
     metadata = {

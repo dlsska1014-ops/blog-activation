@@ -12,7 +12,7 @@ For most posts:
 4. Optional closing image only if it adds a new function.
 
 Avoid placing too many similar images in a row.
-Do not use three deterministic cards as the complete visual package for a long post.
+Use no more than one deterministic text card in a normal post. A long post should read visually as a small editorial photo essay, not a presentation deck.
 
 ## Thumbnail Formula
 
@@ -48,6 +48,8 @@ Build the thumbnail around:
 
 Avoid flat presentation-card backgrounds, floating icons, fake app screens, random Korean letters, and generic stock-photo poses.
 
+Require physically coherent weather and light. Reject sunny scenes with added rain streaks, exaggerated HDR, cinematic haze, perfect object alignment, duplicated gear, and plastic-looking surfaces.
+
 When an AI scene is generated, inspect hands, object geometry, logos, labels, reflections, and background text before adding an overlay.
 
 ## Visual Types
@@ -75,20 +77,24 @@ Avoid:
 
 When generating a custom image, use:
 
-Subject:
-Style:
+Use case:
+Scene and action:
+Camera and crop:
+Weather and available light:
+Natural texture and imperfection:
 Aspect ratio:
-Text to include:
 Text to avoid:
 Brand safety:
 
 Example:
 
-Subject: Korean shopping event checklist card for electronics purchase benefits
-Style: clean Naver Blog thumbnail, bright but not flashy
+Use case: photorealistic-natural
+Scene and action: a Korean reader comparing purchase conditions at a dining table
+Camera and crop: candid eye-level 35mm editorial photograph, room for mobile crop
+Weather and available light: soft window light appropriate to the time of day
+Natural texture and imperfection: ordinary paper curl, used notebook, slightly uneven arrangement
 Aspect ratio: 16:9
-Text to include: "구매 전 체크"
-Text to avoid: brand logos unless provided
+Text to avoid: all text and logos
 Brand safety: no fake official seal, no misleading discount claim
 
 ## Accessibility And Trust
