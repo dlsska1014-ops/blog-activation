@@ -102,7 +102,7 @@ For most Naver posts:
 3. Comparison table, checklist, or decision aid where the reader must choose.
 4. Optional final visual only when it adds a new function.
 
-For long posts, use at least two photographic visuals and at least two non-AI origins. Use no more than one text card.
+For long posts, use at least three photographic visuals and at least two non-AI origins. Build a context-problem-action-outcome sequence. Use no text card by default.
 
 Never place images only for decoration. Each image should answer a reader question, reduce confusion, or make scanning easier.
 
@@ -114,9 +114,9 @@ For posts of 1,800 Korean characters or more:
 
 - Use at least four visuals.
 - Use at least three distinct visual roles.
-- Use no more than one text-card role unless the user explicitly approves a data-heavy exception.
-- Use no more than one AI-generated scene.
-- Use at least two photographic visuals and at least two non-AI origins.
+- Use no text-card role unless a data-heavy exception is recorded; then allow at most one.
+- Use no more than two AI-generated scenes.
+- Use at least three photographic visuals and at least two non-AI origins.
 - Never place two text cards consecutively.
 - Make the first visual a scene, original photo, or licensed photo rather than a text card.
 - Include at least one evidence or explanation role and one decision-aid role.
@@ -142,7 +142,7 @@ Allowed role names for publish manifests:
 
 Treat `comparison_table`, `checklist_card`, `summary_card`, and `faq_card` as text-card roles.
 
-Record the fields required by `visual-quality-standard.md` and run `scripts/validate_visual_storyboard.py`. The stricter one-card limit takes precedence over older package defaults.
+Record the fields required by `visual-quality-standard.md` and run `scripts/validate_visual_storyboard.py`. The default-zero-card rule takes precedence over older package defaults.
 
 ## Visual Manifest
 
@@ -185,7 +185,7 @@ Reject an image if:
 - It is an AI scene presented as if it were a real visit or product test.
 - It adds synthetic weather, damage, crowds, or outcomes to an owned or licensed photograph.
 - It uses inconsistent weather, dramatic fake rain streaks, plastic texture, impossible shadows, duplicated objects, or a perfectly staged stock-photo pose.
-- It is a second text card in the same post without an approved data-heavy exception.
+- It is any text card without a documented data-heavy exception, or a second text card in the same post.
 - Any Korean is replaced by question marks, boxes, missing glyphs, or mojibake.
 - It was not opened at original resolution and visually checked.
 - It exposes a face, child, plate, address, receipt, screen, QR code, identifying sign, or reflection without a clear safe-use decision.

@@ -21,6 +21,7 @@ PHOTO_ROLES = {
 ALLOWED_ORIGINS = {"owned", "licensed", "official", "merchant", "ai_generated", "self_created"}
 BASE_CHECKS = {"semantic_match", "no_accidental_text", "no_fake_branding", "visual_polish"}
 PHOTO_CHECKS = {"geometry_coherent", "lighting_coherent", "natural_texture", "weather_coherent"}
+STORY_ROLES = {"context", "problem", "action", "evidence", "outcome"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -44,9 +45,11 @@ def validate_visual(visual: dict[str, Any], index: int) -> list[str]:
     origin = visual.get("origin")
     if origin not in ALLOWED_ORIGINS:
         errors.append(f"{prefix}: origin is missing or unsupported")
-    for field in ("purpose", "section_anchor", "placement_ratio", "opened_original_resolution", "quality_checks"):
+    for field in ("purpose", "story_role", "section_anchor", "placement_ratio", "opened_original_resolution", "quality_checks"):
         if field not in visual:
             errors.append(f"{prefix}: {field} is required")
+    if visual.get("story_role") not in STORY_ROLES:
+        errors.append(f"{prefix}: story_role is missing or unsupported")
     try:
         ratio = float(visual.get("placement_ratio", -1))
         if not 0 <= ratio <= 1:
@@ -103,14 +106,17 @@ def validate_post(post: dict[str, Any], root: Path) -> list[str]:
     ai_count = sum(origin == "ai_generated" for origin in origins)
     if long_post and len(set(roles)) < 3:
         errors.append("long post needs at least three visual roles")
-    if long_post and photo_count < 2:
-        errors.append("long post needs at least two photographic visuals")
+    if long_post and photo_count < 3:
+        errors.append("long post needs at least three photographic visuals")
     if long_post and non_ai_count < 2:
         errors.append("long post needs at least two non-AI visual origins")
-    if ai_count > 1:
-        errors.append("use no more than one AI-generated scene per post")
+    if ai_count > 2:
+        errors.append("use no more than two AI-generated scenes per post")
+    allow_text_card = post.get("allow_text_card") is True and bool(str(post.get("text_card_exception", "")).strip())
+    if text_card_indexes and not allow_text_card:
+        errors.append("text cards require a documented data-heavy exception")
     if len(text_card_indexes) > 1:
-        errors.append("use no more than one text card per post")
+        errors.append("use no more than one exceptional text card per post")
     if roles[0] not in PHOTO_ROLES:
         errors.append("first visual must be photographic and scene-first")
     if float(visuals[0].get("placement_ratio", 1)) > 0.2:
@@ -122,6 +128,9 @@ def validate_post(post: dict[str, Any], root: Path) -> list[str]:
         errors.append("no visual supports the later section")
     if len(set(origins)) < 2:
         errors.append("visual origins are not diverse")
+    story_roles = {visual.get("story_role") for visual in visuals}
+    if long_post and not {"context", "problem", "action", "outcome"}.issubset(story_roles):
+        errors.append("long post must cover context, problem, action, and outcome story roles")
     return errors
 
 
@@ -145,4 +154,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

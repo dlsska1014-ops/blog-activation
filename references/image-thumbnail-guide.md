@@ -8,11 +8,11 @@ For most posts:
 
 1. Scene-first AI thumbnail or owned/licensed photo after the opening.
 2. Evidence image, official crop, or explanatory diagram after the quick answer.
-3. Comparison, checklist, or step image at the decision point.
-4. Optional closing image only if it adds a new function.
+3. A process image showing the action at the decision point.
+4. An outcome, aftercare, or remaining-caution scene later in the article.
 
 Avoid placing too many similar images in a row.
-Use no more than one deterministic text card in a normal post. A long post should read visually as a small editorial photo essay, not a presentation deck.
+Use no deterministic text card in a normal post. Keep checklists and comparisons in body text or a native editor table. A long post should read visually as a small editorial photo essay, not a presentation deck.
 
 ## Thumbnail Formula
 

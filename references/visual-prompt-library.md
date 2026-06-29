@@ -4,6 +4,35 @@ Use this to generate or plan blog visuals. Keep images truthful and avoid fake o
 
 Read `visual-asset-policy.md` first. Use AI generation mainly for custom thumbnails and generic explanatory illustrations. For body images, prefer official/source screenshots with notes, licensed images, user-provided images, or self-created cards/tables.
 
+## Four-Scene Body Story
+
+Plan visuals as a sequence rather than isolated decorations:
+
+1. `context`: wide editorial scene showing where and when the reader faces the issue.
+2. `problem`: close detail showing the risk, confusing condition, or item that needs attention.
+3. `action`: hands or tools performing the practical response described in the nearby paragraph, without identifiable faces.
+4. `outcome`: the safe arrangement, aftercare, or remaining caution after the action.
+
+Keep weather, location type, equipment family, and color treatment consistent across AI-generated scenes. Change framing from wide to detail to process rather than generating four unrelated stock-like images. Use no card by default.
+
+### Body Scene: Problem Detail
+
+Subject: a close editorial detail of the exact issue discussed in the section, such as water beginning to collect near a campsite edge or damp gear separated from dry bedding
+Style: documentary close-up, physically coherent available light, ordinary material texture
+Avoid: exaggerated disaster, synthetic effects, impossible damage, brand marks, text, perfectly arranged objects
+
+### Body Scene: Practical Action
+
+Subject: a believable pair of hands carrying out one safe step from the article, such as moving dry bedding into a vehicle or checking an official notice before setup
+Style: medium or close process photograph, natural posture, correct object scale, no identifiable face
+Avoid: malformed hands, staged thumbs-up pose, unsafe behavior, fake interface, random labels
+
+### Body Scene: Outcome Or Remaining Caution
+
+Subject: the realistic state after the action, with one remaining limitation visible, such as dry and wet gear separated in a vehicle while weather remains overcast
+Style: quiet editorial photograph, useful detail, no triumph pose or dramatic transformation
+Avoid: misleading before-and-after, spotless showroom arrangement, sunny weather that contradicts the article, text, logos
+
 ## Thumbnail: Event Benefit
 
 Subject: realistic editorial scene of a Korean reader comparing travel dates, accommodation options, or benefit conditions on a phone and notebook; show the decision moment, not a generic discount card

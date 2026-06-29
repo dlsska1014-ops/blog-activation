@@ -22,7 +22,7 @@ Record every image in editor order with:
 
 For long posts, require the scene-first image near the opening, at least one visual in the middle, and a later decision aid or checklist. Images grouped at the body ending fail even when the count is correct.
 
-Require at least two photographic visuals, at least two non-AI origins, and no more than one text card. Compare the uploaded order with the manifest validated by `validate_visual_storyboard.py`.
+Require at least three photographic visuals, at least two non-AI origins, and context-problem-action-outcome coverage. Text cards require a recorded exception and are otherwise rejected. Compare the uploaded order with the manifest validated by `validate_visual_storyboard.py`.
 
 Inspect the first, middle, and last image visually. Confirm image 1 is the representative image unless the manifest records an approved exception.
 

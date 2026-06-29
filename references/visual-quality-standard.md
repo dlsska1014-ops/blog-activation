@@ -2,16 +2,16 @@
 
 Use this after the visual storyboard and before generating, downloading, rendering, or uploading assets. The target is an editorial blog rhythm led by believable photography, not a deck of generated cards.
 
-## Default Four-Visual Mix
+## Default Four-Scene Storyboard
 
 For a long information or seasonal post, prefer:
 
-1. A scene-first owned, licensed, or carefully generated editorial photograph near the opening.
-2. A detail or process photograph, or a tightly cropped official/source image, near the first factual section.
-3. A second photographic or documentary visual showing a different action, angle, or condition.
-4. One restrained decision aid: a comparison, checklist, annotated crop, or polished diagram.
+1. `context`: a wide scene showing the reader's actual situation near the opening.
+2. `problem`: a closer detail showing what is wrong, risky, confusing, or worth checking.
+3. `action`: a medium or close process scene showing the practical response described in the article.
+4. `outcome`: a later scene showing the safe result, aftercare, comparison condition, or remaining caution without a misleading before/after claim.
 
-Use at least two photographic visuals and at least two non-AI origins. Use no more than one text card. Do not use multiple cards to manufacture image count.
+Use at least three photographic visuals and at least two non-AI origins. Text cards are disabled by default. Put checklists, rankings, and decision criteria in the body text or a native editor table unless a data-heavy exception is documented.
 
 For affiliate posts, prefer merchant-authorized product images plus real category context. Do not generate fake versions of recognizable products or interfaces.
 
@@ -30,7 +30,7 @@ Never add synthetic rain, snow, crowds, smoke, damage, or product results over a
 
 ## Natural AI Scene Prompt
 
-Use AI only when a suitable owned or clearly licensed photograph is unavailable. Generate at least two independent candidates and select one after original-resolution review.
+Use AI only when a suitable owned or clearly licensed photograph is unavailable. Use no more than two AI scenes in a normal long post, generate at least two independent candidates for each scene, and select after original-resolution review. Keep the people, location type, weather, equipment family, and color treatment consistent across related AI scenes without pretending they document one real visit.
 
 Prompt structure:
 
@@ -52,6 +52,8 @@ Do not add title text during image generation. Text-free thumbnails are the defa
 
 ## Card And Diagram Standard
 
+- Default to no card.
+- Set `allow_text_card: true` and record `text_card_exception` only when a compact visual comparison is materially clearer than body text or a native editor table.
 - Use a card only when it reduces a real decision to a small number of conditions.
 - Keep one headline, up to three short rows or bullets, and generous margins.
 - Avoid thick title bars, footer bars, giant headings, nested panels, decorative icons, and template colors repeated across posts.
@@ -73,6 +75,7 @@ For every visual record:
 
 - `origin`: `owned`, `licensed`, `official`, `merchant`, `ai_generated`, or `self_created`
 - `purpose`
+- `story_role`: `context`, `problem`, `action`, `evidence`, or `outcome`
 - `section_anchor`
 - `placement_ratio`: number from 0 to 1
 - `opened_original_resolution`
@@ -82,4 +85,3 @@ For every visual record:
 - `quality_checks`: the applicable realism and polish checks
 
 Run `scripts/validate_visual_storyboard.py` before editor transfer. Set `visual_qa_confirmed: true` only after it passes and every selected file has been visually inspected.
-

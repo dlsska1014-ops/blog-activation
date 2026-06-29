@@ -78,8 +78,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Keep facts current by browsing when the topic involves dates, prices, laws, promotions, product rankings, or platform rules.
    - Score drafts with `references/quality-rubric.md` and revise posts below the threshold.
    - Use `references/visual-asset-policy.md` before preparing images. Prefer a strong user-owned hero photo; use a scene-first AI thumbnail only when authentic scene evidence is unavailable, then mix copyright-safe evidence, explanation, and decision-aid visuals.
-   - Read `references/visual-quality-standard.md`. Build a photo-led editorial sequence with at least two photographic visuals, at least two non-AI origins, at most one AI scene, and at most one text card for long posts.
-   - For posts of 1,800 characters or more, require at least four visuals, three distinct roles, a non-card first visual, and no more than two text cards.
+   - Read `references/visual-quality-standard.md`. Build a context-problem-action-outcome photo story with at least three photographic visuals, at least two non-AI origins, and at most two AI scenes for long posts.
+   - For posts of 1,800 characters or more, require at least four visuals and three distinct story roles. Use no text card by default; allow one only for a documented data-heavy exception.
    - Record each visual's path, role, caption, text status, visual-QA result, and source/reuse notes in the publish manifest.
    - Use `scripts/prepare_owned_photo.py` for every user-owned image. Use `original_photo` for supported experience evidence and `owned_context_photo` for neutral research-only context.
    - Inspect private details at full resolution, confirm the privacy sidecar, and reject burst or near-duplicate owned-photo frames.

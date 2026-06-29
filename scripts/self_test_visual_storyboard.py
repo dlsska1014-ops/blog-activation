@@ -33,12 +33,13 @@ def checks(photo: bool = True) -> dict:
     return values
 
 
-def visual(index: int, role: str, origin: str, ratio: float) -> dict:
+def visual(index: int, role: str, origin: str, ratio: float, story_role: str) -> dict:
     item = {
         "path": f"images/{index}.jpg",
         "role": role,
         "origin": origin,
         "purpose": f"purpose {index}",
+        "story_role": story_role,
         "section_anchor": f"section {index}",
         "placement_ratio": ratio,
         "opened_original_resolution": True,
@@ -59,10 +60,10 @@ def main() -> int:
     good = {
         "body_chars": 2400,
         "visuals": [
-            visual(1, "licensed_photo", "licensed", 0.08),
-            visual(2, "official_screenshot", "official", 0.32),
-            visual(3, "owned_context_photo", "owned", 0.55),
-            visual(4, "checklist_card", "self_created", 0.78),
+            visual(1, "licensed_photo", "licensed", 0.08, "context"),
+            visual(2, "ai_context_scene", "ai_generated", 0.32, "problem"),
+            visual(3, "owned_context_photo", "owned", 0.55, "action"),
+            visual(4, "licensed_photo", "licensed", 0.78, "outcome"),
         ],
     }
     assert MODULE.validate_post(good, Path(".")) == []
@@ -70,10 +71,10 @@ def main() -> int:
     bad = {
         "body_chars": 2400,
         "visuals": [
-            visual(1, "licensed_photo", "licensed", 0.7),
-            visual(2, "comparison_table", "self_created", 0.72),
-            visual(3, "diagram", "self_created", 0.74),
-            visual(4, "checklist_card", "self_created", 0.76),
+            visual(1, "licensed_photo", "licensed", 0.7, "context"),
+            visual(2, "comparison_table", "self_created", 0.72, "problem"),
+            visual(3, "diagram", "self_created", 0.74, "evidence"),
+            visual(4, "checklist_card", "self_created", 0.76, "outcome"),
         ],
     }
     bad["visuals"][0]["synthetic_weather_added"] = True
