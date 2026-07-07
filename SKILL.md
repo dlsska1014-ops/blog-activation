@@ -67,6 +67,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Record `stable`, `current`, or `live` fact freshness for every package; remove unsupported strong title claims.
    - Use `references/title-ab-testing.md` to score title candidates before draft-save.
    - Use `references/monetization-strategy.md` to separate traffic, trust, and conversion goals before choosing revenue topics.
+   - Use `references/adsense-seo-growth-playbook.md` for AdSense, SEO income, blog monetization, traffic growth, AI search, YMYL-sensitive revenue topics, or user-provided monetization source text.
    - Use `references/affiliate-scoring.md` before selecting Coupang Partners products.
    - Use `references/affiliate-link-density.md` to keep affiliate link count and weekly ratio trust-first.
    - Use `scripts/score_revenue_topics.py` when the user provides a CSV of revenue topic candidates.
@@ -154,6 +155,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/content-portfolio-loop.md` before deciding whether to create a new URL, update a canonical post, or place internal links.
 - Read `references/advanced-quality-gates.md` before editor transfer to enforce content-intent, Korean editorial, link, and photo-safety blockers.
 - Read `references/monetization-strategy.md` before planning AdPost, AdFit, AdSense, Coupang Partners, sponsored, or product-comparison revenue work.
+- Read `references/adsense-seo-growth-playbook.md` before drafting or updating AdSense, SEO income, blog monetization, AI-search, traffic-growth, or monthly-income strategy content.
 - Read `references/affiliate-guidelines.md` before writing Coupang Partners content.
 - Read `references/affiliate-scoring.md` before choosing affiliate product categories or TOP 5 products.
 - Read `references/affiliate-link-density.md` before adding affiliate links or planning weekly affiliate ratio.

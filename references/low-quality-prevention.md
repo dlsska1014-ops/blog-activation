@@ -28,6 +28,8 @@ Avoid:
 - Research-only posts written as firsthand reviews.
 - AI scenes presented as real places, products, or visits.
 - Broad seasonal summaries that repeat the same forecast dates without a distinct reader decision.
+- Source-text contamination such as repeated introductions, pasted category labels, internal learning notes, or duplicated FAQ blocks.
+- AdSense/SEO income posts that repeat generic "earn money blogging" claims without original conditions, data checks, policy cautions, or a practical next action.
 
 ## Naver-Friendly Quality Habits
 
@@ -96,3 +98,7 @@ If performance drops:
 - Improve or consolidate weak posts.
 - Track changes in `performance-log.md`.
 - Focus future posts on helpful, specific, verifiable content.
+
+## Pasted Source Cleanup
+
+When a user provides a long source text to learn from, do not paste it into a public draft as-is. First remove duplicate paragraphs, unsupported numbers, stale dates, category-label debris, and mechanical transitions. Keep only reusable strategy patterns, then rewrite around the blog's own reader question.

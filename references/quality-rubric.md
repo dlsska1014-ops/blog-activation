@@ -67,6 +67,7 @@ Revise immediately if the draft:
 - Repeats broad forecast dates or generic definitions without a narrower reader decision.
 - Shows duplicate titles, exposed generation labels, or near-identical visual sequences.
 - Uses complete-guide, lowest-price, number-one, or guaranteed language without direct evidence.
+- Uses pasted source-text debris, duplicate introductions, unsupported CPC/CTR/RPM figures, or unverified ad-policy dates.
 
 ## Mandatory Gates
 

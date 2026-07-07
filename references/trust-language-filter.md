@@ -11,6 +11,8 @@ Replace:
 - "효과가 확실합니다"
 - "완벽한 선택입니다"
 - "손해 안 봅니다"
+- "월 100만 원은 누구나 가능합니다"
+- "이 방법이면 수익이 보장됩니다"
 
 With:
 
@@ -19,6 +21,8 @@ With:
 - "사용 환경에 따라 만족도가 달라질 수 있습니다"
 - "이런 분들에게 더 잘 맞습니다"
 - "구매 전 이 조건은 확인하는 편이 안전합니다"
+- "가능성은 있지만 주제, 유입, 정책 준수, 운영 기간에 따라 달라집니다"
+- "수익 목표는 조건을 나눠서 현실적으로 보는 편이 안전합니다"
 
 ## Experience Claims
 
@@ -53,3 +57,9 @@ For each recommendation, include:
 - Best for:
 - Watch-out:
 - Who should skip:
+
+For income, AdSense, SEO, finance, health, insurance, or legal-adjacent posts, also confirm:
+
+- Income claims are conditional or source-verified.
+- Exact CPC, CTR, RPM, deadline, or revenue-loss numbers have current source support.
+- The article does not imply professional financial, medical, legal, or tax advice.

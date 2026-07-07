@@ -2,6 +2,8 @@
 
 Use this before selecting revenue-oriented topics. The goal is not to maximize affiliate links; it is to grow trust, search exposure, and buyer intent together.
 
+For AdSense, SEO income, blog monetization, AI-search, traffic-growth, or monthly-income strategy posts, also read `adsense-seo-growth-playbook.md`. That playbook is the stricter rule when a source text contains income claims, policy deadlines, CPC/CTR/RPM numbers, or YMYL-sensitive topics.
+
 ## Revenue Lanes
 
 Use four lanes with different roles.
@@ -87,6 +89,7 @@ Avoid:
 
 - guaranteed monthly income,
 - unsupported CPC averages,
+- unverified policy deadlines or revenue-drop percentages,
 - screenshots of private dashboards,
 - luxury or jackpot visuals,
 - AI-generated personal earnings claims.

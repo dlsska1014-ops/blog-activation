@@ -13,6 +13,7 @@ Browse or otherwise verify current sources for:
 - Eligibility rules.
 - Public policy.
 - Platform rules.
+- Search engine, AdSense, ad consent, CMP, TCF, AI-search, or monetization platform policy claims.
 - Product rankings or review counts.
 - Affiliate disclosure rules.
 
@@ -60,3 +61,4 @@ Reject or delay a post if:
 - The post would mislead readers if conditions changed.
 - A current or live source record is stale at editor-transfer time.
 - A strong title claim has no direct, current evidence.
+- A pasted source text contains exact policy dates, CPC/CTR/RPM averages, or revenue-drop percentages that have not been verified against a current official or primary source.
