@@ -11,7 +11,7 @@ Use this runbook for daily blog operation.
 
 ## Morning Or Start-Of-Run
 
-1. For unattended runs, read `autonomous-operations.md`, run `manage_autonomous_state.py begin`, obey its canary mode, and recover any prior `partial` or `unknown` action before starting new work.
+1. For unattended runs, read `autonomous-operations.md` and `editor-connection-stability.md`. Validate a read-only `editor-preflight.json` before research, pass it to `manage_autonomous_state.py begin --preflight ...`, obey canary mode, and inspect any returned recovery candidate or prior `partial`/`unknown` action before starting new work.
 2. Read `blog-profile.md`, `voice-guide.md`, and `style-memory.md`.
 3. Read `evidence-and-experience-policy.md` and check whether the user supplied reusable photos or experience notes for a proven content pillar.
 4. Review `content-calendar.md` for seasonal timing.
@@ -66,7 +66,7 @@ Use this runbook for daily blog operation.
 24. Check low-quality risk with `low-quality-prevention.md`.
 25. Check publishing risk with `publish-risk-checklist.md`.
 26. Revise anything under 31/40 or with a failed mandatory gate.
-27. Prepare optional Tistory adaptation.
+27. Prepare a distinct Tistory adaptation for each eligible post unless the user excludes Tistory for the current run.
 
 ## Draft-Save
 
@@ -77,14 +77,15 @@ When browser automation is used:
 1. Follow `live-publish-runbook.md` and the platform runbook.
 2. Record the current run contract, including the latest explicit draft/publish instruction.
 3. Validate the prepared package with `validate_publish_package.py`.
-4. For unattended runs, run `decide_autonomous_run.py` with the daily plan and receipt history.
-5. Open a new post and insert clean plain text, tags, the scene-first thumbnail, and copyright-safe body images in manifest order.
-6. Verify the editor image count and scan for raw Markdown or placeholders.
+4. Re-run and validate the read-only editor preflight immediately before transfer. For unattended runs, run `decide_autonomous_run.py` with the daily plan and receipt history.
+5. Open a new post and insert clean plain text, approved tags, the scene-first thumbnail, and copyright-safe body images in manifest order.
+6. Verify the editor image count, at least three visible tags, the selected Naver topic or Tistory category, and scan for raw Markdown, placeholders, or non-affiliate monetization language.
 7. Publish only the selected candidate; draft-save other eligible candidates.
 8. Verify the resulting state and record a platform-specific receipt before any retry.
 9. Write and validate `editor-verification.json`, including image positions, captions, representative image, tags, and final state.
-10. For Tistory, follow `tistory-publish-runbook.md` and use the adapted body rather than pasting the Naver version unchanged.
+10. For Tistory, follow `tistory-publish-runbook.md` and `tistory-editor-safety.md`, use one basic-mode editor tab, and transfer only one draft per run until three Tistory canaries are verified.
 11. Run `manage_autonomous_state.py finish` only after all receipts and verification files are complete.
+12. Include `--failure-class` on failed runs. Include `--prepared-package` only when package validation passed and no save/publish action was attempted.
 
 Do not report success from a click alone. Report only verified results and label partial or unknown outcomes honestly.
 

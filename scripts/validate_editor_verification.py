@@ -17,6 +17,7 @@ REQUIRED_IMAGE_FIELDS = {
     "anchor_found",
     "text_position",
     "text_artifact_found",
+    "source_fingerprint",
 }
 
 
@@ -40,15 +41,62 @@ def validate(data: dict[str, Any]) -> list[str]:
         errors.append("editor body contains missing or raw internal text")
     if int(data.get("tags_count", 0)) < 3:
         errors.append("fewer than three relevant tags are present")
+    platform = str(data.get("platform", "")).strip().casefold()
+    if platform not in {"naver", "tistory"}:
+        errors.append("platform must be naver or tistory")
+    if data.get("topic_or_category_selected") is not True:
+        errors.append("platform topic or category is not selected")
+    if not str(data.get("topic_or_category_label", "")).strip():
+        errors.append("platform topic or category label is missing")
+    if data.get("non_affiliate_monetization_language_found") is True:
+        errors.append("non-affiliate public copy exposes monetization workflow language")
+    if platform == "tistory":
+        if str(data.get("editor_mode", "")).strip().casefold() != "basic":
+            errors.append("Tistory editor must remain in basic mode")
+        if data.get("single_editor_tab") is not True:
+            errors.append("Tistory requires exactly one editor tab")
+        if data.get("mode_switch_used") is not False:
+            errors.append("Tistory mode switching is not allowed during unattended transfer")
+        if data.get("unsaved_recovery_present") is not False:
+            errors.append("Tistory editor has an uncertain recovery state")
+        if data.get("upload_in_progress") is not False:
+            errors.append("Tistory still has an active image upload")
+        if data.get("caption_contamination_found") is not False:
+            errors.append("Tistory image caption contains body text")
+        if int(data.get("long_caption_count", -1)) != 0:
+            errors.append("Tistory contains an overlong image caption")
+        if data.get("image_anchor_order_verified") is not True:
+            errors.append("Tistory image anchor order is not verified")
+        if data.get("body_replaced_after_image_insert") is not False:
+            errors.append("Tistory body was replaced after image insertion")
+        if str(data.get("mode", "")).strip().casefold() == "draft-only":
+            try:
+                before = int(data.get("draft_count_before"))
+                after = int(data.get("draft_count_after"))
+                if after != before + 1:
+                    errors.append("Tistory draft count did not increase by exactly one")
+            except (TypeError, ValueError):
+                errors.append("Tistory draft counts are missing")
     if data.get("disclosure_required") and not data.get("disclosure_present"):
         errors.append("required disclosure is not visible")
     if data.get("representative_image_index") != 1:
         errors.append("the scene-first image is not the representative image")
+    if int(data.get("editor_figure_count", -1)) != expected:
+        errors.append("editor figure count does not match the manifest")
+    if int(data.get("orphan_figure_count", -1)) != 0:
+        errors.append("editor contains empty or orphan image figures")
+    if int(data.get("duplicate_image_count", -1)) != 0:
+        errors.append("editor contains duplicate images")
+    if data.get("editor_image_sequence_unique") is not True:
+        errors.append("editor image sequence is not unique")
+    if int(data.get("duplicate_body_block_count", -1)) != 0:
+        errors.append("editor body contains duplicated blocks")
     if data.get("final_state_verified") is not True:
         errors.append("draft or publication state is not verified")
 
     positions = []
     roles = set()
+    source_fingerprints = []
     for image in images:
         missing = REQUIRED_IMAGE_FIELDS - image.keys()
         if missing:
@@ -56,6 +104,10 @@ def validate(data: dict[str, Any]) -> list[str]:
             continue
         roles.add(image["role"])
         positions.append(int(image["text_position"]))
+        fingerprint = str(image["source_fingerprint"]).strip()
+        if not fingerprint:
+            errors.append(f"image {image['index']} has no source fingerprint")
+        source_fingerprints.append(fingerprint)
         if image["rendered"] is not True:
             errors.append(f"image {image['index']} did not render")
         if image["caption_present"] is not True:
@@ -64,6 +116,10 @@ def validate(data: dict[str, Any]) -> list[str]:
             errors.append(f"image {image['index']} is not near its intended section")
         if image["text_artifact_found"] is True:
             errors.append(f"image {image['index']} contains broken text artifacts")
+
+    fingerprints = [item for item in source_fingerprints if item]
+    if len(fingerprints) != len(set(fingerprints)):
+        errors.append("editor image fingerprints are duplicated")
 
     if body_chars >= 1800 and len(roles) < 3:
         errors.append("long post uses fewer than three visual roles")
@@ -94,4 +150,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

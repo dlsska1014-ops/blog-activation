@@ -15,7 +15,7 @@ Run these states in order and persist the result of each state in the dated pack
 7. `audit`: verify title, clean body, image count, disclosure, mode, URL or draft state, and recent-list duplication.
 8. `learn`: record receipts and schedule 24-hour, 72-hour, and 7-day performance checks.
 
-Before state 1, run `scripts/manage_autonomous_state.py begin` with a unique run id and the local state file. Stop if another run owns the lock or the state is paused. Never skip a state because the browser, source, image upload, or metric is inconvenient.
+Before state 1, read `editor-connection-stability.md`. Run a read-only browser/login/editor preflight and validate it with `scripts/validate_editor_preflight.py`, then pass the report to `scripts/manage_autonomous_state.py begin --preflight ...` with a unique run id and the local state file. Stop if the preflight fails, another run owns the lock, or the state is paused. Inspect any returned `recovery_candidate` before creating new content. Never skip a state because the browser, source, image upload, or metric is inconvenient.
 
 After state 8, run `scripts/manage_autonomous_state.py finish` with the verified result. A canary counts only when all three drafts, account QA, image QA, and editor QA are verified.
 
@@ -26,6 +26,7 @@ After state 8, run `scripts/manage_autonomous_state.py finish` with the verified
 - Do not count a partial, unknown, blocked, account-mismatch, or image-defect run as a completed canary.
 - After three verified canaries, allow `auto-publish` subject to the daily decision guard.
 - Two consecutive failed or incomplete runs set `paused: true`. Do not resume by deleting evidence; inspect the last run and fix the cause.
+- Resume only with a fresh passing `editor-preflight.json` and `manage_autonomous_state.py resume`. Preserve the failure record and recovery history.
 
 ## Fail-Closed Rules
 
@@ -64,6 +65,8 @@ Block the run instead of draft-saving when content contains unsupported firsthan
 - Preserve the editor tab and package files when stopping so the next run can recover from evidence instead of memory.
 - Hold one local run lock from preflight through receipt recording. A second run must stop without touching an editor.
 - Treat an expired login or a visible account mismatch as `blocked`, not as a reason to switch accounts automatically.
+- Treat browser transport, observation API, authentication, account, editor-surface, and commit-verification failures as distinct classes in `failure-registry.md`.
+- Pass the class to `manage_autonomous_state.py finish --failure-class`. When a fully validated package exists and no commit was attempted, also pass `--prepared-package` so the next run recovers it first.
 
 ## Human-Quality Standard
 

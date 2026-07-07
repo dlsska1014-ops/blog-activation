@@ -68,6 +68,29 @@ Use this structure for buyer-intent posts:
 
 Do not claim exact sales volume, "best-selling", "lowest price", or guaranteed savings unless verified from a current reliable source.
 
+## Revenue Strategy Explainers
+
+Use this for information posts about AdSense, AdPost, SEO income, blogging, platform policy, or side-income strategy when no product link is central.
+
+Prefer this structure:
+
+1. Common claim and reality check: say the goal can be possible only under conditions.
+2. First-screen checklist: traffic, search intent, trust, policy risk, and reader value.
+3. Trust-first section: explain why high-value topics need sources, cautions, and no fake experience.
+4. SEO and UX section: connect search intent, mobile readability, tables, and source dates.
+5. Revenue structure section: explain income lanes without forcing clicks or guarantees.
+6. Policy risk section: mention ad-click inducement, excessive ad placement, and consent rules only when relevant.
+7. Operating order: give a practical sequence the reader can follow.
+8. Avoid-list and one next editorial action.
+
+Avoid:
+
+- guaranteed monthly income,
+- unsupported CPC averages,
+- screenshots of private dashboards,
+- luxury or jackpot visuals,
+- AI-generated personal earnings claims.
+
 ## Topic Cluster Method
 
 Build revenue from clusters, not isolated product posts.
@@ -102,4 +125,3 @@ After publication, classify each post:
 - Clicks + no conversion: improve price bands, reader-type picks, and watch-outs.
 - Conversions + low risk: repeat the category with a different reader intent.
 - Weak exposure after affiliate-heavy week: pause revenue posts and publish trust-building information posts.
-

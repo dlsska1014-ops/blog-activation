@@ -17,17 +17,20 @@ Record before touching an editor:
 - Intended internal links or a recorded reason that none are suitable.
 - Fact freshness level, checked date, source records, and any strong-title evidence.
 - Affiliate status and disclosure requirement.
+- Approved tags and platform classification: Naver topic or Tistory category.
 - Dated working-folder ledger path.
 
 Do not store login data, private browser state, or authentication material.
 
 ## Preflight Gate
 
+Before package checks, read `editor-connection-stability.md`, create a read-only `editor-preflight.json`, and run `scripts/validate_editor_preflight.py`. Do not research, upload, type, save, or publish when browser transport, login, account, editor reachability, or control verification fails.
+
 For every post, require all of the following before editor transfer:
 
 1. Final title and plain-text body exist.
 2. Body contains no Markdown headings, table separators, code fences, image placeholders, or internal notes.
-3. Tags are present and relevant.
+3. Tags are present and relevant, with at least three approved tags for each platform version.
 4. `experience_basis` is recorded and consistent with the body; research-only posts contain no firsthand claims.
 5. A short post has at least three usable images; a post of 1,800 characters or more has at least four unless a documented exception is approved.
 6. Image 1 is scene-first; evidence-backed posts lead with an owned original photo. Later images provide evidence or explanation and a decision aid.
@@ -50,14 +53,14 @@ For unattended runs, also read `unattended-editor-verification.md` and confirm t
 2. Insert the title and plain-text body.
 3. Insert each image at its intended section, waiting for upload completion before continuing.
 4. Add each approved caption directly below its visual.
-5. Add tags and disclosure where required.
+5. Add tags, choose the closest visible Naver topic or Tistory category, and add disclosure only where required.
 6. Add approved internal links with natural anchor text where planned.
-7. Recount editor images from the editor DOM or visible canvas; file selection alone is not proof of upload.
-8. Inspect the first screen, visual-role order, captions, and final section.
+7. Recount editor images from the editor DOM or visible canvas; file selection alone is not proof of upload. For Tistory, recount before any image retry or second insertion method.
+8. Inspect the first screen, visual-role order, captions, final section, tag count, and selected topic/category.
 9. Search the editor text for raw markers such as `##`, `| --- |`, triple backticks, and `[이미지`.
 10. Record each image's text position and intended section anchor. Images grouped at the body ending fail even when the count matches.
 
-Never publish when an upload is still processing, the editor state is ambiguous, or the image count is lower than planned.
+Never save or publish when an upload is still processing, the editor state is ambiguous, the image count is lower or higher than planned, duplicate images are visible, fewer than three tags are visible, or the platform topic/category is unset.
 
 ## Commit And Verify
 
@@ -86,3 +89,4 @@ Use these status values:
 - If the final action times out, inspect the post list or public URL before retrying to avoid duplicates.
 - Do not create a replacement post until duplicate status is known.
 - Report platform results separately; a Tistory failure does not erase a verified Naver result.
+- Record the failure class in `failure-registry.md`. A transport or authentication failure must be repaired and pass a fresh preflight before paused-state resume.

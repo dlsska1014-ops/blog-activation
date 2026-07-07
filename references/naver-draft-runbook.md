@@ -17,9 +17,11 @@ Use this when the user asks to place posts inside Naver Blog. Read `live-publish
 4. Insert body in Naver-friendly spacing.
 5. Upload the prepared images and verify the actual editor image count. Do not treat a selected file as an uploaded image.
 6. Add tags.
-7. Check first screen readability.
-8. Save as draft.
-9. Report the draft title, verified image count, and any missing assets.
+7. Open the final save/publish menu and choose the closest visible topic for the article.
+8. Verify that at least three tags remain visible and the topic is selected.
+9. Check first screen readability.
+10. Save as draft.
+11. Report the draft title, verified image count, tag count, and selected topic.
 
 ## Body Transfer Format
 
@@ -46,8 +48,9 @@ Use this order:
 - Dates and conditions include checked date.
 - Low-quality risk score is acceptable according to `low-quality-prevention.md`.
 - Publish risk checklist has no stop conditions.
+- At least three relevant tags are visible in the editor.
+- A visible Naver topic is selected in the final save/publish menu; do not leave the topic unset.
 
 ## Automation Notes
 
 If browser automation is available, interact only with visible, confirmed controls. Use a fresh editor tab if an old tab hangs. If a selector or final state is uncertain, inspect the editor or post list before retrying so a duplicate is not created.
-

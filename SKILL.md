@@ -7,7 +7,7 @@ description: Plan, research, visually storyboard, draft, and publish or draft-sa
 
 ## Overview
 
-Use this skill to run a daily Korean blog content workflow: research current topics, learn durable writing/layout patterns from high-performing Naver Blog and Tistory posts, draft three posts, and prepare them for draft-save in the user's blogs. Prioritize Naver Blog output; adapt to Tistory only after the Naver draft is complete.
+Use this skill to run a daily Korean blog content workflow: research current topics, learn durable writing/layout patterns from high-performing Naver Blog and Tistory posts, draft three posts, and prepare them for draft-save in the user's blogs. Prioritize Naver Blog output, then create a distinct Tistory adaptation for every eligible post unless the user excludes Tistory for the current run.
 
 Do not copy or closely paraphrase other blog posts. Use public sources to understand reader intent, then write original posts with clear source attribution where facts, prices, events, or policies matter.
 
@@ -18,7 +18,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Honor the latest explicit `draft-only` or `auto-publish` instruction for the current batch; do not repeatedly reconfirm every post in an already approved batch.
    - For browser transfer, record the target account, platform, post count, image count, affiliate status, and mode without storing login/session data.
    - For unattended or recurring runs, read `references/autonomous-operations.md` and create a persisted run id, state, publication budget, and fail-closed contract before research.
-   - Run `scripts/manage_autonomous_state.py begin` before research. Obey its `effective_mode`; the first three verified unattended runs are always `draft-only` canaries.
+   - Run `scripts/manage_autonomous_state.py begin --preflight <editor-preflight.json>` before research. Obey its `effective_mode`; inspect any returned recovery candidate before new drafting; the first three verified unattended runs are always `draft-only` canaries.
+   - Read `references/editor-connection-stability.md` and validate a read-only editor preflight before research. If the state is paused, resume only with a fresh passing preflight and `manage_autonomous_state.py resume`.
 
 2. Build the daily topic board:
    - Read `references/blog-profile.md`, `references/voice-guide.md`, and `references/style-memory.md` before choosing topics.
@@ -71,6 +72,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `scripts/score_revenue_topics.py` when the user provides a CSV of revenue topic candidates.
    - Use `references/product-category-playbooks.md` for recurring product categories.
    - For each draft include title options, target reader, search intent, outline, body copy, image placement notes, tags, and draft-save checklist.
+   - Keep monetization operations out of public non-affiliate copy. Do not mention affiliate links, sponsorship status, or the absence of links unless the post is actually a Coupang Partners or sponsored post that requires disclosure.
 
 5. Prepare draft-save output:
    - Naver Blog: write with short paragraphs, generous spacing, scannable headings, image insertion notes, and natural Korean phrasing.
@@ -89,13 +91,15 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
    - Use `references/naver-draft-runbook.md` if the user asks to place content into Naver Blog as a draft.
    - Use `references/live-publish-runbook.md` for every browser-based draft-save or public publishing run.
    - Use `references/tistory-publish-runbook.md` when Tistory is included; adapt structure, metadata, image alt text, and category instead of pasting the Naver body unchanged.
+   - Read `references/tistory-editor-safety.md` before controlling the Tistory editor. During stabilization, use one basic-mode editor tab and transfer only one Tistory canary draft per run.
+   - Read `references/metadata-and-channel-gate.md` before editor transfer. Require tags, a Naver topic selection, and a Tistory category; block the final action when any required metadata is missing.
    - Run `scripts/validate_publish_package.py` before editor transfer when a package manifest is available.
    - Run `scripts/validate_visual_storyboard.py` before generating final assets and again before editor transfer after paths and QA records are complete.
    - For unattended runs, run `scripts/decide_autonomous_run.py` after package validation. Publicly publish at most the selected item and draft-save other eligible items.
    - Read `references/unattended-editor-verification.md`, write `editor-verification.json`, and run `scripts/validate_editor_verification.py` before recording success.
    - Treat failures from intent, fact freshness, strong-title evidence, naturalness, internal links, owned-photo privacy, sidecar integrity, GPS, or near-duplicate-image checks as publication blockers.
    - Use `references/publish-risk-checklist.md` and `references/low-quality-prevention.md` before draft-save or public publishing.
-   - Block the final action unless the editor image count, clean body text, tags, disclosure, and intended mode are verified.
+   - Block the final action unless the editor image count, unique image sequence, zero orphan figures, clean non-duplicated body text, at least three relevant tags, Naver topic or Tistory category, disclosure when required, and intended mode are verified.
    - After the final action, verify the URL or draft state and report each platform separately as verified, partial, blocked, or unknown.
    - Use `references/published-post-audit.md` to inspect public text, first/middle/last images, and recent-list duplication before reporting success.
    - Record results with `scripts/record_publication_receipt.py` and refuse an accidental second verified action for the same platform and content fingerprint.
@@ -103,6 +107,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 
 6. Improve the system:
    - Use `references/daily-ops.md` as the runbook for daily execution.
+   - Use `references/owned-post-learning.md` when the user asks to learn from a recently created, draft-saved, or published owned post and reflect the lesson back into the skill.
    - Use `references/performance-log.md` to record actual results when the user provides views, keywords, clicks, or conversion data.
    - Use `references/performance-input.md` when the user provides post results, search inflow, clicks, comments, or conversion data.
    - Use `references/search-exposure-check.md` after publication when the user asks to inspect indexing, search inflow, or weak exposure.
@@ -139,6 +144,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/editorial-authenticity-gate.md` before setting editorial QA complete.
 - Read `references/autonomous-operations.md` for recurring, unattended, or auto-publish runs.
 - Read `references/unattended-editor-verification.md` for account, image placement, caption, and final-state evidence in unattended runs.
+- Read `references/editor-connection-stability.md` before unattended research, editor transfer, or paused-state recovery.
+- Read and update `references/failure-registry.md` after operational failures; store classifications and mitigations, never secrets.
 - Read `references/trust-language-filter.md` before finalizing recommendations, affiliate sections, and benefit claims.
 - Read `references/fact-freshness-policy.md` before drafting time-sensitive or source-dependent posts.
 - Read `references/content-calendar.md` for monthly, weekly, and seasonal planning.
@@ -159,6 +166,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/naver-draft-runbook.md` when preparing or automating Naver Blog draft-save.
 - Read `references/live-publish-runbook.md` for browser transfer, image verification, publishing, receipts, duplicate prevention, and recovery.
 - Read `references/tistory-publish-runbook.md` for Tistory adaptation, metadata, editor checks, and result verification.
+- Read `references/tistory-editor-safety.md` before every automated Tistory editor session and after any mode-switch, image-anchor, caption, autosave, or tab-stability failure.
+- Read `references/metadata-and-channel-gate.md` before every Naver or Tistory final save/publish action.
 - Read `references/publication-ledger.md` before retrying timed-out saves or publications.
 - Read `references/published-post-audit.md` after every public publish and when reviewing existing posts for visual or formatting defects.
 - Read `references/post-templates.md` to select the correct article structure.
@@ -169,6 +178,7 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Read `references/sample-bank.md` to vary titles, openings, closings, and layout patterns without copying other creators.
 - Read `references/writing-patterns-ko.md` when improving Korean tone, opening, title, paragraph rhythm, and closing.
 - Read `references/daily-ops.md` for a complete daily operating runbook.
+- Read `references/owned-post-learning.md` when reviewing an owned post, publication receipt, editor incident, or user correction after a run.
 - Read `references/performance-log.md` when reviewing published results or improving future topic selection.
 - Read `references/performance-input.md` when converting real performance data into next actions.
 - Read `references/search-exposure-check.md` when reviewing published post exposure, search inflow, or indexing concerns.
@@ -196,6 +206,8 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Use `scripts/check_editorial_reuse.py` to compare a draft with recent owned bodies before editor transfer.
 - Use `scripts/validate_editor_verification.py` to reject broken, clustered, uncaptioned, or unverified editor transfers.
 - Use `scripts/self_test_unattended_safety.py` after changing canary, lock, reuse, or editor-verification rules.
+- Use `scripts/validate_editor_preflight.py` before unattended research and again before editor transfer.
+- Use `scripts/self_test_editor_preflight.py` after changing browser/login preflight or paused-state recovery rules.
 - Use `scripts/validate_visual_storyboard.py` to reject card-heavy, AI-heavy, staged, inconsistent, or poorly placed visual packages.
 - Use `scripts/self_test_visual_storyboard.py` after changing visual mix, realism, card, or placement rules.
 - Use `scripts/create_visual_cards.py` with UTF-8 JSON specifications for deterministic Korean cards and `scripts/audit_visual_assets.py` before upload.
@@ -214,12 +226,16 @@ Do not copy or closely paraphrase other blog posts. Use public sources to unders
 - Keep factual claims on an explicit expiry clock and prefer canonical updates over new URLs when only current conditions changed.
 - Do not overuse emoji, decorative punctuation, or exaggerated claims. Use them as seasoning, not structure.
 - Add affiliate disclosure for Coupang Partners posts.
+- Never mention affiliate links, partnership, monetization, sponsorship status, or the absence of such links in a public non-affiliate article. Keep those facts in private run notes only.
+- Require relevant tags and platform classification metadata on every post: choose the closest visible Naver topic in the final menu and a suitable Tistory category before saving or publishing.
 - For promotions, products, rankings, and news, cite or name the source basis and include the checked date in the draft notes.
 - Do not store credentials, cookies, tokens, private affiliate dashboard data, or account-specific secrets in GitHub or skill files.
 - Avoid thin, duplicate, keyword-stuffed, or affiliate-heavy posts that do not add original reader value.
 - Keep publication mode as draft-only unless the user explicitly instructs otherwise; then follow that instruction for the approved batch and verify every final result.
 - In autonomous mode, create three candidates but publish at most one verified Naver post per day, no more than two affiliate-first posts per rolling seven days, and never affiliate-first posts on consecutive days.
 - Keep the first three verified unattended runs in draft-only canary mode. Do not bypass a paused state or an active run lock.
+- Keep Tistory in a separate one-post draft-only canary until three Tistory editor transfers pass body, caption, image-anchor, metadata, and draft-count verification. Do not infer Tistory stability from Naver success.
+- Never save an editor containing repeated image fingerprints, more figures than the manifest, empty/orphan figures, or repeated body blocks. Discard an unsaved contaminated editor instead of repairing it incrementally.
 
 ## Output Format
 

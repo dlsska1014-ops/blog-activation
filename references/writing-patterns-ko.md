@@ -19,6 +19,7 @@ Example:
 - Situation + solution: "장마철 제습기 고르기 전, 방 크기부터 보세요"
 - Audience + choice: "부모님 선물용 마사지기, 이런 기준이면 고르기 쉽습니다"
 - Mistake prevention: "행사 상품 살 때 놓치기 쉬운 제한 5가지"
+- Goal + reality check: "애드센스 월 100만 원, 2026년에 현실적으로 보려면 3가지만 확인하세요"
 
 ## Paragraph Rhythm
 
@@ -38,6 +39,7 @@ Example:
 - Add two concrete reader scenarios to long posts.
 - Put a mini-verdict before a long explanation when the reader needs a decision.
 - Let headings carry advice or contrast instead of using only category labels.
+- For revenue, SEO, policy, and side-income explainers, start by lowering the guarantee claim, then give the conditions that make the goal realistic.
 
 ## Anti-Uniformity
 

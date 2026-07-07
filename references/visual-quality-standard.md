@@ -15,6 +15,8 @@ Use at least three photographic visuals and at least two non-AI origins. Text ca
 
 For affiliate posts, prefer merchant-authorized product images plus real category context. Do not generate fake versions of recognizable products or interfaces.
 
+For blogging, AdSense, SEO, and side-income strategy posts, use calm operator-view visuals such as analytics review, content planning, source checking, or a neutral roadmap. Avoid money piles, luxury goods, jackpot imagery, fake dashboards, and guaranteed-income cues.
+
 ## Photographic Realism
 
 Every photographic visual must pass:
