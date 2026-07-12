@@ -64,6 +64,21 @@ def main() -> int:
         }
     )
     assert any("login" in error for error in PREFLIGHT.validate_report(login, now=now))
+    assert PREFLIGHT.classify_failure(login, PREFLIGHT.validate_report(login, now=now)) == "authentication"
+
+    transport = ready_report(now)
+    transport.update(
+        {
+            "tab_control_ok": False,
+            "editor_reachable": False,
+            "account_match": False,
+            "controls_verified": False,
+            "editor_controls": [],
+            "transport_error": "Tabs can only be moved to and from normal windows.",
+        }
+    )
+    transport_errors = PREFLIGHT.validate_report(transport, now=now)
+    assert PREFLIGHT.classify_failure(transport, transport_errors) == "transport"
 
     with TemporaryDirectory() as temporary:
         root = Path(temporary)
@@ -105,6 +120,22 @@ def main() -> int:
             max_age_minutes=30,
         )
         assert STATE.begin(missing_preflight, state)[0] == 1
+
+        blocked_report_path = root / "blocked-preflight.json"
+        blocked_report_path.write_text(json.dumps(transport), encoding="utf-8")
+        blocked_begin_args = SimpleNamespace(
+            state=state_path,
+            lock=None,
+            run_id="blocked-preflight-run",
+            run_date="2026-07-05",
+            preflight=blocked_report_path,
+            max_age_minutes=30,
+        )
+        code, payload = STATE.begin(blocked_begin_args, STATE.load_state(state_path))
+        assert code == 1 and payload["failure_class"] == "transport", payload
+        state = STATE.load_state(state_path)
+        assert state["last_run"]["blocked_stage"] == "editor_preflight"
+        assert state["last_run"]["commit_attempted"] is False
 
         begin_args = SimpleNamespace(
             state=state_path,

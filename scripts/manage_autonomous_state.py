@@ -44,6 +44,37 @@ RECOVERABLE_INFRA_FAILURES = {
 }
 
 
+def register_failed_begin(
+    args: argparse.Namespace,
+    state: dict[str, Any],
+    failure_class: str,
+    errors: list[str],
+) -> dict[str, Any]:
+    state["consecutive_failures"] = int(state["consecutive_failures"]) + 1
+    if int(state["consecutive_failures"]) >= 2:
+        state["paused"] = True
+    state["last_run"] = {
+        "run_id": args.run_id,
+        "finished_at": now_iso(),
+        "status": "blocked",
+        "verified_drafts": 0,
+        "canary_verified": False,
+        "failure_class": failure_class if failure_class in FAILURE_CLASSES else "unknown",
+        "commit_attempted": False,
+        "blocked_stage": "editor_preflight",
+        "errors": errors,
+    }
+    write_json(args.state, state)
+    return {
+        "status": "blocked",
+        "reason": "editor preflight failed",
+        "failure_class": state["last_run"]["failure_class"],
+        "consecutive_failures": state["consecutive_failures"],
+        "paused": state["paused"],
+        "errors": errors,
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--state", required=True, type=Path)
@@ -121,12 +152,12 @@ def begin(args: argparse.Namespace, state: dict[str, Any]) -> tuple[int, dict[st
     if state.get("require_editor_preflight", True):
         if args.preflight is None:
             return 1, {"status": "blocked", "reason": "a passing editor preflight is required"}
-        from validate_editor_preflight import validate_report
+        from validate_editor_preflight import classify_failure, validate_report
 
         report = json.loads(args.preflight.read_text(encoding="utf-8"))
         errors = validate_report(report, args.max_age_minutes)
         if errors:
-            return 1, {"status": "blocked", "reason": "editor preflight failed", "errors": errors}
+            return 1, register_failed_begin(args, state, classify_failure(report, errors), errors)
         if report.get("platform") != "naver":
             return 1, {"status": "blocked", "reason": "Naver preflight is required for Naver-first runs"}
         preflight_digest = hashlib.sha256(

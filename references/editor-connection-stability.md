@@ -17,6 +17,19 @@ Use this before research in unattended runs and again immediately before editor 
 
 The report must contain no login data, browser authentication data, session exports, private identifiers, or credential material.
 
+## Chrome Window Readiness
+
+Before claiming or creating a tab, make sure Chrome has at least one ordinary browser window available. Popup, app, authentication, or game windows can let the extension answer tab-list calls while still failing tab moves or tab claims. If tab creation fails with a window-state error, or a just-listed blank tab cannot be claimed, classify the run as `transport` and stop before research.
+
+Recovery steps:
+
+1. Bring a normal Chrome window to the foreground.
+2. Close or move aside popup/authentication windows that are not normal browser tabs.
+3. Keep one ordinary `about:blank` tab available in that window.
+4. Re-run the read-only preflight and require `tab_control_ok: true` before any source browsing, image generation, or editor input.
+
+Do not continue from extension connectivity alone. A preflight only passes when both the extension and actual tab control work.
+
 ## Required Report
 
 ```json

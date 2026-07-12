@@ -11,6 +11,14 @@ from typing import Any
 
 
 REQUIRED_EDITOR_CONTROLS = {"title", "body", "image", "tag", "save"}
+FAILURE_CLASSES = {
+    "transport",
+    "observation_api",
+    "authentication",
+    "account_mismatch",
+    "editor_surface",
+    "unknown",
+}
 
 
 def parse_time(value: Any) -> datetime | None:
@@ -82,6 +90,33 @@ def validate_report(
     return errors
 
 
+def classify_failure(report: dict[str, Any], errors: list[str] | None = None) -> str:
+    """Return the safest operational failure class for a blocked preflight."""
+    if errors is None:
+        errors = validate_report(report)
+    if not errors:
+        return "unknown"
+
+    target_url = str(report.get("target_url") or "").lower()
+    page_title = str(report.get("page_title") or "").lower()
+    transport_error = str(report.get("transport_error") or "")
+    login_signal = f"{target_url} {page_title}"
+
+    if report.get("browser_connection_ok") is not True or report.get("tab_control_ok") is not True:
+        return "transport"
+    if transport_error.strip():
+        return "transport"
+    if report.get("login_required") is True or "nidlogin" in login_signal or "로그인" in login_signal:
+        return "authentication"
+    if report.get("account_match") is False:
+        return "account_mismatch"
+    if report.get("editor_reachable") is False or report.get("controls_verified") is False:
+        return "editor_surface"
+    if any("probe_method" in error for error in errors):
+        return "observation_api"
+    return "unknown"
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--report", required=True, type=Path)
@@ -95,8 +130,13 @@ def main() -> int:
         report = json.loads(args.report.read_text(encoding="utf-8"))
         errors = validate_report(report, args.max_age_minutes)
     except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
+        report = {}
         errors = [str(exc)]
-    payload = {"status": "ready" if not errors else "blocked", "errors": errors}
+    payload = {
+        "status": "ready" if not errors else "blocked",
+        "failure_class": "none" if not errors else classify_failure(report, errors),
+        "errors": errors,
+    }
     print(json.dumps(payload, ensure_ascii=False, indent=2))
     return 0 if not errors else 1
 

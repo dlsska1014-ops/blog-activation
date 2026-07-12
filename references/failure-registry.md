@@ -49,3 +49,16 @@ Keep durable operational incidents here. Record cause, evidence, impact, correct
   - add tag-input verification and preview-open guard,
   - save only after duplicate count is zero and visible tags are reverified.
 - Verification condition: next Tistory canary records `editor_figure_count == expected_image_count`, `duplicate_image_count: 0`, `tag_input_verified: true`, and `preview_opened_during_tag_entry: false` or closed-and-reverified.
+
+## 2026-07-09 Naver Preflight Blocked
+
+- Run: `automation-20260709-preflight-blocked`
+- Classification: `transport`
+- Evidence: Chrome extension responded and listed tabs, but new tab creation failed with `Tabs can only be moved to and from normal windows.` A follow-up attempt to claim the visible blank tab failed with `No tab with id`. No editor navigation completed.
+- Impact: no research, source browsing, image generation, editor input, draft-save, or publication occurred; canary remained 1/3. The existing 2026-07-05 recovery candidate remained the next package to inspect after a passing preflight.
+- Root cause: the preflight treated extension connectivity and tab control as one path. When tab control failed before `begin` could create a lock, the run was blocked correctly but the state machine could only report `run does not own the active lock` on `finish`.
+- Corrective action:
+  - document Chrome normal-window readiness before tab claim or creation,
+  - classify tab creation/claim failures as `transport`,
+  - make `manage_autonomous_state.py begin` record failed editor preflights as blocked runs with `blocked_stage: editor_preflight`, `failure_class`, consecutive-failure accounting, and pause handling.
+- Verification condition: a failed transport preflight updates `last_run` without creating a lock; a recovered run requires a fresh passing preflight with `tab_control_ok: true` and all editor controls verified.
